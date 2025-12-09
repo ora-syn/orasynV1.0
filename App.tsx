@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoImg from './logo.png';
 import { 
   ArrowRight, 
   Cpu, 
@@ -63,7 +64,11 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
         {/* Left: Logo Group */}
         <div className="flex items-center gap-3 z-20 relative">
           <a href="#" className="flex items-center gap-3 group">
-            <img src="/assets/orasyn-metal-logo.png" alt="ORASYN Logo" className="h-8 w-auto object-contain" />
+            <img 
+  src={logoImg} 
+  alt="ORASYN Logo" 
+  className="h-8 w-auto object-contain" 
+/>
           </a>
         </div>
 
