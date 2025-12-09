@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// import logoImg from './logo.png';  <-- WIR NEHMEN JETZT DEN DIREKTEN WEG
 import { 
   ArrowRight, 
   Cpu, 
@@ -21,6 +20,22 @@ import {
 
 // --- Components ---
 
+/**
+ * Logo Component for Footer/Icons where the image isn't used
+ */
+const LogoIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-black">
+    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+/**
+ * Navigation Bar
+ * Sticky, exactly 80px height, premium backdrop blur.
+ * Layout: Logo Left, Links Center, Actions Right
+ */
 const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,6 +48,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Updated link logic to map German text to English IDs
   const navLinks = [
     { label: 'Funktionen', href: '#features' },
     { label: 'Methode', href: '#method' },
@@ -44,11 +60,10 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 h-[80px] flex items-center border-b ${isScrolled ? 'bg-white/80 border-gray-200 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60' : 'bg-white/0 border-transparent'}`}>
       <div className="max-w-[1400px] mx-auto px-6 w-full h-full flex items-center justify-between relative">
         
-        {/* Left: Logo Group - HIER IST DIE ÄNDERUNG */}
+        {/* Left: Logo Group */}
         <div className="flex items-center gap-3 z-20 relative">
           <a href="#" className="flex items-center gap-3 group">
-            {/* Pfad zeigt jetzt direkt auf public/logo.png */}
-            <img src="/logo.png" alt="ORASYN Logo" className="h-8 w-auto object-contain" />
+            <img src="/assets/orasyn-metal-logo.png" alt="ORASYN Logo" className="h-8 w-auto object-contain" />
           </a>
         </div>
 
@@ -124,6 +139,9 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   );
 };
 
+/**
+ * Feature Card
+ */
 const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
   <motion.div 
     whileHover={{ y: -5 }}
@@ -137,6 +155,9 @@ const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode, titl
   </motion.div>
 );
 
+/**
+ * Method Step Card
+ */
 const MethodStep = ({ icon, title, description, step }: { icon: React.ReactNode, title: string, description: string, step: number }) => (
   <motion.div 
     initial={{ opacity: 0, y: 30 }}
@@ -159,20 +180,28 @@ const MethodStep = ({ icon, title, description, step }: { icon: React.ReactNode,
   </motion.div>
 );
 
+/**
+ * Calendar / Scheduling Agent Mockup
+ */
 const CalendarMockup = () => {
+  // Config: 07:00 to 16:00
   const START_HOUR = 7;
   const HOURS_COUNT = 10; 
-  const HOUR_HEIGHT = 60; 
-  const OFFSET_TOP = 40; 
+  const HOUR_HEIGHT = 60; // px
+  const OFFSET_TOP = 40; // Equivalent to pt-10
 
+  // 1. Array of hours for rendering the sidebar and lines
   const hours = Array.from({ length: HOURS_COUNT }, (_, i) => START_HOUR + i);
 
+  // Helper for absolute positioning with offset
   const getEventStyle = (startHour: number, duration: number) => {
     const top = (startHour - START_HOUR) * HOUR_HEIGHT + OFFSET_TOP;
     const height = duration * HOUR_HEIGHT;
     return { top: `${top}px`, height: `${height}px` };
   };
 
+  // Total container height to ensure clean bottom border at 16:00
+  // (9 slots * 60) + 40px padding = 580px
   const totalHeight = (HOURS_COUNT - 1) * HOUR_HEIGHT + OFFSET_TOP;
 
   return (
@@ -183,6 +212,7 @@ const CalendarMockup = () => {
         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
         className="relative bg-white rounded-xl border border-gray-200 shadow-float flex flex-col overflow-x-auto pb-4"
       >
+        {/* --- HEADER --- */}
         <div className="h-16 border-b border-gray-100 flex items-center justify-between px-6 bg-white rounded-t-xl z-20 relative min-w-[800px]">
           <div className="flex items-center gap-4">
              <span className="font-bold text-lg text-gray-900">Dezember 2025</span>
@@ -208,6 +238,7 @@ const CalendarMockup = () => {
           </div>
         </div>
 
+        {/* --- DAY HEADERS --- */}
         <div className="h-10 border-b border-gray-100 bg-gray-50/50 flex min-w-[800px]">
            <div className="w-16 border-r border-gray-100 flex-shrink-0"></div>
            <div className="flex-1 grid grid-cols-5">
@@ -219,10 +250,12 @@ const CalendarMockup = () => {
            </div>
         </div>
 
+        {/* --- MAIN GRID --- */}
         <div 
            className="relative flex bg-white border-b border-gray-200 rounded-b-xl min-w-[800px]"
            style={{ height: `${totalHeight}px` }}
         >
+           {/* Sidebar Times */}
            <div className="w-16 flex-shrink-0 border-r border-gray-100 pt-10 text-center relative">
               {hours.map((h, i) => (
                 <div key={h} className="absolute w-full" style={{ top: `${i * HOUR_HEIGHT + OFFSET_TOP}px`, transform: 'translateY(-50%)' }}>
@@ -233,8 +266,10 @@ const CalendarMockup = () => {
               ))}
            </div>
 
+           {/* Grid Body */}
            <div className="flex-1 relative pt-10">
               
+              {/* Horizontal Lines */}
               {hours.map((h, i) => (
                 <div 
                    key={h} 
@@ -243,18 +278,21 @@ const CalendarMockup = () => {
                 ></div>
               ))}
 
+              {/* Vertical Lines */}
               <div className="absolute inset-0 grid grid-cols-5 pointer-events-none">
                  {[0,1,2,3,4].map(col => (
                    <div key={col} className="border-r border-gray-50 h-full"></div>
                  ))}
               </div>
 
+              {/* EVENTS LAYER */}
               <div className="absolute inset-0 grid grid-cols-5 h-full">
                  
+                 {/* 1. MONDAY EVENT */}
                  <div className="relative h-full w-full">
                     <div 
                        className="absolute left-1 right-1 bg-gray-50 border-l-4 border-gray-400 rounded-r-md p-2 flex flex-col justify-start overflow-hidden shadow-sm"
-                       style={getEventStyle(12, 1.5)} 
+                       style={getEventStyle(12, 1.5)} // 12:00 - 13:30
                     >
                        <p className="text-xs font-bold text-gray-900 leading-tight whitespace-normal">
                          Seminar: Künstliche Intelligenz & Marketing
@@ -263,10 +301,11 @@ const CalendarMockup = () => {
                     </div>
                  </div>
 
+                 {/* 2. TUESDAY EVENT */}
                  <div className="relative h-full w-full">
                     <div 
                        className="absolute left-1 right-1 bg-slate-900 text-white rounded-md p-2 flex flex-col justify-center shadow-lg group"
-                       style={getEventStyle(9, 2)} 
+                       style={getEventStyle(9, 2)} // 09:00 - 11:00
                     >
                        <div className="absolute top-2 right-2 text-yellow-400">
                           <Zap size={12} fill="currentColor" />
@@ -276,18 +315,21 @@ const CalendarMockup = () => {
                     </div>
                  </div>
 
+                 {/* 3. WEDNESDAY (Empty) */}
                  <div className="relative h-full w-full"></div>
 
+                 {/* 4. THURSDAY EVENT + POPUP */}
                  <div className="relative h-full w-full overflow-visible">
                     <div 
                        className="absolute left-1 right-1 bg-red-50 border-l-4 border-red-200 rounded-r-md p-2 flex flex-col justify-center shadow-sm overflow-visible"
-                       style={getEventStyle(10, 1)} 
+                       style={getEventStyle(10, 1)} // 10:00 - 11:00
                     >
                        <p className="text-xs font-bold text-gray-800 leading-tight">
                          Meeting Marketingaktivitäten Q1 2026
                        </p>
                        <p className="text-[10px] text-red-400 mt-1">10:00 - 11:00</p>
 
+                       {/* CRITICAL POPUP */}
                        <motion.div 
                           initial={{ opacity: 0, scale: 0.95 }}
                           animate={{ 
@@ -315,6 +357,7 @@ const CalendarMockup = () => {
                     </div>
                  </div>
 
+                 {/* 5. FRIDAY (Empty) */}
                  <div className="relative h-full w-full"></div>
 
               </div>
@@ -326,6 +369,8 @@ const CalendarMockup = () => {
   );
 }
 
+// --- Form Modals ---
+
 const FormModal = ({ type, onClose }: { type: 'waitlist' | 'sales', onClose: () => void }) => {
   const isSales = type === 'sales';
   const title = isSales ? "Direkter Kontakt zum Enterprise-Team" : "Ihr Antrag auf Pilot-Zugang";
@@ -333,6 +378,7 @@ const FormModal = ({ type, onClose }: { type: 'waitlist' | 'sales', onClose: () 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Simulate sending with a slight delay for better UX
     setTimeout(() => {
       onClose();
     }, 800);
@@ -407,6 +453,8 @@ const FormModal = ({ type, onClose }: { type: 'waitlist' | 'sales', onClose: () 
     </motion.div>
   );
 };
+
+// --- Legal Content Data ---
 
 const legalContent: Record<string, { title: string; content: React.ReactNode }> = {
   kontakt: {
@@ -656,4 +704,546 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <p>Make.com dient dazu, automatisierte Workflows („Szenarien“) zwischen verschiedenen Online-Diensten zu erstellen und auszuführen. Im Rahmen der Nutzung von Make.com können personenbezogene Daten verarbeitet werden. Dazu zählen beispielsweise Namen, E-Mail-Adressen, IP-Adressen, Telefonnummern, Adressdaten, Inhalte aus E-Mails oder Formularen, API-Aufrufe sowie Zugriffs- und Authentifizierungsdaten, die im Rahmen der Workflows verarbeitet werden.</p>
         <p>Die Nutzung von Make.com erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse in der effizienten Automatisierung von Geschäftsprozessen. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.</p>
         <p>Weitere Details entnehmen Sie der Datenschutzerklärung von Make.com: <a href="https://www.make.com/en/privacy-notice" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Make.com Privacy Notice</a> sowie <a href="https://www.make.com/en/privacy-and-gdpr" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Make.com GDPR</a>.</p>
-        <p><strong>Auftragsverarbeitung:</strong> Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet
+        <p><strong>Auftragsverarbeitung:</strong> Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">7. eCommerce und Zahlungsanbieter</h2>
+        
+        <h3 className="font-bold text-lg text-gray-900 mt-6">Verarbeiten von Kunden- und Vertragsdaten</h3>
+        <p>Wir erheben, verarbeiten und nutzen personenbezogene Kunden- und Vertragsdaten zur Begründung, inhaltlichen Ausgestaltung und Änderung unserer Vertragsbeziehungen. Personenbezogene Daten über die Inanspruchnahme dieser Website (Nutzungsdaten) erheben, verarbeiten und nutzen wir nur, soweit dies erforderlich ist, um dem Nutzer die Inanspruchnahme des Dienstes zu ermöglichen oder abzurechnen. Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. b DSGVO.</p>
+        <p>Die erhobenen Kundendaten werden nach Abschluss des Auftrags oder Beendigung der Geschäftsbeziehung und Ablauf der ggf. bestehenden gesetzlichen Aufbewahrungsfristen gelöscht. Gesetzliche Aufbewahrungsfristen bleiben unberührt.</p>
+
+        <h3 className="font-bold text-lg text-gray-900 mt-6">Datenübermittlung bei Vertragsschluss für Dienstleistungen und digitale Inhalte</h3>
+        <p>Wir übermitteln personenbezogene Daten an Dritte nur dann, wenn dies im Rahmen der Vertragsabwicklung notwendig ist, etwa an das mit der Zahlungsabwicklung beauftragte Kreditinstitut.</p>
+        <p>Eine weitergehende Übermittlung der Daten erfolgt nicht bzw. nur dann, wenn Sie der Übermittlung ausdrücklich zugestimmt haben. Eine Weitergabe Ihrer Daten an Dritte ohne ausdrückliche Einwilligung, etwa zu Zwecken der Werbung, erfolgt nicht.</p>
+        <p>Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. b DSGVO, der die Verarbeitung von Daten zur Erfüllung eines Vertrags oder vorvertraglicher Maßnahmen gestattet.</p>
+
+        <h3 className="font-bold text-lg text-gray-900 mt-6">Zahlungsdienste</h3>
+        <p>Wir binden Zahlungsdienste von Drittunternehmen auf unserer Website ein. Wenn Sie einen Kauf bei uns tätigen, werden Ihre Zahlungsdaten (z. B. Name, Zahlungssumme, Kontoverbindung, Kreditkartennummer) vom Zahlungsdienstleister zum Zwecke der Zahlungsabwicklung verarbeitet. Für diese Transaktionen gelten die jeweiligen Vertrags- und Datenschutzbestimmungen der jeweiligen Anbieter. Der Einsatz der Zahlungsdienstleister erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragsabwicklung) sowie im Interesse eines möglichst reibungslosen, komfortablen und sicheren Zahlungsvorgangs (Art. 6 Abs. 1 lit. f DSGVO). Soweit für bestimmte Handlungen Ihre Einwilligung abgefragt wird, ist Art. 6 Abs. 1 lit. a DSGVO Rechtsgrundlage der Datenverarbeitung; Einwilligungen sind jederzeit für die Zukunft widerrufbar.</p>
+        <p>Folgende Zahlungsdienste / Zahlungsdienstleister setzen wir im Rahmen dieser Website ein:</p>
+        
+        <h4 className="font-bold text-gray-800 mt-4">PayPal</h4>
+        <p>Anbieter dieses Zahlungsdienstes ist PayPal (Europe) S.à.r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxembourg (im Folgenden „PayPal“).</p>
+        <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://www.paypal.com/de/webapps/mpp/ua/pocpsa-full" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">PayPal Legal Agreements</a>.</p>
+        <p>Details entnehmen Sie der Datenschutzerklärung von PayPal: <a href="https://www.paypal.com/de/webapps/mpp/ua/privacy-full" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">PayPal Privacy</a>.</p>
+
+        <h4 className="font-bold text-gray-800 mt-4">Stripe</h4>
+        <p>Anbieter für Kunden innerhalb der EU ist die Stripe Payments Europe, Ltd.,1 Grand Canal Street Lower, Grand Canal Dock, Dublin, Irland (im Folgenden „Stripe“).</p>
+        <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://stripe.com/de/privacy" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Stripe Privacy</a> und <a href="https://stripe.com/de/guides/general-data-protection-regulation" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Stripe GDPR Guide</a>.</p>
+        <p>Details hierzu können Sie in der Datenschutzerklärung von Stripe unter folgendem Link nachlesen: <a href="https://stripe.com/de/privacy" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Stripe Privacy Policy</a>.</p>
+
+        <h4 className="font-bold text-gray-800 mt-4">American Express</h4>
+        <p>Anbieter dieses Zahlungsdienstes ist die American Express Europe S.A., Theodor-Heuss-Allee 112, 60486 Frankfurt am Main, Deutschland (im Folgenden „American Express“).</p>
+        <p>American Express kann Daten an seine Muttergesellschaft in die USA übermitteln. Die Datenübertragung in die USA wird auf die Binding Corporate Rules gestützt. Details finden Sie hier: <a href="https://www.americanexpress.com/en-cz/company/legal/privacy-centre/binding-corporate-rules/" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Amex BCR</a>.</p>
+        <p>Weitere Informationen entnehmen Sie der Datenschutzerklärung von American Express: <a href="https://www.americanexpress.com/de-de/firma/legal/datenschutz-center/online-datenschutzerklarung/" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Amex Online Privacy Statement</a>.</p>
+
+        <h4 className="font-bold text-gray-800 mt-4">Mastercard</h4>
+        <p>Anbieter dieses Zahlungsdienstes ist die Mastercard Europe SA, Chaussée de Tervuren 198A, B-1410 Waterloo, Belgien (im Folgenden „Mastercard“).</p>
+        <p>Mastercard kann Daten an seine Muttergesellschaft in die USA übermitteln. Die Datenübertragung in die USA wird auf die Binding Corporate Rules von Mastercard gestützt. Details finden Sie hier: <a href="https://www.mastercard.de/de-de/datenschutz.html" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Mastercard Privacy</a> und <a href="https://www.mastercard.us/content/dam/mccom/global/documents/mastercard-bcrs.pdf" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Mastercard BCRs</a>.</p>
+
+        <h4 className="font-bold text-gray-800 mt-4">VISA</h4>
+        <p>Anbieter dieses Zahlungsdienstes ist die Visa Europe Services Inc., Zweigniederlassung London, 1 Sheldon Square, London W2 6TT, Großbritannien (im Folgenden „VISA“).</p>
+        <p>Großbritannien gilt als datenschutzrechtlich sicherer Drittstaat. Das bedeutet, dass Großbritannien ein Datenschutzniveau aufweist, das dem Datenschutzniveau in der Europäischen Union entspricht.</p>
+        <p>VISA kann Daten an seine Muttergesellschaft in die USA übertragen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://www.visa.de/nutzungsbedingungen/visa-globale-datenschutzmitteilung/mitteilung-zu-zustandigkeitsfragen-fur-den-ewr.html" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">VISA Data Transfer</a>.</p>
+        <p>Weitere Informationen entnehmen Sie der Datenschutzerklärung von VISA: <a href="https://www.visa.de/nutzungsbedingungen/visa-privacy-center.html" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">VISA Privacy Center</a>.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">8. Audio- und Videokonferenzen</h2>
+        
+        <h3 className="font-bold text-lg text-gray-900 mt-6">Datenverarbeitung</h3>
+        <p>Für die Kommunikation mit unseren Kunden setzen wir unter anderen Online-Konferenz-Tools ein. Die im Einzelnen von uns genutzten Tools sind unten aufgelistet. Wenn Sie mit uns per Video- oder Audiokonferenz via Internet kommunizieren, werden Ihre personenbezogenen Daten von uns und dem Anbieter des jeweiligen Konferenz-Tools erfasst und verarbeitet.</p>
+        <p>Die Konferenz-Tools erfassen dabei alle Daten, die Sie zur Nutzung der Tools bereitstellen/einsetzen (E-Mail-Adresse und/oder Ihre Telefonnummer). Ferner verarbeiten die Konferenz-Tools die Dauer der Konferenz, Beginn und Ende (Zeit) der Teilnahme an der Konferenz, Anzahl der Teilnehmer und sonstige „Kontextinformationen“ im Zusammenhang mit dem Kommunikationsvorgang (Metadaten).</p>
+        <p>Des Weiteren verarbeitet der Anbieter des Tools alle technischen Daten, die zur Abwicklung der Online-Kommunikation erforderlich sind. Dies umfasst insbesondere IP-Adressen, MAC-Adressen, Geräte-IDs, Gerätetyp, Betriebssystemtyp und -version, Client-Version, Kameratyp, Mikrofon oder Lautsprecher sowie die Art der Verbindung.</p>
+        <p>Sofern innerhalb des Tools Inhalte ausgetauscht, hochgeladen oder in sonstiger Weise bereitgestellt werden, werden diese ebenfalls auf den Servern der Tool-Anbieter gespeichert. Zu solchen Inhalten zählen insbesondere Cloud-Aufzeichnungen, Chat-/ Sofortnachrichten, Voicemails hochgeladene Fotos und Videos, Dateien, Whiteboards und andere Informationen, die während der Nutzung des Dienstes geteilt werden.</p>
+        <p>Bitte beachten Sie, dass wir nicht vollumfänglich Einfluss auf die Datenverarbeitungsvorgänge der verwendeten Tools haben. Unsere Möglichkeiten richten sich maßgeblich nach der Unternehmenspolitik des jeweiligen Anbieters. Weitere Hinweise zur Datenverarbeitung durch die Konferenztools entnehmen Sie den Datenschutzerklärungen der jeweils eingesetzten Tools, die wir unter diesem Text aufgeführt haben.</p>
+
+        <h3 className="font-bold text-lg text-gray-900 mt-6">Zweck und Rechtsgrundlagen</h3>
+        <p>Die Konferenz-Tools werden genutzt, um mit angehenden oder bestehenden Vertragspartnern zu kommunizieren oder bestimmte Leistungen gegenüber unseren Kunden anzubieten (Art. 6 Abs. 1 lit. b DSGVO). Des Weiteren dient der Einsatz der Tools der allgemeinen Vereinfachung und Beschleunigung der Kommunikation mit uns bzw. unserem Unternehmen (berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO). Soweit eine Einwilligung abgefragt wurde, erfolgt der Einsatz der betreffenden Tools auf Grundlage dieser Einwilligung; die Einwilligung ist jederzeit mit Wirkung für die Zukunft widerrufbar.</p>
+
+        <h3 className="font-bold text-lg text-gray-900 mt-6">Speicherdauer</h3>
+        <p>Die unmittelbar von uns über die Video- und Konferenz-Tools erfassten Daten werden von unseren Systemen gelöscht, sobald Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt. Gespeicherte Cookies verbleiben auf Ihrem Endgerät, bis Sie sie löschen. Zwingende gesetzliche Aufbewahrungsfristen bleiben unberührt.</p>
+        <p>Auf die Speicherdauer Ihrer Daten, die von den Betreibern der Konferenz-Tools zu eigenen Zwecken gespeichert werden, haben wir keinen Einfluss. Für Einzelheiten dazu informieren Sie sich bitte direkt bei den Betreibern der Konferenz-Tools.</p>
+
+        <h3 className="font-bold text-lg text-gray-900 mt-6">Eingesetzte Konferenz-Tools</h3>
+        <p>Wir setzen folgende Konferenz-Tools ein:</p>
+        
+        <h4 className="font-bold text-gray-800 mt-4">Microsoft Teams</h4>
+        <p>Wir nutzen Microsoft Teams. Anbieter ist die Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland. Details zur Datenverarbeitung entnehmen Sie der Datenschutzerklärung von Microsoft Teams: <a href="https://privacy.microsoft.com/de-de/privacystatement" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Microsoft Privacy Statement</a>.</p>
+        <p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework“ (DPF). Der DPF ist ein Übereinkommen zwischen der Europäischen Union und den USA, der die Einhaltung europäischer Datenschutzstandards bei Datenverarbeitungen in den USA gewährleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/6474" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">DPF Participant</a>.</p>
+        <p><strong>Auftragsverarbeitung:</strong> Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
+
+        <h4 className="font-bold text-gray-800 mt-4">Google Meet</h4>
+        <p>Wir nutzen Google Meet. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Details zur Datenverarbeitung entnehmen Sie der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Google Privacy</a>.</p>
+        <p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework“ (DPF). Der DPF ist ein Übereinkommen zwischen der Europäischen Union und den USA, der die Einhaltung europäischer Datenschutzstandards bei Datenverarbeitungen in den USA gewährleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/5780" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">DPF Participant</a>.</p>
+        <p><strong>Auftragsverarbeitung:</strong> Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
+      </div>
+    )
+  },
+  agb: {
+    title: "Allgemeine Geschäftsbedingungen",
+    content: (
+      <div className="prose prose-sm max-w-none text-gray-600 space-y-4">
+        <h1 className="text-2xl font-bold text-gray-900 mb-6">Allgemeine Geschäftsbedingungen</h1>
+        <p className="font-medium">für die Erbringung von Dienstleistungen von Samuele Francesco Franzé, Orasyn, Kurt-Schumacher-Straße 76, c/o flexdienst - #12205, 67663 Kaiserslautern, E-Mail: info@orasyn.de (nachfolgend „Auftragnehmer“) gegenüber seinen Kunden (nachfolgend „Auftraggeber“)</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">1. Allgemeines</h2>
+        <p>1.1 Diese Allgemeinen Geschäftsbedingungen (AGB) für die Erbringung von Dienstleistungen gelten für Verträge, die zwischen dem Auftraggeber und dem Auftragnehmer unter Einbeziehung dieser AGB geschlossen werden.</p>
+        <p>1.2 Der Auftragnehmer schließt keine Verträge mit Verbrauchern bzw. Privatpersonen.</p>
+        <p>1.3 Der Auftragnehmer ist berechtigt, in eigenem Namen und auf eigene Rechnung die erforderlichen Leistungen an Subunternehmer zu vergeben, die ihrerseits ebenfalls Subunternehmer einsetzen dürfen. Der Auftragnehmer bleibt hierbei alleiniger Vertragspartner des Auftraggebers. Der Einsatz von Subunternehmern erfolgt nicht, wenn für den Auftragnehmer ersichtlich ist, dass deren Einsatz berechtigten Interessen des Auftraggebers zuwiderläuft.</p>
+        <p>1.4 Soweit neben diesen AGB weitere Vertragsdokumente oder andere Geschäftsbedingungen in Text- oder Schriftform Vertragsbestandteil geworden sind, gehen die Regelungen dieser weiteren Vertragsdokumente im Widerspruchsfalle den vorliegenden AGB vor.</p>
+        <p>1.5 Von diesen Geschäftsbedingungen abweichende AGB, die durch den Auftraggeber verwendet werden, erkennt Auftragnehmer – vorbehaltlich einer ausdrücklichen Zustimmung – nicht an.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">2. Vertragsgegenstand und Leistungsumfang</h2>
+        <p>2.1 Der Auftragnehmer erbringt als selbständiger Unternehmer folgende Leistungen gegenüber dem Auftraggeber:</p>
+        <p className="pl-4 border-l-4 border-gray-200">Die Bereitstellung einer KI-gestützten Software-as-a-Service (SaaS) Plattform zur automatisierten Planung, Verwaltung und Optimierung von Terminen und Arbeitsabläufen für B2B-Kunden.</p>
+        <p>2.2 Der spezifische Leistungsumfang ist Gegenstand von Individualvereinbarungen zwischen Auftragnehmer und dem Auftraggeber.</p>
+        <p>2.3 Der Auftragnehmer erbringt die vertragsgemäßen Leistungen mit größtmöglicher Sorgfalt und Gewissenhaftigkeit nach dem jeweils neuesten Stand, neuesten Regeln und Erkenntnissen.</p>
+        <p>2.4 Der Auftragnehmer ist zur Erbringung der vertragsgemäß geschuldeten Leistungen verpflichtet. Bei der Durchführung seiner Tätigkeit ist er jedoch etwaigen Weisungen im Hinblick auf die Art der Erbringung seiner Leistungen, den Ort der Leistungserbringung ebenso wie die Zeit der Leistungserbringung nicht unterworfen. Er wird jedoch bei der Einteilung der Tätigkeitstage und bei der Zeiteinteilung an diesen Tagen diese selbst in der Weise festlegen, dass eine optimale Effizienz bei seiner Tätigkeit und bei der Realisierung des Vertragsgegenstandes erzielt wird. Die Leistungserbringung durch den Auftragnehmer erfolgt lediglich in Abstimmung und in Koordination mit dem Auftraggeber.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">3. Mitwirkungspflichten des Auftraggebers</h2>
+        <p>Es obliegt dem Auftraggeber, die von ihm zum Zwecke der Leistungserfüllung zur Verfügung zu stellenden Informationen, Daten und sonstigen Inhalte vollständig und korrekt mitzuteilen. Für Verzögerungen und Verspätungen bei der Leistungserbringung, die durch eine verspätete und notwendige Mit- bzw. Zuarbeit des Kunden entstehen, ist der Auftragnehmer gegenüber dem Kunden in keinerlei Hinsicht verantwortlich; die Vorschriften unter der Überschrift „Haftung/Freistellung“ bleiben hiervon unberührt.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">4. Vergütung</h2>
+        <p>4.1 Die Vergütung wird individualvertraglich vereinbart.</p>
+        <p>4.2 Die Vergütung ist nach der Leistung der Dienste zu entrichten. Ist die Vergütung nach Zeitabschnitten bemessen, so ist sie nach dem Ablauf der einzelnen Zeitabschnitte zu entrichten (§ 614 BGB). Bei aufwandsbezogener Abrechnung ist der Auftragnehmer vorbehaltlich abweichender Vereinbarungen berechtigt, die erbrachte Leistungen monatlich abzurechnen.</p>
+        <p>4.3 Der Auftragnehmer stellt dem Auftraggeber nach Erbringung der Leistungen eine Rechnung per Post oder per E-Mail (z.B. als PDF). Die Vergütung ist innerhalb von 14 Tagen nach Zugang der Rechnung zur Zahlung fällig.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">5. Haftung / Freistellung</h2>
+        <p>5.1 Der Auftragnehmer haftet aus jedem Rechtsgrund uneingeschränkt bei Vorsatz oder grober Fahrlässigkeit, bei vorsätzlicher oder fahrlässiger Verletzung des Lebens, des Körpers oder der Gesundheit, aufgrund eines Garantieversprechens, soweit diesbezüglich nichts anderes geregelt ist oder aufgrund zwingender Haftung. Verletzt der Auftragnehmer fahrlässig eine wesentliche Vertragspflicht, ist die Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt, sofern nicht gemäß vorstehendem Satz unbeschränkt gehaftet wird. Wesentliche Vertragspflichten sind Pflichten, die der Vertrag dem Auftragnehmer nach seinem Inhalt zur Erreichung des Vertragszwecks auferlegt, deren Erfüllung die ordnungsgemäße Durchführung des Vertrags überhaupt erst ermöglicht und auf deren Einhaltung der Kunde regelmäßig vertrauen darf. Im Übrigen ist eine Haftung des Auftragnehmers ausgeschlossen. Vorstehende Haftungsregelungen gelten auch im Hinblick auf die Haftung des Auftragnehmers für seine Erfüllungsgehilfen und gesetzlichen Vertreter.</p>
+        <p>5.2 Der Auftraggeber stellt den Auftragnehmer von jeglichen Ansprüchen Dritter frei, die gegen den Auftragnehmer aufgrund von Verstößen des Kunden gegen diese Vertragsbedingungen oder gegen geltendes Recht geltend gemacht werden.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">6. Vertragsdauer und Kündigung</h2>
+        <p>6.1 Die Vertragsdauer und die Fristen zur ordentlichen Kündigung vereinbaren die Parteien individuell.</p>
+        <p>6.2 Das Recht beider Parteien zur fristlosen Kündigung aus wichtigem Grund bleibt unberührt.</p>
+        <p>6.3 Der Auftragnehmer hat alle ihm überlassenen Unterlagen und sonstigen Inhalte nach Vertragsbeendigung unverzüglich nach Wahl des Kunden zurückzugeben oder zu vernichten. Die Geltendmachung eines Zurückbehaltungsrechts daran ist ausgeschlossen. Elektronische Daten sind vollständig zu löschen. Ausgenommen davon sind Unterlagen und Daten, hinsichtlich derer eine längere gesetzliche Aufbewahrungspflicht besteht, jedoch nur bis zum Ende der jeweiligen Aufbewahrungsfrist. Der Auftragnehmer hat dem Unternehmen auf dessen Verlangen die Löschung schriftlich zu bestätigen.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">7. Vertraulichkeit und Datenschutz</h2>
+        <p>7.1 Der Auftragnehmer wird alle ihm im Zusammenhang mit dem Auftrag zur Kenntnis gelangenden Vorgänge streng vertraulich behandeln. Der Auftragnehmer verpflichtet sich, die Geheimhaltungspflicht sämtlichen Angestellten und / oder Dritten, die Zugang zu den vertragsgegenständlichen Informationen haben, aufzuerlegen. Die Geheimhaltungspflicht gilt zeitlich unbegrenzt über die Dauer dieses Vertrages hinaus.</p>
+        <p>7.2 Der Auftragnehmer verpflichtet sich, bei der Durchführung des Auftrags sämtliche datenschutzrechtlichen Vorschriften – insbesondere die Vorschriften der Datenschutzgrundverordnung und des Bundesdatenschutzgesetzes – einzuhalten.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">8. Schlussbestimmungen</h2>
+        <p>8.1 Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des CISG.</p>
+        <p>8.2 Sollte eine Bestimmung dieser AGB unwirksam sein oder werden, so wird die Gültigkeit der AGB im Übrigen hiervon nicht berührt.</p>
+        <p>8.3 Der Auftraggeber wird den Auftragnehmer bei der Erbringung seiner vertragsgemäßen Leistungen durch angemessene Mitwirkungshandlungen, soweit erforderlich, fördern. Der Auftraggeber wird insbesondere dem Auftragnehmer die zur Erfüllung des Auftrags erforderlichen Informationen und Daten zur Verfügung stellen.</p>
+        <p>8.4 Sofern der Auftraggeber Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist oder keinen allgemeinen Gerichtsstand in Deutschland hat, vereinbaren die Parteien den Sitz des Auftragnehmers als Gerichtsstand für sämtliche Streitigkeiten aus diesem Vertragsverhältnis; ausschließliche Gerichtsstände bleiben hiervon unberührt.</p>
+        <p>8.5 Der Auftragnehmer ist berechtigt, diese AGB aus sachlich gerechtfertigten Gründen (z. B. Änderungen in der Rechtsprechung, Gesetzeslage, Marktgegebenheiten oder der Geschäfts- oder Unternehmensstrategie) und unter Einhaltung einer angemessenen Frist zu ändern. Bestandskunden werden hierüber spätestens zwei Wochen vor Inkrafttreten der Änderung per E-Mail benachrichtigt. Sofern der Bestandskunde nicht innerhalb der in der Änderungsmitteilung gesetzten Frist widerspricht, gilt seine Zustimmung zur Änderung als erteilt. Widerspricht er, treten die Änderungen nicht in Kraft; Auftragnehmer ist in diesem Fall berechtigt, den Vertrag zum Zeitpunkt des Inkrafttretens der Änderung außerordentlich zu kündigen. Die Benachrichtigung über die beabsichtigte Änderung dieser AGB wird auf die Frist und die Folgen des Widerspruchs oder seines Ausbleibens hinweisen.</p>
+      </div>
+    )
+  },
+  impressum: {
+    title: "Impressum",
+    content: (
+      <div className="prose prose-sm max-w-none text-gray-600">
+    <h1 className="text-2xl font-bold text-gray-900 mb-4">Impressum</h1>
+
+    <p className="mb-4">
+        Samuele Francesco Franzé<br />
+        Orasyn<br />
+        Kurt-Schumacher-Stra&szlig;e 76<br />
+        c/o flexdienst - #12205<br />
+        67663 Kaiserslautern
+    </p>
+
+    <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Kontakt</h2>
+    <p className="mb-4">
+        Telefon: +49 (0) 176 42720313<br />
+        E-Mail: info@orasyn.de
+    </p>
+
+    <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h2>
+    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+</div>
+    )
+  }
+};
+
+/**
+ * Legal Overlay Modal
+ */
+const LegalModal = ({ page, onClose }: { page: string, onClose: () => void }) => {
+  const content = legalContent[page];
+  
+  if (!content) return null;
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
+      onClick={onClose} // Close on backdrop click
+    >
+      <motion.div 
+        initial={{ opacity: 0, y: 50, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 50, scale: 0.95 }}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        className="bg-white w-full max-w-3xl max-h-[90vh] rounded-2xl shadow-2xl relative flex flex-col overflow-hidden"
+        onClick={(e) => e.stopPropagation()} // Prevent close on content click
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-white sticky top-0 z-10">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900">{content.title}</h2>
+          <button 
+            onClick={onClose}
+            className="p-2 rounded-full bg-gray-50 text-gray-500 hover:bg-gray-100 hover:text-black transition-colors"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="p-8 md:p-10 overflow-y-auto scrollbar-thin">
+           <div className="prose prose-gray max-w-none">
+             {content.content}
+           </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+// --- Main App Component ---
+
+const App = () => {
+  const [activeLegalPage, setActiveLegalPage] = useState<string | null>(null);
+  const [activeFormModal, setActiveFormModal] = useState<'waitlist' | 'sales' | null>(null);
+
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    if (activeLegalPage || activeFormModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [activeLegalPage, activeFormModal]);
+
+  return (
+    <div 
+      className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"
+    >
+      <Navbar onOpenWaitlist={() => setActiveFormModal('waitlist')} />
+
+      {/* --- Hero Section --- */}
+      <section className="relative pt-[160px] pb-24 px-6 overflow-hidden">
+        {/* Background Gradients (Subtle) */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-white rounded-full blur-3xl opacity-80"></div>
+          <div className="absolute top-10 right-1/4 w-[400px] h-[400px] bg-gray-50 rounded-full blur-3xl opacity-60"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 bg-white/50 backdrop-blur-sm"
+          >
+            <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
+            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">ORASYN 1.0 IST LIVE</span>
+          </motion.div>
+
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-6xl md:text-8xl font-black text-black tracking-tighter leading-[0.95] mb-8 max-w-5xl"
+          >
+            Automate Work.<br />
+            <span className="text-gray-400">Elevate Growth.</span>
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-gray-500 max-w-[700px] leading-relaxed mb-10 tracking-tight"
+          >
+            Entkoppeln Sie Wachstum von Arbeitszeit. <br className="hidden md:block" />
+            Orasyn verwandelt operative Engpässe in autonome Prozesse – für Ergebnisse, die unendlich skalieren.
+          </motion.p>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex items-center gap-4 mb-16"
+          >
+            <motion.button 
+              onClick={() => setActiveFormModal('waitlist')}
+              whileTap={{ scale: 0.95 }}
+              className="bg-violet-600 text-white text-[15px] font-semibold px-8 py-4 rounded-full transition-all hover:bg-violet-500 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] hover:translate-y-[-1px] flex items-center gap-2"
+            >
+              Jetzt Demo anfordern
+              <ArrowRight size={16} />
+            </motion.button>
+          </motion.div>
+
+          {/* Integrations Text Only Bar */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="mb-12 flex flex-col items-center"
+          >
+            <h3 className="text-xs font-bold tracking-widest text-gray-400 uppercase mb-4">
+              NAHTLOSE INTEGRATION IN IHRE INFRASTRUKTUR
+            </h3>
+            <p className="text-lg md:text-xl font-medium text-gray-400 tracking-tight">
+              Google Workspace <span className="mx-2 text-gray-300">•</span> Microsoft 365 <span className="mx-2 text-gray-300">•</span> Microsoft Teams <span className="mx-2 text-gray-300">•</span> Slack
+            </p>
+          </motion.div>
+
+          {/* Visual */}
+          <CalendarMockup />
+        </div>
+      </section>
+
+      {/* --- Features Section (Updated ID to #features) --- */}
+      <section id="features" className="py-32 relative">
+         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white to-transparent pointer-events-none"></div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-20"
+          >
+            <h2 className="text-4xl md:text-5xl font-black text-black tracking-tighter mb-6">Engineered for Scale.</h2>
+            <p className="text-xl text-gray-500 max-w-2xl">
+              Entkoppeln Sie Wachstum von Administration. Orasyn integriert sich nahtlos und eliminiert Engpässe, bevor sie entstehen.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            <FeatureCard 
+              icon={<Clock size={20} />}
+              title="Autonome Zeit-Souveränität"
+              description="Der Agent überwacht Ihren Kalender 24/7. Er schützt Fokus-Zeiten und verhandelt Termine autonom neu."
+            />
+            <FeatureCard 
+              icon={<Layers size={20} />}
+              title="Native Infrastruktur"
+              description="Kein neues Tool. Orasyn lebt unsichtbar in Ihrer bestehenden Microsoft 365 und Google Workspace Umgebung."
+            />
+            <FeatureCard 
+              icon={<TrendingUp size={20} />}
+              title="Rationale Effizienz"
+              description="Verwandelt fragmentierte Tage in Produktivität. Gewinnen Sie durchschnittlich 8 Stunden Kapazität pro Woche."
+            />
+            <FeatureCard 
+              icon={<Lock size={20} />}
+              title="Enterprise Compliance"
+              description="Ihre Daten verlassen niemals den sicheren Kontext. DSGVO-konform, verschlüsselt und in Deutschland gehostet."
+            />
+            <FeatureCard 
+              icon={<Zap size={20} />}
+              title="Zero-Friction Onboarding"
+              description="Startbereit in 5 Minuten per OAuth-Login. Keine Installation, keine IT-Tickets nötig."
+            />
+            <FeatureCard 
+              icon={<Cpu size={20} />}
+              title="Adaptive Intelligenz"
+              description="Der Agent lernt Ihre Präferenzen. Je länger er läuft, desto präziser antizipiert er Ihre Bedürfnisse."
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- Method Section (Updated ID to #method) --- */}
+      <section id="method" className="py-32 bg-[#F9FAFB]/50 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div 
+             initial={{ opacity: 0, y: 30 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.8 }}
+             className="mb-20 max-w-2xl"
+          >
+             <h2 className="text-4xl md:text-5xl font-black text-black tracking-tighter mb-6">Der Weg zur Autonomie.</h2>
+             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-gray-200 rounded-full shadow-sm">
+                <div className="w-1.5 h-1.5 rounded-full bg-gray-900"></div>
+                <span className="text-xs font-bold text-gray-700 tracking-wide uppercase">Precision over prediction.</span>
+             </div>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-12">
+            <MethodStep 
+               step={1}
+               icon={<LinkIcon size={20}/>}
+               title="1. Infrastruktur verbinden"
+               description="Verbinden Sie Ihre Kalender und Kommunikationstools mit einem Klick. Sicher und verschlüsselt."
+            />
+            <MethodStep 
+               step={2}
+               icon={<Settings2 size={20}/>}
+               title="2. Regeln definieren"
+               description="Legen Sie fest, wie aggressiv Orasyn Ihre Fokuszeiten verteidigen soll."
+            />
+            <MethodStep 
+               step={3}
+               icon={<PlayCircle size={20}/>}
+               title="3. Autonomie aktivieren"
+               description="Lehnen Sie sich zurück. Orasyn übernimmt ab sofort das Zeitmanagement für Sie."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* --- Pricing Section (Updated ID to #pricing) --- */}
+      <section id="pricing" className="py-32 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-6">
+           <motion.div 
+             initial={{ opacity: 0, y: 30 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             className="mb-20 text-center"
+          >
+            <h2 className="text-4xl md:text-5xl font-black text-black tracking-tighter mb-6">Investition in Souveränität.</h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+             {/* Professional Card */}
+             <motion.div 
+               whileHover={{ y: -5 }}
+               className="p-10 rounded-3xl bg-white border border-gray-200 shadow-sm flex flex-col"
+             >
+                <div className="mb-8">
+                   <h3 className="text-xl font-bold text-gray-900 mb-2">Professional</h3>
+                   <div className="flex items-baseline gap-1">
+                      <span className="text-4xl font-black text-black">149€</span>
+                      <span className="text-gray-500">/ Monat</span>
+                   </div>
+                   <p className="text-xs text-gray-400 mt-2 uppercase tracking-wide">pro Nutzer</p>
+                </div>
+                <ul className="space-y-4 mb-10 flex-1">
+                   {['Google Workspace & M365', 'Slack & Teams Integration', 'Concierge Onboarding'].map(item => (
+                      <li key={item} className="flex items-center gap-3 text-sm text-gray-600">
+                         <div className="w-5 h-5 rounded-full bg-green-500/10 flex items-center justify-center text-green-600">
+                           <Check size={12} strokeWidth={3} />
+                         </div>
+                         {item}
+                      </li>
+                   ))}
+                </ul>
+                <button 
+                  onClick={() => setActiveFormModal('waitlist')}
+                  className="block w-full text-center py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-all active:scale-[0.98]"
+                >
+                   Warteliste beitreten
+                </button>
+             </motion.div>
+
+             {/* Enterprise Card */}
+             <motion.div 
+               whileHover={{ y: -5 }}
+               className="p-10 rounded-3xl bg-gray-900 text-white border border-gray-800 shadow-xl flex flex-col"
+             >
+                <div className="mb-8">
+                   <h3 className="text-xl font-bold text-white mb-2">Enterprise</h3>
+                   <div className="flex items-baseline gap-1">
+                      <span className="text-4xl font-black text-white">Custom</span>
+                   </div>
+                   <p className="text-xs text-gray-500 mt-2 uppercase tracking-wide">ab 10 Nutzer</p>
+                </div>
+                <ul className="space-y-4 mb-10 flex-1">
+                   {['Alles aus Professional', 'Dedizierter Success Manager', 'Custom SLA', 'On-Premise Option'].map(item => (
+                      <li key={item} className="flex items-center gap-3 text-sm text-gray-300">
+                         <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-white">
+                           <Check size={12} strokeWidth={3} />
+                         </div>
+                         {item}
+                      </li>
+                   ))}
+                </ul>
+                <button 
+                  onClick={() => setActiveFormModal('sales')}
+                  className="block w-full text-center py-4 bg-white text-black rounded-xl font-bold hover:bg-gray-100 transition-all active:scale-[0.98]"
+                >
+                   Sales kontaktieren
+                </button>
+             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Closer Section (Inserted) --- */}
+      <section id="closer" className="py-32 border-t border-gray-200 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-black text-black tracking-tighter mb-6">
+              Bereit, Administrationslast in Autonomie zu verwandeln?
+            </h2>
+            <p className="text-xl text-gray-500 leading-relaxed mb-10 max-w-2xl mx-auto">
+              Der schnellste Weg zum freien Kalender beginnt jetzt. Wählen Sie Ihren Pfad zur Souveränität.
+            </p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+               <button 
+                 onClick={() => setActiveFormModal('waitlist')}
+                 className="w-full md:w-auto px-10 py-4 bg-black text-white rounded-full font-bold hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl active:scale-[0.98]"
+               >
+                 Starten
+               </button>
+               <button 
+                 onClick={() => setActiveFormModal('sales')}
+                 className="w-full md:w-auto px-10 py-4 bg-transparent border border-gray-200 text-gray-900 rounded-full font-bold hover:bg-gray-50 transition-all active:scale-[0.98]"
+               >
+                 Sales kontaktieren
+               </button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- Footer (Updated) --- */}
+      <footer className="py-12 border-t border-gray-200 bg-white">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
+              <span className="font-bold text-gray-900">© 2025 Orasyn</span>
+              <span className="hidden md:inline text-gray-300">|</span>
+              <span className="text-sm text-gray-500">Premium KI-Automatisierung für visionäre Unternehmen. Designed in Germany.</span>
+           </div>
+           <div className="flex gap-8">
+              {['Datenschutz', 'AGB', 'Impressum'].map(item => (
+                <button 
+                  key={item}
+                  onClick={() => setActiveLegalPage(item.toLowerCase())}
+                  className="text-sm text-gray-500 hover:text-black transition-colors"
+                >
+                  {item}
+                </button>
+              ))}
+           </div>
+        </div>
+      </footer>
+
+      {/* Legal Modal */}
+      <AnimatePresence>
+        {activeLegalPage && (
+          <LegalModal page={activeLegalPage} onClose={() => setActiveLegalPage(null)} />
+        )}
+      </AnimatePresence>
+      
+      {/* Form Modal */}
+      <AnimatePresence>
+        {activeFormModal && (
+          <FormModal type={activeFormModal} onClose={() => setActiveFormModal(null)} />
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default App;
