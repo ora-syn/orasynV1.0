@@ -64,7 +64,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
         <div className="flex items-center gap-3 z-20 relative">
           <a href="#" className="flex items-center gap-3 group">
             <img 
-  src="https://raw.githubusercontent.com/ora-syn/orasyn1.0/main/logo.png" 
+  src="https://cdn.jsdelivr.net/gh/ora-syn/orasyn1.0@main/logo.png.png" 
   alt="ORASYN Logo" 
   className="h-8 w-auto object-contain" 
 />
