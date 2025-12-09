@@ -64,12 +64,9 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
         <div className="flex items-center gap-3 z-20 relative">
           <a href="#" className="flex items-center gap-3 group">
             <img 
-  src="https://github.com/ora-syn/orasynV1.0/blob/main/logo.png.png?raw=true" 
+  src="https://raw.githubusercontent.com/ora-syn/orasynV1.0/main/logo.png.png" 
   alt="ORASYN Logo" 
-  // HIER IST ALLES DRIN: Größe, Block-Darstellung UND der Zaubertrick
-  className="h-10 w-auto object-contain block mix-blend-multiply"
-  // ZUSATZ-SICHERUNG für die Höhe
-  style={{ maxHeight: '40px' }}
+  className="h-10 w-auto object-contain"
 />
           </a>
         </div>
