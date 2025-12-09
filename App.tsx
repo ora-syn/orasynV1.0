@@ -66,7 +66,10 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
             <img 
   src="https://github.com/ora-syn/orasynV1.0/blob/main/logo.png.png?raw=true" 
   alt="ORASYN Logo" 
-  className="h-8 w-auto object-contain" 
+  // HIER IST ALLES DRIN: Größe, Block-Darstellung UND der Zaubertrick
+  className="h-10 w-auto object-contain block mix-blend-multiply"
+  // ZUSATZ-SICHERUNG für die Höhe
+  style={{ maxHeight: '40px' }}
 />
           </a>
         </div>
