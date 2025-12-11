@@ -64,10 +64,11 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
         <div className="flex items-center gap-3 z-20 relative">
           <a href="#" className="flex items-center gap-3 group">
             <img 
-  src="https://raw.githubusercontent.com/ora-syn/orasynV1.0/main/logo-final.png.png" 
-  alt="ORASYN Logo" 
-  // h-[70px] -> Das sind 70 Pixel reine Schrift-Höhe. In einer 80er Leiste ist das BRUTAL groß.
-  className="h-[70px] w-auto object-contain"
+    src="https://raw.githubusercontent.com/ora-syn/orasynV1.0/main/logo-final.png.png" 
+    alt="ORASYN Logo" 
+    // ÄNDERE HIER:
+    className="h-[140px] w-auto object-contain" 
+    // HINWEIS: WICHTIG IST W-AUTO, DAMIT DIE BREITE MITWACHST!
 />
           </a>
         </div>
