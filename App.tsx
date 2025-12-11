@@ -946,7 +946,7 @@ const App = () => {
             className="mb-8 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 bg-white/50 backdrop-blur-sm"
           >
             <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
-            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">ORASYN 1.0 IST LIVE</span>
+            <span className="text-sm font-bold text-gray-700 uppercase tracking-widest">ORASYN 1.0 IST LIVE</span>
           </motion.div>
 
           <motion.h1 
