@@ -67,7 +67,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
     src="https://raw.githubusercontent.com/ora-syn/orasynV1.0/main/logo-final.png.png" 
     alt="ORASYN Logo" 
     // ÄNDERE HIER:
-    className="h-[200px] w-auto object-contain" 
+    className="h-[250px] w-auto object-contain" 
     // HINWEIS: WICHTIG IST W-AUTO, DAMIT DIE BREITE MITWACHST!
 />
           </a>
