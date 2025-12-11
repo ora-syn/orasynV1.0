@@ -79,7 +79,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
             <a 
               key={item.label} 
               href={item.href}
-              className="text-lg font-semibold text-gray-800 transition-colors hover:text-violet-600 px-4 py-2 rounded-full duration-200"
+              className="text-lg font-semibold text-gray-500 transition-colors hover:text-black px-4 py-2 rounded-full duration-200"
             >
               {item.label}
             </a>
