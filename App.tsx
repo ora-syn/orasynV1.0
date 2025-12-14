@@ -144,141 +144,6 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
     </nav>
   );
 };
-{/* ROI SECTION - AGGRESSIVE VISUAL COMPARISON */}
-<section id="roi" className="py-24 bg-black text-white relative border-t border-gray-900">
-  
-  {/* Überschrift */}
-  <div className="max-w-[1200px] mx-auto px-6 mb-16 text-center">
-    <h2 className="text-4xl md:text-5xl font-bold mb-6">
-      Die Mathematik des <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">Wachstums.</span>
-    </h2>
-    <p className="text-xl text-gray-400">
-      Warum menschliche Arbeitskraft für repetitive Aufgaben Geldverbrennung ist.
-    </p>
-  </div>
-
-  <div className="max-w-[1000px] mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-    
-    {/* LINK: Der alte Weg (Teuer & Langsam) */}
-    <div className="space-y-8 opacity-70 hover:opacity-100 transition-opacity">
-      <h3 className="text-2xl font-semibold text-gray-400 border-b border-gray-800 pb-4">
-        ❌ Status Quo (Mitarbeiter)
-      </h3>
-      
-      {/* Graph 1: Kosten */}
-      <div>
-        <div className="flex justify-between text-sm mb-2">
-          <span className="text-gray-400">Monatliche Kosten</span>
-          <span className="text-red-500 font-mono">~ 4.500 €</span>
-        </div>
-        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-          <div className="h-full bg-red-600 w-[100%] shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
-        </div>
-      </div>
-
-      {/* Graph 2: Zeitaufwand */}
-      <div>
-        <div className="flex justify-between text-sm mb-2">
-          <span className="text-gray-400">Zeitaufwand für Setup</span>
-          <span className="text-red-500 font-mono">3-6 Monate (Einarbeitung)</span>
-        </div>
-        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-          <div className="h-full bg-red-600 w-[85%]"></div>
-        </div>
-      </div>
-
-       {/* Graph 3: Verfügbarkeit */}
-       <div>
-        <div className="flex justify-between text-sm mb-2">
-          <span className="text-gray-400">Verfügbarkeit</span>
-          <span className="text-red-500 font-mono">8h / Tag (Werktags)</span>
-        </div>
-        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-          <div className="h-full bg-red-600 w-[30%]"></div>
-        </div>
-      </div>
-    </div>
-
-    {/* RECHTS: ORASYN (Günstig & Schnell) */}
-    <div className="bg-gray-900/50 p-8 rounded-3xl border border-violet-500/30 shadow-[0_0_50px_rgba(124,58,237,0.15)] relative">
-      {/* Label oben rechts */}
-      <div className="absolute top-0 right-0 bg-violet-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-3xl">
-        WINNER
-      </div>
-
-      <h3 className="text-2xl font-bold text-white border-b border-violet-500/30 pb-4 mb-8">
-        ✅ Mit ORASYN AI
-      </h3>
-
-      {/* Graph 1: Kosten */}
-      <div className="mb-8">
-        <div className="flex justify-between text-sm mb-2">
-          <span className="text-gray-300">Monatliche Kosten</span>
-          <span className="text-green-400 font-mono font-bold">149 €</span>
-        </div>
-        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-          {/* Der Balken ist winzig im Vergleich zu 4500, das zeigt die Ersparnis visuell! */}
-          <div className="h-full bg-green-500 w-[3%] shadow-[0_0_20px_rgba(74,222,128,0.6)] animate-pulse"></div>
-        </div>
-        <p className="text-xs text-green-500 mt-1">Sie sparen 4.351 € / Monat</p>
-      </div>
-
-      {/* Graph 2: Zeitaufwand */}
-      <div className="mb-8">
-        <div className="flex justify-between text-sm mb-2">
-          <span className="text-gray-300">Zeitaufwand für Setup</span>
-          <span className="text-green-400 font-mono font-bold">Sofort (Plug & Play)</span>
-        </div>
-        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-          <div className="h-full bg-green-500 w-[100%]"></div>
-        </div>
-      </div>
-
-      {/* Graph 3: Verfügbarkeit */}
-      <div>
-        <div className="flex justify-between text-sm mb-2">
-          <span className="text-gray-300">Verfügbarkeit</span>
-          <span className="text-green-400 font-mono font-bold">24 / 7 (Immer)</span>
-        </div>
-        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-          <div className="h-full bg-green-500 w-[100%] shadow-[0_0_20px_rgba(74,222,128,0.4)]"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  {/* Call to Action unten drunter */}
-  <div className="text-center mt-16">
-    <button onClick={() => document.getElementById('demo-form')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-400 hover:text-white underline underline-offset-4 transition-colors">
-      Sehen Sie die Details in der Demo →
-    </button>
-  </div>
-</section>
-/**
- * Method Step Card
- */
-const MethodStep = ({ icon, title, description, step }: { icon: React.ReactNode, title: string, description: string, step: number }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: step * 0.2 }}
-    whileHover={{ y: -5 }}
-    className="flex flex-col gap-4 relative"
-  >
-    <div className="flex items-center gap-4 mb-2">
-      <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-gray-900 border border-gray-200 shadow-sm z-10">
-        {icon}
-      </div>
-      <div className="h-[1px] bg-gray-200 flex-1 hidden md:block"></div>
-    </div>
-    <div className="pr-8">
-      <h4 className="text-xl font-bold text-gray-900 tracking-tight mb-2">{title}</h4>
-      <p className="text-gray-500 leading-relaxed text-sm">{description}</p>
-    </div>
-  </motion.div>
-);
 
 /**
  * Calendar / Scheduling Agent Mockup
@@ -1099,6 +964,142 @@ const App = () => {
         </div>
       </section>
 
+{/* ROI SECTION - AGGRESSIVE VISUAL COMPARISON */}
+<section id="roi" className="py-24 bg-black text-white relative border-t border-gray-900">
+  
+  {/* Überschrift */}
+  <div className="max-w-[1200px] mx-auto px-6 mb-16 text-center">
+    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+      Die Mathematik des <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">Wachstums.</span>
+    </h2>
+    <p className="text-xl text-gray-400">
+      Warum menschliche Arbeitskraft für repetitive Aufgaben Geldverbrennung ist.
+    </p>
+  </div>
+
+  <div className="max-w-[1000px] mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    
+    {/* LINK: Der alte Weg (Teuer & Langsam) */}
+    <div className="space-y-8 opacity-70 hover:opacity-100 transition-opacity">
+      <h3 className="text-2xl font-semibold text-gray-400 border-b border-gray-800 pb-4">
+        ❌ Status Quo (Mitarbeiter)
+      </h3>
+      
+      {/* Graph 1: Kosten */}
+      <div>
+        <div className="flex justify-between text-sm mb-2">
+          <span className="text-gray-400">Monatliche Kosten</span>
+          <span className="text-red-500 font-mono">~ 4.500 €</span>
+        </div>
+        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
+          <div className="h-full bg-red-600 w-[100%] shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+        </div>
+      </div>
+
+      {/* Graph 2: Zeitaufwand */}
+      <div>
+        <div className="flex justify-between text-sm mb-2">
+          <span className="text-gray-400">Zeitaufwand für Setup</span>
+          <span className="text-red-500 font-mono">3-6 Monate (Einarbeitung)</span>
+        </div>
+        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
+          <div className="h-full bg-red-600 w-[85%]"></div>
+        </div>
+      </div>
+
+       {/* Graph 3: Verfügbarkeit */}
+       <div>
+        <div className="flex justify-between text-sm mb-2">
+          <span className="text-gray-400">Verfügbarkeit</span>
+          <span className="text-red-500 font-mono">8h / Tag (Werktags)</span>
+        </div>
+        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
+          <div className="h-full bg-red-600 w-[30%]"></div>
+        </div>
+      </div>
+    </div>
+
+    {/* RECHTS: ORASYN (Günstig & Schnell) */}
+    <div className="bg-gray-900/50 p-8 rounded-3xl border border-violet-500/30 shadow-[0_0_50px_rgba(124,58,237,0.15)] relative">
+      {/* Label oben rechts */}
+      <div className="absolute top-0 right-0 bg-violet-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-3xl">
+        WINNER
+      </div>
+
+      <h3 className="text-2xl font-bold text-white border-b border-violet-500/30 pb-4 mb-8">
+        ✅ Mit ORASYN AI
+      </h3>
+
+      {/* Graph 1: Kosten */}
+      <div className="mb-8">
+        <div className="flex justify-between text-sm mb-2">
+          <span className="text-gray-300">Monatliche Kosten</span>
+          <span className="text-green-400 font-mono font-bold">149 €</span>
+        </div>
+        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
+          {/* Der Balken ist winzig im Vergleich zu 4500, das zeigt die Ersparnis visuell! */}
+          <div className="h-full bg-green-500 w-[3%] shadow-[0_0_20px_rgba(74,222,128,0.6)] animate-pulse"></div>
+        </div>
+        <p className="text-xs text-green-500 mt-1">Sie sparen 4.351 € / Monat</p>
+      </div>
+
+      {/* Graph 2: Zeitaufwand */}
+      <div className="mb-8">
+        <div className="flex justify-between text-sm mb-2">
+          <span className="text-gray-300">Zeitaufwand für Setup</span>
+          <span className="text-green-400 font-mono font-bold">Sofort (Plug & Play)</span>
+        </div>
+        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
+          <div className="h-full bg-green-500 w-[100%]"></div>
+        </div>
+      </div>
+
+      {/* Graph 3: Verfügbarkeit */}
+      <div>
+        <div className="flex justify-between text-sm mb-2">
+          <span className="text-gray-300">Verfügbarkeit</span>
+          <span className="text-green-400 font-mono font-bold">24 / 7 (Immer)</span>
+        </div>
+        <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
+          <div className="h-full bg-green-500 w-[100%] shadow-[0_0_20px_rgba(74,222,128,0.4)]"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {/* Call to Action unten drunter */}
+  <div className="text-center mt-16">
+    <button onClick={() => document.getElementById('demo-form')?.scrollIntoView({ behavior: 'smooth' })} className="text-gray-400 hover:text-white underline underline-offset-4 transition-colors">
+      Sehen Sie die Details in der Demo →
+    </button>
+  </div>
+</section>
+/**
+ * Method Step Card
+ */
+const MethodStep = ({ icon, title, description, step }: { icon: React.ReactNode, title: string, description: string, step: number }) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5, delay: step * 0.2 }}
+    whileHover={{ y: -5 }}
+    className="flex flex-col gap-4 relative"
+  >
+    <div className="flex items-center gap-4 mb-2">
+      <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-gray-900 border border-gray-200 shadow-sm z-10">
+        {icon}
+      </div>
+      <div className="h-[1px] bg-gray-200 flex-1 hidden md:block"></div>
+    </div>
+    <div className="pr-8">
+      <h4 className="text-xl font-bold text-gray-900 tracking-tight mb-2">{title}</h4>
+      <p className="text-gray-500 leading-relaxed text-sm">{description}</p>
+    </div>
+  </motion.div>
+);
+      
       {/* --- Features Section (Updated ID to #features) --- */}
       <section id="features" className="py-32 relative">
          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white to-transparent pointer-events-none"></div>
