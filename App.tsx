@@ -145,6 +145,85 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   );
 };
 
+{/* ROI Section - The Aggressive Math */}
+<section id="roi" className="py-24 bg-black text-white relative overflow-hidden">
+  {/* Background Glow */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1200px] pointer-events-none">
+    <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-600/20 rounded-full blur-[120px]" />
+    <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
+  </div>
+
+  <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+        Die Rechnung ist <span className="text-violet-500">brutal einfach.</span>
+      </h2>
+      <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+        Hören Sie auf, teure Arbeitszeit zu verbrennen. <br />
+        Orasyn kostet weniger als Ihr Kaffee-Budget, leistet aber mehr als eine Vollzeitkraft.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 gap-8 items-center">
+      {/* Old Way Card */}
+      <div className="bg-gray-900/50 border border-gray-800 rounded-3xl p-8 backdrop-blur-sm">
+        <h3 className="text-2xl font-semibold text-gray-400 mb-6">Der Status Quo (Mensch)</h3>
+        <ul className="space-y-4">
+          <li className="flex items-center justify-between text-gray-300 border-b border-gray-800 pb-2">
+            <span>Kosten pro Monat</span>
+            <span className="font-mono text-red-400">~ 4.500 €</span>
+          </li>
+          <li className="flex items-center justify-between text-gray-300 border-b border-gray-800 pb-2">
+            <span>Verfügbarkeit</span>
+            <span>8 Std. / Tag</span>
+          </li>
+          <li className="flex items-center justify-between text-gray-300 border-b border-gray-800 pb-2">
+            <span>Fehlerquote</span>
+            <span>Menschlich (3-5%)</span>
+          </li>
+          <li className="flex items-center justify-between text-gray-300 border-b border-gray-800 pb-2">
+            <span>Skalierbarkeit</span>
+            <span className="text-red-400">Teuer & Langsam</span>
+          </li>
+        </ul>
+      </div>
+
+      {/* Orasyn Way Card */}
+      <div className="bg-gradient-to-b from-violet-900/20 to-black border border-violet-500/30 rounded-3xl p-8 relative shadow-[0_0_40px_rgba(124,58,237,0.1)]">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-violet-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg whitespace-nowrap">
+          ORASYN INTELLIGENCE
+        </div>
+        <h3 className="text-2xl font-bold text-white mb-6">Der Orasyn Agent</h3>
+        <ul className="space-y-4">
+          <li className="flex items-center justify-between text-white border-b border-violet-500/20 pb-2">
+            <span>Kosten pro Monat</span>
+            <span className="font-mono text-green-400 text-xl font-bold">149 €</span>
+          </li>
+          <li className="flex items-center justify-between text-white border-b border-violet-500/20 pb-2">
+            <span>Verfügbarkeit</span>
+            <span className="text-green-400 font-bold">24 / 7 / 365</span>
+          </li>
+          <li className="flex items-center justify-between text-white border-b border-violet-500/20 pb-2">
+            <span>Fehlerquote</span>
+            <span className="text-green-400 font-bold">0% (Präzise)</span>
+          </li>
+          <li className="flex items-center justify-between text-white border-b border-violet-500/20 pb-2">
+            <span>Skalierbarkeit</span>
+            <span className="text-green-400 font-bold">Unendlich (per Klick)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    {/* Bottomline Statement */}
+    <div className="mt-12 text-center">
+      <p className="text-lg md:text-xl font-medium text-gray-300">
+        <span className="text-violet-400 font-bold">ROI ab Tag 1:</span> Wenn Orasyn Ihnen auch nur <span className="text-white border-b border-white/30">3 Stunden im Monat</span> spart, ist der Agent bereits kostenlos.
+      </p>
+    </div>
+  </div>
+</section>
+
 /**
  * Feature Card
  */
