@@ -52,7 +52,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   // Updated link logic to map German text to English IDs
   const navLinks = [
     { label: 'Funktionen', href: '#features' },
-    { label: 'Methode', href: '#method' },
+    { label: 'Ihr Profit', href: '#method' },
     { label: 'Lösungen', href: '#solutions' },
     { label: 'Preise', href: '#pricing' }
   ];
