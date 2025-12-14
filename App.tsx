@@ -51,10 +51,11 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   // Updated link logic to map German text to English IDs
   const navLinks = [
     { label: 'Funktionen', href: '#features' },
-    { label: 'ROI', href: '#roi' }, // Kurz, hart, professionell.
+    { label: 'Methode', href: '#method' },
     { label: 'Lösungen', href: '#solutions' },
     { label: 'Preise', href: '#pricing' }
   ];
+
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 h-[80px] flex items-center border-b ${isScrolled ? 'bg-white/80 border-gray-200 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60' : 'bg-white/0 border-transparent'}`}>
       <div className="max-w-[1400px] mx-auto px-6 w-full h-full flex items-center justify-between relative">
@@ -780,92 +781,29 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
       </div>
     )
   },
-  agb: {
-    title: "Allgemeine Geschäftsbedingungen",
-    content: (
-      <div className="text-sm text-gray-600 leading-relaxed">
-        <h1 className="text-xl font-bold text-black mb-4">Allgemeine Geschäftsbedingungen</h1>
-        <p className="mb-4">
-          für die Erbringung von Dienstleistungen von Samuele Francesco Franzé, Orasyn, Kurt-Schumacher-Straße 76, c/o flexdienst - #12205, 67663 Kaiserslautern, E-Mail: info@orasyn.de (nachfolgend „Auftragnehmer“) gegenüber seinen Kunden (nachfolgend „Auftraggeber“)
-        </p>
-        <br />
-        <strong className="block mb-2">1. Allgemeines</strong>
-        <p className="mb-2">1.1 Diese Allgemeinen Geschäftsbedingungen (AGB) für die Erbringung von Dienstleistungen gelten für Verträge, die zwischen dem Auftraggeber und dem Auftragnehmer unter Einbeziehung dieser AGB geschlossen werden.</p>
-        <p className="mb-2">1.2 Der Auftragnehmer schließt keine Verträge mit Verbrauchern bzw. Privatpersonen.</p>
-        <p className="mb-2">1.3 Der Auftragnehmer ist berechtigt, in eigenem Namen und auf eigene Rechnung die erforderlichen Leistungen an Subunternehmer zu vergeben, die ihrerseits ebenfalls Subunternehmer einsetzen dürfen. Der Auftragnehmer bleibt hierbei alleiniger Vertragspartner des Auftraggebers. Der Einsatz von Subunternehmern erfolgt nicht, wenn für den Auftragnehmer ersichtlich ist, dass deren Einsatz berechtigten Interessen des Auftraggebers zuwiderläuft.</p>
-        <p className="mb-2">1.4 Soweit neben diesen AGB weitere Vertragsdokumente oder andere Geschäftsbedingungen in Text- oder Schriftform Vertragsbestandteil geworden sind, gehen die Regelungen dieser weiteren Vertragsdokumente im Widerspruchsfalle den vorliegenden AGB vor.</p>
-        <p className="mb-4">1.5 Von diesen Geschäftsbedingungen abweichende AGB, die durch den Auftraggeber verwendet werden, erkennt Auftragnehmer – vorbehaltlich einer ausdrücklichen Zustimmung – nicht an.</p>
-        <br />
-        <strong className="block mb-2">2. Vertragsgegenstand und Leistungsumfang</strong>
-        <p className="mb-2">2.1 Der Auftragnehmer erbringt als selbständiger Unternehmer folgende Leistungen gegenüber dem Auftraggeber:<br/>Die Bereitstellung einer KI-gestützten Software-as-a-Service (SaaS) Plattform zur automatisierten Planung, Verwaltung und Optimierung von Terminen und Arbeitsabläufen für B2B-Kunden.</p>
-        <p className="mb-2">2.2 Der spezifische Leistungsumfang ist Gegenstand von Individualvereinbarungen zwischen Auftragnehmer und dem Auftraggeber.</p>
-        <p className="mb-2">2.3 Der Auftragnehmer erbringt die vertragsgemäßen Leistungen mit größtmöglicher Sorgfalt und Gewissenhaftigkeit nach dem jeweils neuesten Stand, neuesten Regeln und Erkenntnissen.</p>
-        <p className="mb-4">2.4 Der Auftragnehmer ist zur Erbringung der vertragsgemäß geschuldeten Leistungen verpflichtet. Bei der Durchführung seiner Tätigkeit ist er jedoch etwaigen Weisungen im Hinblick auf die Art der Erbringung seiner Leistungen, den Ort der Leistungserbringung ebenso wie die Zeit der Leistungserbringung nicht unterworfen. Er wird jedoch bei der Einteilung der Tätigkeitstage und bei der Zeiteinteilung an diesen Tagen diese selbst in der Weise festlegen, dass eine optimale Effizienz bei seiner Tätigkeit und bei der Realisierung des Vertragsgegenstandes erzielt wird. Die Leistungserbringung durch den Auftragnehmer erfolgt lediglich in Abstimmung und in Koordination mit dem Auftraggeber.</p>
-        <br />
-        <strong className="block mb-2">3. Mitwirkungspflichten des Auftraggebers</strong>
-        <p className="mb-4">Es obliegt dem Auftraggeber, die von ihm zum Zwecke der Leistungserfüllung zur Verfügung zu stellenden Informationen, Daten und sonstigen Inhalte vollständig und korrekt mitzuteilen. Für Verzögerungen und Verspätungen bei der Leistungserbringung, die durch eine verspätete und notwendige Mit- bzw. Zuarbeit des Kunden entstehen, ist der Auftragnehmer gegenüber dem Kunden in keinerlei Hinsicht verantwortlich; die Vorschriften unter der Überschrift „Haftung/Freistellung“ bleiben hiervon unberührt.</p>
-        <br />
-        <strong className="block mb-2">4. Vergütung</strong>
-        <p className="mb-2">4.1 Die Vergütung wird individualvertraglich vereinbart.</p>
-        <p className="mb-2">4.2 Die Vergütung ist nach der Leistung der Dienste zu entrichten. Ist die Vergütung nach Zeitabschnitten bemessen, so ist sie nach dem Ablauf der einzelnen Zeitabschnitte zu entrichten (§ 614 BGB). Bei aufwandsbezogener Abrechnung ist der Auftragnehmer vorbehaltlich abweichender Vereinbarungen berechtigt, die erbrachte Leistungen monatlich abzurechnen.</p>
-        <p className="mb-4">4.3 Der Auftragnehmer stellt dem Auftraggeber nach Erbringung der Leistungen eine Rechnung per Post oder per E-Mail (z.B. als PDF). Die Vergütung ist innerhalb von 14 Tagen nach Zugang der Rechnung zur Zahlung fällig.</p>
-        <br />
-        <strong className="block mb-2">5. Haftung / Freistellung</strong>
-        <p className="mb-2">5.1 Der Auftragnehmer haftet aus jedem Rechtsgrund uneingeschränkt bei Vorsatz oder grober Fahrlässigkeit, bei vorsätzlicher oder fahrlässiger Verletzung des Lebens, des Körpers oder der Gesundheit, aufgrund eines Garantieversprechens, soweit diesbezüglich nichts anderes geregelt ist oder aufgrund zwingender Haftung. Verletzt der Auftragnehmer fahrlässig eine wesentliche Vertragspflicht, ist die Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt, sofern nicht gemäß vorstehendem Satz unbeschränkt gehaftet wird. Wesentliche Vertragspflichten sind Pflichten, die der Vertrag dem Auftragnehmer nach seinem Inhalt zur Erreichung des Vertragszwecks auferlegt, deren Erfüllung die ordnungsgemäße Durchführung des Vertrags überhaupt erst ermöglicht und auf deren Einhaltung der Kunde regelmäßig vertrauen darf. Im Übrigen ist eine Haftung des Auftragnehmers ausgeschlossen. Vorstehende Haftungsregelungen gelten auch im Hinblick auf die Haftung des Auftragnehmers für seine Erfüllungsgehilfen und gesetzlichen Vertreter.</p>
-        <p className="mb-4">5.2 Der Auftraggeber stellt den Auftragnehmer von jeglichen Ansprüchen Dritter frei, die gegen den Auftragnehmer aufgrund von Verstößen des Kunden gegen diese Vertragsbedingungen oder gegen geltendes Recht geltend gemacht werden.</p>
-        <br />
-        <strong className="block mb-2">6. Vertragsdauer und Kündigung</strong>
-        <p className="mb-2">6.1 Die Vertragsdauer und die Fristen zur ordentlichen Kündigung vereinbaren die Parteien individuell.</p>
-        <p className="mb-2">6.2 Das Recht beider Parteien zur fristlosen Kündigung aus wichtigem Grund bleibt unberührt.</p>
-        <p className="mb-4">6.3 Der Auftragnehmer hat alle ihm überlassenen Unterlagen und sonstigen Inhalte nach Vertragsbeendigung unverzüglich nach Wahl des Kunden zurückzugeben oder zu vernichten. Die Geltendmachung eines Zurückbehaltungsrechts daran ist ausgeschlossen. Elektronische Daten sind vollständig zu löschen. Ausgenommen davon sind Unterlagen und Daten, hinsichtlich derer eine längere gesetzliche Aufbewahrungspflicht besteht, jedoch nur bis zum Ende der jeweiligen Aufbewahrungsfrist. Der Auftragnehmer hat dem Unternehmen auf dessen Verlangen die Löschung schriftlich zu bestätigen.</p>
-        <br />
-        <strong className="block mb-2">7. Vertraulichkeit und Datenschutz</strong>
-        <p className="mb-2">7.1 Der Auftragnehmer wird alle ihm im Zusammenhang mit dem Auftrag zur Kenntnis gelangenden Vorgänge streng vertraulich behandeln. Der Auftragnehmer verpflichtet sich, die Geheimhaltungspflicht sämtlichen Angestellten und / oder Dritten, die Zugang zu den vertragsgegenständlichen Informationen haben, aufzuerlegen. Die Geheimhaltungspflicht gilt zeitlich unbegrenzt über die Dauer dieses Vertrages hinaus.</p>
-        <p className="mb-4">7.2 Der Auftragnehmer verpflichtet sich, bei der Durchführung des Auftrags sämtliche datenschutzrechtlichen Vorschriften – insbesondere die Vorschriften der Datenschutzgrundverordnung und des Bundesdatenschutzgesetzes – einzuhalten.</p>
-        <br />
-        <strong className="block mb-2">8. Schlussbestimmungen</strong>
-        <p className="mb-2">8.1 Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des CISG.</p>
-        <p className="mb-2">8.2 Sollte eine Bestimmung dieser AGB unwirksam sein oder werden, so wird die Gültigkeit der AGB im Übrigen hiervon nicht berührt.</p>
-        <p className="mb-2">8.3 Der Auftraggeber wird den Auftragnehmer bei der Erbringung seiner vertragsgemäßen Leistungen durch angemessene Mitwirkungshandlungen, soweit erforderlich, fördern. Der Auftraggeber wird insbesondere dem Auftragnehmer die zur Erfüllung des Auftrags erforderlichen Informationen und Daten zur Verfügung stellen.</p>
-        <p className="mb-2">8.4 Sofern der Auftraggeber Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist oder keinen allgemeinen Gerichtsstand in Deutschland hat, vereinbaren die Parteien den Sitz des Auftragnehmers als Gerichtsstand für sämtliche Streitigkeiten aus diesem Vertragsverhältnis; ausschließliche Gerichtsstände bleiben hiervon unberührt.</p>
-        <p className="mb-4">8.5 Der Auftragnehmer ist berechtigt, diese AGB aus sachlich gerechtfertigten Gründen (z. B. Änderungen in der Rechtsprechung, Gesetzeslage, Marktgegebenheiten oder der Geschäfts- oder Unternehmensstrategie) und unter Einhaltung einer angemessenen Frist zu ändern. Bestandskunden werden hierüber spätestens zwei Wochen vor Inkrafttreten der Änderung per E-Mail benachrichtigt. Sofern der Bestandskunde nicht innerhalb der in der Änderungsmitteilung gesetzten Frist widerspricht, gilt seine Zustimmung zur Änderung als erteilt. Widerspricht er, treten die Änderungen nicht in Kraft; Auftragnehmer ist in diesem Fall berechtigt, den Vertrag zum Zeitpunkt des Inkrafttretens der Änderung außerordentlich zu kündigen. Die Benachrichtigung über die beabsichtigte Änderung dieser AGB wird auf die Frist und die Folgen des Widerspruchs oder seines Ausbleibens hinweisen.</p>
-      </div>
-    )
-  },
   impressum: {
     title: "Impressum",
     content: (
-      <div className="prose max-w-none text-gray-800">
-        <h2 className="font-extrabold text-2xl text-black">Impressum</h2>
-        <p className="text-sm text-gray-500">Angaben gemäß § 5 DDG (ehemals TMG) und § 18 MStV</p>
-        
-        <h3 className="font-bold text-lg mt-6">Verantwortlich für den Inhalt:</h3>
-        <p>Samuele Francesco Franze</p>
-        
-        <h3 className="font-bold text-lg mt-6">Ladungsfähige Anschrift:</h3>
-        <p>
-            Samuele Francesco Franze<br/>
-            Orasyn<br/>
-            Kurt-Schumacher-Straße 76<br/>
-            c/o flexdienst - #12205<br/>
-            67663 Kaiserslautern
-        </p>
-        
-        <h3 className="font-bold text-lg mt-6">Kontakt:</h3>
-        <p>
-            Telefon: +49 (0) 176 42720313<br/>
-            E-Mail: info@orasyn.de
-        </p>
-        
-        <h3 className="font-bold text-lg mt-6">Verbraucherstreitbeilegung:</h3>
-        <p>
-            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-        </p>
-        
-        <p className="text-xs text-gray-400 mt-8">
-            Die Angabe der Steuernummer/USt-ID erfolgt nach Anmeldung des Gewerbes.
-        </p>
-    </div>
+      <div className="prose prose-sm max-w-none text-gray-600">
+    <h1 className="text-2xl font-bold text-gray-900 mb-4">Impressum</h1>
+
+    <p className="mb-4">
+        Samuele Francesco Franzé<br />
+        Orasyn<br />
+        Kurt-Schumacher-Stra&szlig;e 76<br />
+        c/o flexdienst - #12205<br />
+        67663 Kaiserslautern
+    </p>
+
+    <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Kontakt</h2>
+    <p className="mb-4">
+        Telefon: +49 (0) 176 42720313<br />
+        E-Mail: info@orasyn.de
+    </p>
+
+    <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h2>
+    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+</div>
     )
   }
 };
@@ -875,7 +813,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
  */
 const LegalModal = ({ page, onClose }: { page: string, onClose: () => void }) => {
   const content = legalContent[page];
-  
+
   if (!content) return null;
 
   return (
@@ -1014,114 +952,116 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- ROI / PSYCHOLOGICAL PRESSURE SECTION --- */}
+      {/* --- ROI / EFFICIENCY & FOCUS SECTION --- */}
       <section id="roi" className="py-24 bg-black text-white relative border-t border-gray-900">
         
-        {/* Headline: Trigger Loss Aversion */}
+        {/* Headline: The Real Problem (Opportunity Cost) */}
         <div className="max-w-[1200px] mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Jeden Tag ohne KI <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">verbrennen Sie Kapital.</span>
+            Ihr Team wurde eingestellt um zu performen. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">Nicht um Kalender zu pflegen.</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Die brutale Wahrheit: Ihr aktueller Prozess kostet Sie nicht nur Zeit – er gefährdet Ihre Marge.
+            Wenn Experten administrative Aufgaben erledigen, verbrennt Ihr Unternehmen kein Geld – es verbrennt Potenzial.
           </p>
         </div>
 
         <div className="max-w-[1000px] mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           
-          {/* LEFT: The Pain / Risk */}
+          {/* LEFT: The Problem (Hidden Costs) */}
           <div className="space-y-8 opacity-70 hover:opacity-100 transition-opacity">
             <h3 className="text-2xl font-semibold text-gray-400 border-b border-gray-800 pb-4">
-              ❌ Ihr Risiko (Status Quo)
+              ⚠️ Die Verwaltungs-Falle
             </h3>
             
-            {/* Graph 1: Cost Pain */}
+            {/* Graph 1: Misused Talent */}
             <div>
               <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-400">Ineffiziente Lohnkosten</span>
-                <span className="text-red-500 font-mono">~ 4.500 € / Monat</span>
+                <span className="text-gray-400">Opportunitätskosten</span>
+                <span className="text-red-500 font-mono">Hoch (Teure Zeit verschwendet)</span>
               </div>
               <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-red-600 w-[100%] shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+                <div className="h-full bg-red-600 w-[90%] shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+              </div>
+              <p className="text-[10px] text-gray-500 mt-1">Manager/Sales verbringen ~20% der Zeit mit Admin.</p>
+            </div>
+
+            {/* Graph 2: Context Switching */}
+            <div>
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-gray-400">Fokus-Verlust (Kontextwechsel)</span>
+                <span className="text-red-500 font-mono">Extrem</span>
+              </div>
+              <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
+                <div className="h-full bg-red-600 w-[100%]"></div>
               </div>
             </div>
 
-            {/* Graph 2: Time Pain */}
-            <div>
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-400">Verlorene Zeit (Onboarding)</span>
-                <span className="text-red-500 font-mono">3-6 Monate</span>
-              </div>
-              <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-red-600 w-[85%]"></div>
-              </div>
-            </div>
-
-             {/* Graph 3: Capacity Pain */}
+             {/* Graph 3: Speed */}
              <div>
               <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-400">Limitierte Kapazität</span>
-                <span className="text-red-500 font-mono">Nur 8h / Tag</span>
+                <span className="text-gray-400">Reaktionszeit auf Anfragen</span>
+                <span className="text-red-500 font-mono">Stunden bis Tage</span>
               </div>
               <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-red-600 w-[30%]"></div>
+                <div className="h-full bg-red-600 w-[60%]"></div>
               </div>
             </div>
           </div>
 
-          {/* RIGHT: The Unfair Advantage (Solution) */}
-          <div className="bg-gray-900/50 p-8 rounded-3xl border border-violet-500/30 shadow-[0_0_50px_rgba(124,58,237,0.15)] relative transform hover:scale-[1.02] transition-transform duration-300">
-            <div className="absolute top-0 right-0 bg-violet-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl rounded-tr-3xl shadow-lg">
-              SMART CHOICE
+          {/* RIGHT: The Solution (Focus) */}
+          <div className="bg-gray-900/50 p-8 rounded-3xl border border-blue-500/30 shadow-[0_0_50px_rgba(59,130,246,0.15)] relative transform hover:scale-[1.02] transition-transform duration-300">
+            <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl rounded-tr-3xl shadow-lg">
+              EFFICIENCY
             </div>
 
-            <h3 className="text-2xl font-bold text-white border-b border-violet-500/30 pb-4 mb-8 flex items-center gap-2">
-              ✅ Ihr unfairer Vorteil
+            <h3 className="text-2xl font-bold text-white border-b border-blue-500/30 pb-4 mb-8 flex items-center gap-2">
+              ✅ Der Orasyn Standard
             </h3>
 
-            {/* Graph 1: Cost Gain */}
+            {/* Graph 1: Value */}
             <div className="mb-8">
               <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-300">Investition</span>
-                <span className="text-green-400 font-mono font-bold text-lg">149 €</span>
+                <span className="text-gray-300">Gewonnene Deep Work Zeit</span>
+                <span className="text-blue-400 font-mono font-bold text-lg">+ 15 Std. / Monat</span>
               </div>
               <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-green-500 w-[3%] shadow-[0_0_20px_rgba(74,222,128,0.8)] animate-pulse"></div>
+                <div className="h-full bg-blue-500 w-[95%] shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse"></div>
               </div>
-              <p className="text-xs text-green-400 mt-2 font-bold">Sie verlieren 4.351 € jeden Monat, wenn Sie zögern.</p>
+              <p className="text-xs text-blue-400 mt-2 font-bold">Investieren Sie diese Zeit in Strategie & Umsatz.</p>
             </div>
 
-            {/* Graph 2: Speed Gain */}
+            {/* Graph 2: Precision */}
             <div className="mb-8">
               <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-300">Setup-Geschwindigkeit</span>
-                <span className="text-green-400 font-mono font-bold">Sofort (Plug & Play)</span>
+                <span className="text-gray-300">Termin-Koordination</span>
+                <span className="text-blue-400 font-mono font-bold">Autonom & Sofort</span>
               </div>
               <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-green-500 w-[100%]"></div>
+                <div className="h-full bg-blue-500 w-[100%]"></div>
               </div>
             </div>
 
-            {/* Graph 3: Scale Gain */}
+            {/* Graph 3: Cost Ratio */}
             <div>
               <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-300">Skalierbarkeit</span>
-                <span className="text-green-400 font-mono font-bold">24 / 7 (Unlimitiert)</span>
+                <span className="text-gray-300">Kosten-Nutzen-Verhältnis</span>
+                <span className="text-blue-400 font-mono font-bold">149€ vs. 2000€ Wert</span>
               </div>
               <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-green-500 w-[100%] shadow-[0_0_20px_rgba(74,222,128,0.4)]"></div>
+                <div className="h-full bg-blue-500 w-[100%] shadow-[0_0_20px_rgba(59,130,246,0.4)]"></div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* CTA: Command Tone */}
+        {/* CTA: Positive Empowerment */}
         <div className="text-center mt-16">
           <button onClick={() => setActiveFormModal('waitlist')} className="group text-white font-semibold transition-colors bg-white/10 hover:bg-white/20 px-8 py-4 rounded-full border border-white/10">
-            <span className="mr-2">Stoppen Sie den Verlust</span> 
+            <span className="mr-2">Fokus zurückgewinnen</span> 
             <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
           </button>
-          <p className="text-xs text-gray-500 mt-4">Risikofrei testen. Jeder Tag zählt.</p>
+          <p className="text-xs text-gray-500 mt-4">Machen Sie Ihr Team einfach effizienter.</p>
         </div>
       </section>
 
