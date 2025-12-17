@@ -33,10 +33,8 @@ const LogoIcon = () => (
 
 /**
  * Navigation Bar
- * Sticky, exactly 80px height, premium backdrop blur.
- * Layout: Logo Left, Links Center, Actions Right
  */
-const Navbar = ({ onOpenWaitlist }) => {
+const Navbar = ({ onOpenWaitlist }) => { // HIER WICHTIG: Kein ": { ... }" mehr (Typo-Fix)
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -48,7 +46,6 @@ const Navbar = ({ onOpenWaitlist }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Updated link logic to map German text to English IDs
   const navLinks = [
     { label: 'Funktionen', href: '#features' },
     { label: 'Methode', href: '#method' },
@@ -64,7 +61,7 @@ const Navbar = ({ onOpenWaitlist }) => {
         <div className="flex items-center gap-3 z-20 relative">
           <a href="#" className="flex items-center gap-3 group">
             <img 
-              src="https://raw.githubusercontent.com/ora-syn/orasynV1.0/main/logo-final.png.png" 
+              src="/logo-neu-cut.png.png"  // <--- HIER IST DEIN NEUES LOGO
               alt="ORASYN Logo" 
               className="h-[220px] w-auto object-contain" 
             />
@@ -77,7 +74,7 @@ const Navbar = ({ onOpenWaitlist }) => {
             <a 
               key={item.label} 
               href={item.href}
-              // HIER WAR DER FEHLER (Doppelter className gelöscht):
+              // HIER WAR DER FEHLER: Jetzt nur noch EIN className!
               className="text-lg font-semibold text-gray-500 transition-colors hover:text-black px-4 py-2 rounded-full duration-200"
             >
               {item.label}
