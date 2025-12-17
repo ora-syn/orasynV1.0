@@ -77,6 +77,7 @@ const Navbar = ({ onOpenWaitlist }) => {
             <a 
               key={item.label} 
               href={item.href}
+              // HIER WAR DER FEHLER (Doppelter className gelöscht):
               className="text-lg font-semibold text-gray-500 transition-colors hover:text-black px-4 py-2 rounded-full duration-200"
             >
               {item.label}
