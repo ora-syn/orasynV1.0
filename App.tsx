@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -8,15 +6,15 @@ import {
   LineChart, 
   Zap, 
   Menu, 
-  X,
-  Layers,
-  Lock,
-  TrendingUp,
-  Link as LinkIcon,
-  Settings2,
-  PlayCircle,
-  Check,
-  Clock,
+  X, 
+  Layers, 
+  Lock, 
+  TrendingUp, 
+  Link as LinkIcon, 
+  Settings2, 
+  PlayCircle, 
+  Check, 
+  Clock, 
   Users
 } from 'lucide-react';
 
@@ -38,7 +36,7 @@ const LogoIcon = () => (
  * Sticky, exactly 80px height, premium backdrop blur.
  * Layout: Logo Left, Links Center, Actions Right
  */
-const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
+const Navbar = ({ onOpenWaitlist }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -53,7 +51,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   // Updated link logic to map German text to English IDs
   const navLinks = [
     { label: 'Funktionen', href: '#features' },
-    { label: 'Ihr Profit', href: '#method' },
+    { label: 'Methode', href: '#method' },
     { label: 'Lösungen', href: '#solutions' },
     { label: 'Preise', href: '#pricing' }
   ];
@@ -148,7 +146,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
 /**
  * Feature Card
  */
-const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
+const FeatureCard = ({ icon, title, description }) => (
   <motion.div 
     whileHover={{ y: -5 }}
     className="p-8 rounded-2xl bg-white border border-gray-200 shadow-sm hover:border-gray-300 hover:shadow-md transition-all duration-300"
@@ -164,7 +162,7 @@ const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode, titl
 /**
  * Method Step Card
  */
-const MethodStep = ({ icon, title, description, step }: { icon: React.ReactNode, title: string, description: string, step: number }) => (
+const MethodStep = ({ icon, title, description, step }) => (
   <motion.div 
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -200,7 +198,7 @@ const CalendarMockup = () => {
   const hours = Array.from({ length: HOURS_COUNT }, (_, i) => START_HOUR + i);
 
   // Helper for absolute positioning with offset
-  const getEventStyle = (startHour: number, duration: number) => {
+  const getEventStyle = (startHour, duration) => {
     const top = (startHour - START_HOUR) * HOUR_HEIGHT + OFFSET_TOP;
     const height = duration * HOUR_HEIGHT;
     return { top: `${top}px`, height: `${height}px` };
@@ -377,12 +375,12 @@ const CalendarMockup = () => {
 
 // --- Form Modals ---
 
-const FormModal = ({ type, onClose }: { type: 'waitlist' | 'sales', onClose: () => void }) => {
+const FormModal = ({ type, onClose }) => {
   const isSales = type === 'sales';
   const title = isSales ? "Direkter Kontakt zum Enterprise-Team" : "Ihr Antrag auf Pilot-Zugang";
   const btnText = isSales ? "Senden & Validieren" : "Zugriff anfordern";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // Simulate sending with a slight delay for better UX
     setTimeout(() => {
@@ -462,7 +460,7 @@ const FormModal = ({ type, onClose }: { type: 'waitlist' | 'sales', onClose: () 
 
 // --- Legal Content Data ---
 
-const legalContent: Record<string, { title: string; content: React.ReactNode }> = {
+const legalContent = {
   kontakt: {
     title: "Kontakt",
     content: (
@@ -738,18 +736,18 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <p>Details hierzu können Sie in der Datenschutzerklärung von Stripe unter folgendem Link nachlesen: <a href="https://stripe.com/de/privacy" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Stripe Privacy Policy</a>.</p>
 
         <h4 className="font-bold text-gray-800 mt-4">American Express</h4>
-        <p>Anbieter dieses Zahlungsdienstes ist die American Express Europe S.A., Theodor-Heuss-Allee 112, 60486 Frankfurt am Main, Deutschland (im Folgenden „American Express“).<br />
-        American Express kann Daten an seine Muttergesellschaft in die USA übermitteln. Die Datenübertragung in die USA wird auf die Binding Corporate Rules gestützt. Details finden Sie hier: <a href="https://www.americanexpress.com/en-cz/company/legal/privacy-centre/binding-corporate-rules/" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Amex BCR</a>.</p>
+        <p>Anbieter dieses Zahlungsdienstes ist die American Express Europe S.A., Theodor-Heuss-Allee 112, 60486 Frankfurt am Main, Deutschland (im Folgenden „American Express“).</p>
+        <p>American Express kann Daten an seine Muttergesellschaft in die USA übermitteln. Die Datenübertragung in die USA wird auf die Binding Corporate Rules gestützt. Details finden Sie hier: <a href="https://www.americanexpress.com/en-cz/company/legal/privacy-centre/binding-corporate-rules/" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Amex BCR</a>.</p>
         <p>Weitere Informationen entnehmen Sie der Datenschutzerklärung von American Express: <a href="https://www.americanexpress.com/de-de/firma/legal/datenschutz-center/online-datenschutzerklarung/" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Amex Online Privacy Statement</a>.</p>
 
         <h4 className="font-bold text-gray-800 mt-4">Mastercard</h4>
-        <p>Anbieter dieses Zahlungsdienstes ist die Mastercard Europe SA, Chaussée de Tervuren 198A, B-1410 Waterloo, Belgien (im Folgenden „Mastercard“).<br />
-        Mastercard kann Daten an seine Muttergesellschaft in die USA übermitteln. Die Datenübertragung in die USA wird auf die Binding Corporate Rules von Mastercard gestützt. Details finden Sie hier: <a href="https://www.mastercard.de/de-de/datenschutz.html" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Mastercard Privacy</a> und <a href="https://www.mastercard.us/content/dam/mccom/global/documents/mastercard-bcrs.pdf" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Mastercard BCRs</a>.</p>
+        <p>Anbieter dieses Zahlungsdienstes ist die Mastercard Europe SA, Chaussée de Tervuren 198A, B-1410 Waterloo, Belgien (im Folgenden „Mastercard“).</p>
+        <p>Mastercard kann Daten an seine Muttergesellschaft in die USA übermitteln. Die Datenübertragung in die USA wird auf die Binding Corporate Rules von Mastercard gestützt. Details finden Sie hier: <a href="https://www.mastercard.de/de-de/datenschutz.html" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Mastercard Privacy</a> und <a href="https://www.mastercard.us/content/dam/mccom/global/documents/mastercard-bcrs.pdf" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Mastercard BCRs</a>.</p>
 
         <h4 className="font-bold text-gray-800 mt-4">VISA</h4>
-        <p>Anbieter dieses Zahlungsdienstes ist die Visa Europe Services Inc., Zweigniederlassung London, 1 Sheldon Square, London W2 6TT, Großbritannien (im Folgenden „VISA“).<br />
-        Großbritannien gilt als datenschutzrechtlich sicherer Drittstaat. Das bedeutet, dass Großbritannien ein Datenschutzniveau aufweist, das dem Datenschutzniveau in der Europäischen Union entspricht.<br />
-        VISA kann Daten an seine Muttergesellschaft in die USA übertragen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://www.visa.de/nutzungsbedingungen/visa-globale-datenschutzmitteilung/mitteilung-zu-zustandigkeitsfragen-fur-den-ewr.html" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">VISA Data Transfer</a>.</p>
+        <p>Anbieter dieses Zahlungsdienstes ist die Visa Europe Services Inc., Zweigniederlassung London, 1 Sheldon Square, London W2 6TT, Großbritannien (im Folgenden „VISA“).</p>
+        <p>Großbritannien gilt als datenschutzrechtlich sicherer Drittstaat. Das bedeutet, dass Großbritannien ein Datenschutzniveau aufweist, das dem Datenschutzniveau in der Europäischen Union entspricht.</p>
+        <p>VISA kann Daten an seine Muttergesellschaft in die USA übertragen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://www.visa.de/nutzungsbedingungen/visa-globale-datenschutzmitteilung/mitteilung-zu-zustandigkeitsfragen-fur-den-ewr.html" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">VISA Data Transfer</a>.</p>
         <p>Weitere Informationen entnehmen Sie der Datenschutzerklärung von VISA: <a href="https://www.visa.de/nutzungsbedingungen/visa-privacy-center.html" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">VISA Privacy Center</a>.</p>
 
         <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">8. Audio- und Videokonferenzen</h2>
@@ -783,29 +781,77 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
       </div>
     )
   },
+  agb: {
+    title: "Allgemeine Geschäftsbedingungen",
+    content: (
+      <div className="prose prose-sm max-w-none text-gray-600 space-y-4">
+        <h1 className="text-2xl font-bold text-gray-900 mb-6">Allgemeine Geschäftsbedingungen</h1>
+        <p className="font-medium">für die Erbringung von Dienstleistungen von Samuele Francesco Franzé, Orasyn, Kurt-Schumacher-Straße 76, c/o flexdienst - #12205, 67663 Kaiserslautern, E-Mail: info@orasyn.de (nachfolgend „Auftragnehmer“) gegenüber seinen Kunden (nachfolgend „Auftraggeber“)</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">1. Allgemeines</h2>
+        <p>1.1 Diese Allgemeinen Geschäftsbedingungen (AGB) für die Erbringung von Dienstleistungen gelten für Verträge, die zwischen dem Auftraggeber und dem Auftragnehmer unter Einbeziehung dieser AGB geschlossen werden.</p>
+        <p>1.2 Der Auftragnehmer schließt keine Verträge mit Verbrauchern bzw. Privatpersonen.</p>
+        <p>1.3 Der Auftragnehmer ist berechtigt, in eigenem Namen und auf eigene Rechnung die erforderlichen Leistungen an Subunternehmer zu vergeben, die ihrerseits ebenfalls Subunternehmer einsetzen dürfen. Der Auftragnehmer bleibt hierbei alleiniger Vertragspartner des Auftraggebers. Der Einsatz von Subunternehmern erfolgt nicht, wenn für den Auftragnehmer ersichtlich ist, dass deren Einsatz berechtigten Interessen des Auftraggebers zuwiderläuft.</p>
+        <p>1.4 Soweit neben diesen AGB weitere Vertragsdokumente oder andere Geschäftsbedingungen in Text- oder Schriftform Vertragsbestandteil geworden sind, gehen die Regelungen dieser weiteren Vertragsdokumente im Widerspruchsfalle den vorliegenden AGB vor.</p>
+        <p>1.5 Von diesen Geschäftsbedingungen abweichende AGB, die durch den Auftraggeber verwendet werden, erkennt Auftragnehmer – vorbehaltlich einer ausdrücklichen Zustimmung – nicht an.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">2. Vertragsgegenstand und Leistungsumfang</h2>
+        <p>2.1 Der Auftragnehmer erbringt als selbständiger Unternehmer folgende Leistungen gegenüber dem Auftraggeber:</p>
+        <p className="pl-4 border-l-4 border-gray-200">Die Bereitstellung einer KI-gestützten Software-as-a-Service (SaaS) Plattform zur automatisierten Planung, Verwaltung und Optimierung von Terminen und Arbeitsabläufen für B2B-Kunden.</p>
+        <p>2.2 Der spezifische Leistungsumfang ist Gegenstand von Individualvereinbarungen zwischen Auftragnehmer und dem Auftraggeber.</p>
+        <p>2.3 Der Auftragnehmer erbringt die vertragsgemäßen Leistungen mit größtmöglicher Sorgfalt und Gewissenhaftigkeit nach dem jeweils neuesten Stand, neuesten Regeln und Erkenntnissen.</p>
+        <p>2.4 Der Auftragnehmer ist zur Erbringung der vertragsgemäß geschuldeten Leistungen verpflichtet. Bei der Durchführung seiner Tätigkeit ist er jedoch etwaigen Weisungen im Hinblick auf die Art der Erbringung seiner Leistungen, den Ort der Leistungserbringung ebenso wie die Zeit der Leistungserbringung nicht unterworfen. Er wird jedoch bei der Einteilung der Tätigkeitstage und bei der Zeiteinteilung an diesen Tagen diese selbst in der Weise festlegen, dass eine optimale Effizienz bei seiner Tätigkeit und bei der Realisierung des Vertragsgegenstandes erzielt wird. Die Leistungserbringung durch den Auftragnehmer erfolgt lediglich in Abstimmung und in Koordination mit dem Auftraggeber.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">3. Mitwirkungspflichten des Auftraggebers</h2>
+        <p>Es obliegt dem Auftraggeber, die von ihm zum Zwecke der Leistungserfüllung zur Verfügung zu stellenden Informationen, Daten und sonstigen Inhalte vollständig und korrekt mitzuteilen. Für Verzögerungen und Verspätungen bei der Leistungserbringung, die durch eine verspätete und notwendige Mit- bzw. Zuarbeit des Kunden entstehen, ist der Auftragnehmer gegenüber dem Kunden in keinerlei Hinsicht verantwortlich; die Vorschriften unter der Überschrift „Haftung/Freistellung“ bleiben hiervon unberührt.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">4. Vergütung</h2>
+        <p>4.1 Die Vergütung wird individualvertraglich vereinbart.</p>
+        <p>4.2 Die Vergütung ist nach der Leistung der Dienste zu entrichten. Ist die Vergütung nach Zeitabschnitten bemessen, so ist sie nach dem Ablauf der einzelnen Zeitabschnitte zu entrichten (§ 614 BGB). Bei aufwandsbezogener Abrechnung ist der Auftragnehmer vorbehaltlich abweichender Vereinbarungen berechtigt, die erbrachte Leistungen monatlich abzurechnen.</p>
+        <p>4.3 Der Auftragnehmer stellt dem Auftraggeber nach Erbringung der Leistungen eine Rechnung per Post oder per E-Mail (z.B. als PDF). Die Vergütung ist innerhalb von 14 Tagen nach Zugang der Rechnung zur Zahlung fällig.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">5. Haftung / Freistellung</h2>
+        <p>5.1 Der Auftragnehmer haftet aus jedem Rechtsgrund uneingeschränkt bei Vorsatz oder grober Fahrlässigkeit, bei vorsätzlicher oder fahrlässiger Verletzung des Lebens, des Körpers oder der Gesundheit, aufgrund eines Garantieversprechens, soweit diesbezüglich nichts anderes geregelt ist oder aufgrund zwingender Haftung. Verletzt der Auftragnehmer fahrlässig eine wesentliche Vertragspflicht, ist die Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt, sofern nicht gemäß vorstehendem Satz unbeschränkt gehaftet wird. Wesentliche Vertragspflichten sind Pflichten, die der Vertrag dem Auftragnehmer nach seinem Inhalt zur Erreichung des Vertragszwecks auferlegt, deren Erfüllung die ordnungsgemäße Durchführung des Vertrags überhaupt erst ermöglicht und auf deren Einhaltung der Kunde regelmäßig vertrauen darf. Im Übrigen ist eine Haftung des Auftragnehmers ausgeschlossen. Vorstehende Haftungsregelungen gelten auch im Hinblick auf die Haftung des Auftragnehmers für seine Erfüllungsgehilfen und gesetzlichen Vertreter.</p>
+        <p>5.2 Der Auftraggeber stellt den Auftragnehmer von jeglichen Ansprüchen Dritter frei, die gegen den Auftragnehmer aufgrund von Verstößen des Kunden gegen diese Vertragsbedingungen oder gegen geltendes Recht geltend gemacht werden.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">6. Vertragsdauer und Kündigung</h2>
+        <p>6.1 Die Vertragsdauer und die Fristen zur ordentlichen Kündigung vereinbaren die Parteien individuell.</p>
+        <p>6.2 Das Recht beider Parteien zur fristlosen Kündigung aus wichtigem Grund bleibt unberührt.</p>
+        <p>6.3 Der Auftragnehmer hat alle ihm überlassenen Unterlagen und sonstigen Inhalte nach Vertragsbeendigung unverzüglich nach Wahl des Kunden zurückzugeben oder zu vernichten. Die Geltendmachung eines Zurückbehaltungsrechts daran ist ausgeschlossen. Elektronische Daten sind vollständig zu löschen. Ausgenommen davon sind Unterlagen und Daten, hinsichtlich derer eine längere gesetzliche Aufbewahrungspflicht besteht, jedoch nur bis zum Ende der jeweiligen Aufbewahrungsfrist. Der Auftragnehmer hat dem Unternehmen auf dessen Verlangen die Löschung schriftlich zu bestätigen.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">7. Vertraulichkeit und Datenschutz</h2>
+        <p>7.1 Der Auftragnehmer wird alle ihm im Zusammenhang mit dem Auftrag zur Kenntnis gelangenden Vorgänge streng vertraulich behandeln. Der Auftragnehmer verpflichtet sich, die Geheimhaltungspflicht sämtlichen Angestellten und / oder Dritten, die Zugang zu den vertragsgegenständlichen Informationen haben, aufzuerlegen. Die Geheimhaltungspflicht gilt zeitlich unbegrenzt über die Dauer dieses Vertrages hinaus.</p>
+        <p>7.2 Der Auftragnehmer verpflichtet sich, bei der Durchführung des Auftrags sämtliche datenschutzrechtlichen Vorschriften – insbesondere die Vorschriften der Datenschutzgrundverordnung und des Bundesdatenschutzgesetzes – einzuhalten.</p>
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">8. Schlussbestimmungen</h2>
+        <p>8.1 Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des CISG.</p>
+        <p>8.2 Sollte eine Bestimmung dieser AGB unwirksam sein oder werden, so wird die Gültigkeit der AGB im Übrigen hiervon nicht berührt.</p>
+        <p>8.3 Der Auftraggeber wird den Auftragnehmer bei der Erbringung seiner vertragsgemäßen Leistungen durch angemessene Mitwirkungshandlungen, soweit erforderlich, fördern. Der Auftraggeber wird insbesondere dem Auftragnehmer die zur Erfüllung des Auftrags erforderlichen Informationen und Daten zur Verfügung stellen.</p>
+        <p>8.4 Sofern der Auftraggeber Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist oder keinen allgemeinen Gerichtsstand in Deutschland hat, vereinbaren die Parteien den Sitz des Auftragnehmers als Gerichtsstand für sämtliche Streitigkeiten aus diesem Vertragsverhältnis; ausschließliche Gerichtsstände bleiben hiervon unberührt.</p>
+        <p>8.5 Der Auftragnehmer ist berechtigt, diese AGB aus sachlich gerechtfertigten Gründen (z. B. Änderungen in der Rechtsprechung, Gesetzeslage, Marktgegebenheiten oder der Geschäfts- oder Unternehmensstrategie) und unter Einhaltung einer angemessenen Frist zu ändern. Bestandskunden werden hierüber spätestens zwei Wochen vor Inkrafttreten der Änderung per E-Mail benachrichtigt. Sofern der Bestandskunde nicht innerhalb der in der Änderungsmitteilung gesetzten Frist widerspricht, gilt seine Zustimmung zur Änderung als erteilt. Widerspricht er, treten die Änderungen nicht in Kraft; Auftragnehmer ist in diesem Fall berechtigt, den Vertrag zum Zeitpunkt des Inkrafttretens der Änderung außerordentlich zu kündigen. Die Benachrichtigung über die beabsichtigte Änderung dieser AGB wird auf die Frist und die Folgen des Widerspruchs oder seines Ausbleibens hinweisen.</p>
+      </div>
+    )
+  },
   impressum: {
     title: "Impressum",
     content: (
       <div className="prose prose-sm max-w-none text-gray-600">
-    <h1 className="text-2xl font-bold text-gray-900 mb-4">Impressum</h1>
-
-    <p className="mb-4">
-        Samuele Francesco Franzé<br />
-        Orasyn<br />
-        Kurt-Schumacher-Stra&szlig;e 76<br />
-        c/o flexdienst - #12205<br />
-        67663 Kaiserslautern
-    </p>
-
-    <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Kontakt</h2>
-    <p className="mb-4">
-        Telefon: +49 (0) 176 42720313<br />
-        E-Mail: info@orasyn.de
-    </p>
-
-    <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h2>
-    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-</div>
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">Impressum</h1>
+        <p className="mb-4">
+            Samuele Francesco Franzé<br />
+            Orasyn<br />
+            Kurt-Schumacher-Stra&szlig;e 76<br />
+            c/o flexdienst - #12205<br />
+            67663 Kaiserslautern
+        </p>
+        <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Kontakt</h2>
+        <p className="mb-4">
+            Telefon: +49 (0) 176 42720313<br />
+            E-Mail: info@orasyn.de
+        </p>
+        <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h2>
+        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+      </div>
     )
   }
 };
@@ -813,7 +859,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
 /**
  * Legal Overlay Modal
  */
-const LegalModal = ({ page, onClose }: { page: string, onClose: () => void }) => {
+const LegalModal = ({ page, onClose }) => {
   const content = legalContent[page];
 
   if (!content) return null;
@@ -859,8 +905,8 @@ const LegalModal = ({ page, onClose }: { page: string, onClose: () => void }) =>
 // --- Main App Component ---
 
 const App = () => {
-  const [activeLegalPage, setActiveLegalPage] = useState<string | null>(null);
-  const [activeFormModal, setActiveFormModal] = useState<'waitlist' | 'sales' | null>(null);
+  const [activeLegalPage, setActiveLegalPage] = useState(null);
+  const [activeFormModal, setActiveFormModal] = useState(null);
 
   // Prevent background scroll when modal is open
   useEffect(() => {
@@ -957,7 +1003,7 @@ const App = () => {
       {/* --- ROI / EFFICIENCY & FOCUS SECTION --- */}
       <section id="roi" className="py-24 bg-black text-white relative border-t border-gray-900">
         
-        {/* Headline: The Real Problem (Opportunity Cost) */}
+        {/* Headline */}
         <div className="max-w-[1200px] mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ihr Team wurde eingestellt um zu performen. <br />
@@ -970,13 +1016,13 @@ const App = () => {
 
         <div className="max-w-[1000px] mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           
-          {/* LEFT: The Problem (Hidden Costs) */}
+          {/* LEFT: The Problem */}
           <div className="space-y-8 opacity-70 hover:opacity-100 transition-opacity">
             <h3 className="text-2xl font-semibold text-gray-400 border-b border-gray-800 pb-4">
               ⚠️ Die Verwaltungs-Falle
             </h3>
             
-            {/* Graph 1: Misused Talent */}
+            {/* Graph 1 */}
             <div>
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-400">Opportunitätskosten</span>
@@ -988,7 +1034,7 @@ const App = () => {
               <p className="text-[10px] text-gray-500 mt-1">Manager/Sales verbringen ~20% der Zeit mit Admin.</p>
             </div>
 
-            {/* Graph 2: Context Switching */}
+            {/* Graph 2 */}
             <div>
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-400">Fokus-Verlust (Kontextwechsel)</span>
@@ -999,7 +1045,7 @@ const App = () => {
               </div>
             </div>
 
-             {/* Graph 3: Speed */}
+             {/* Graph 3 */}
              <div>
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-400">Reaktionszeit auf Anfragen</span>
@@ -1011,7 +1057,7 @@ const App = () => {
             </div>
           </div>
 
-          {/* RIGHT: The Solution (Focus) */}
+          {/* RIGHT: The Solution */}
           <div className="bg-gray-900/50 p-8 rounded-3xl border border-blue-500/30 shadow-[0_0_50px_rgba(59,130,246,0.15)] relative transform hover:scale-[1.02] transition-transform duration-300">
             <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl rounded-tr-3xl shadow-lg">
               EFFICIENCY
@@ -1021,7 +1067,7 @@ const App = () => {
               ✅ Der Orasyn Standard
             </h3>
 
-            {/* Graph 1: Value */}
+            {/* Graph 1 */}
             <div className="mb-8">
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-300">Gewonnene Deep Work Zeit</span>
@@ -1033,7 +1079,7 @@ const App = () => {
               <p className="text-xs text-blue-400 mt-2 font-bold">Investieren Sie diese Zeit in Strategie & Umsatz.</p>
             </div>
 
-            {/* Graph 2: Precision */}
+            {/* Graph 2 */}
             <div className="mb-8">
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-300">Termin-Koordination</span>
@@ -1044,7 +1090,7 @@ const App = () => {
               </div>
             </div>
 
-            {/* Graph 3: Cost Ratio */}
+            {/* Graph 3 */}
             <div>
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-300">Kosten-Nutzen-Verhältnis</span>
@@ -1057,7 +1103,7 @@ const App = () => {
           </div>
         </div>
 
-        {/* CTA: Positive Empowerment */}
+        {/* CTA */}
         <div className="text-center mt-16">
           <button onClick={() => setActiveFormModal('waitlist')} className="group text-white font-semibold transition-colors bg-white/10 hover:bg-white/20 px-8 py-4 rounded-full border border-white/10">
             <span className="mr-2">Fokus zurückgewinnen</span> 
@@ -1067,7 +1113,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- Features Section (Updated ID to #features) --- */}
+      {/* --- Features Section --- */}
       <section id="features" className="py-32 relative">
          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white to-transparent pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -1125,7 +1171,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- Method Section (Updated ID to #method) --- */}
+      {/* --- Method Section --- */}
       <section id="method" className="py-32 bg-[#F9FAFB]/50 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
@@ -1165,7 +1211,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- Pricing Section (Updated ID to #pricing) --- */}
+      {/* --- Pricing Section --- */}
       <section id="pricing" className="py-32 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
            <motion.div 
@@ -1242,7 +1288,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- Closer Section (Inserted) --- */}
+      {/* --- Closer Section --- */}
       <section id="closer" className="py-32 border-t border-gray-200 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
@@ -1275,7 +1321,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- Footer (Updated) --- */}
+      {/* --- Footer --- */}
       <footer className="py-12 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
