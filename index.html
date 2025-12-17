@@ -2,99 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ORASYN | Automate Work. Elevate Growth.</title>
     
-    <!-- Google Fonts: Inter (Critical for the Linear look) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Config for precise font settings -->
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
             colors: {
-              gray: {
-                50: '#F9FAFB',
-                100: '#F3F4F6', // Nav BG
-                200: '#E5E7EB',
-                300: '#D1D5DB',
-                400: '#9CA3AF',
-                500: '#6B7280',
-                600: '#4B5563', // Body Text
-                700: '#374151',
-                800: '#1F2937',
-                900: '#111827',
-                950: '#030712', // Headlines
-              },
+              gray: { 50: '#F9FAFB', 100: '#F3F4F6', 200: '#E5E7EB', 300: '#D1D5DB', 400: '#9CA3AF', 500: '#6B7280', 600: '#4B5563', 700: '#374151', 800: '#1F2937', 900: '#111827', 950: '#030712' }
             },
-            letterSpacing: {
-              tighter: '-0.04em',
-              tight: '-0.02em',
-              normal: '0em',
-            },
-            boxShadow: {
-              'glow': '0 0 40px -10px rgba(124, 58, 237, 0.15)', // Very subtle purple hint
-              'float': '0 30px 60px -12px rgba(0, 0, 0, 0.12)',
-              'float-sm': '0 10px 30px -4px rgba(0, 0, 0, 0.08)',
-              'inner-light': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.8)',
-            },
-            animation: {
-              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-            },
-            keyframes: {
-              fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              }
-            }
-          },
-        },
+            fontFamily: { sans: ['Inter', 'sans-serif'] }
+          }
+        }
       }
     </script>
-    
-    <style>
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
-      
-      /* Hide scrollbar for cleaner look */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: white; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #E5E7EB; 
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #D1D5DB; 
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "react": "https://aistudiocdn.com/react@^19.2.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0"
-  }
-}
-</script>
-</head>
-  <body class="bg-white text-gray-900 antialiased selection:bg-gray-900 selection:text-white">
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
     <div id="root"></div>
+    
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
