@@ -80,7 +80,6 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
               key={item.label} 
               href={item.href}
               className="text-[14px] font-medium text-gray-500 hover:text-black px-4 py-2 rounded-full hover:bg-black/5 transition-all duration-200"
-              className="text-lg font-semibold text-gray-800 transition-colors hover:text-violet-600 px-4 py-2 rounded-full duration-200"
             >
               {item.label}
             </a>
@@ -92,7 +91,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
           <motion.button 
             onClick={onOpenWaitlist}
             whileTap={{ scale: 0.95 }}
-            className="bg-black text-white text-lg font-semibold px-6 py-2 rounded-xl hover:bg-gray-800 transition-all hover:shadow-lg shadow-purple-500/10"
+            className="bg-black text-white text-[13px] font-medium px-4 py-2 rounded-full hover:bg-gray-800 transition-all hover:shadow-lg shadow-purple-500/10"
           >
             Starten
           </motion.button>
@@ -947,6 +946,7 @@ const App = () => {
             className="mb-8 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 bg-white/50 backdrop-blur-sm"
           >
             <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
+            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">ORASYN 1.0 IST LIVE</span>
             <span className="text-sm font-bold text-gray-700 uppercase tracking-widest">ORASYN 1.0 IST LIVE</span>
           </motion.div>
 
