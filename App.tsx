@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, 
   Cpu, 
-  LineChart, 
   Zap, 
   Menu, 
   X, 
@@ -14,27 +13,13 @@ import {
   Settings2, 
   PlayCircle, 
   Check, 
-  Clock, 
-  Users
+  Clock
 } from 'lucide-react';
 
 // --- Components ---
 
 /**
- * Logo Component for Footer/Icons where the image isn't used
- */
-const LogoIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-black">
-    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-/**
  * Navigation Bar
- * Sticky, exactly 80px height, premium backdrop blur.
- * Layout: Logo Left, Links Center, Actions Right
  */
 const Navbar = ({ onOpenWaitlist }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,7 +33,6 @@ const Navbar = ({ onOpenWaitlist }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Updated link logic to map German text to English IDs
   const navLinks = [
     { label: 'Funktionen', href: '#features' },
     { label: 'Methode', href: '#method' },
@@ -64,7 +48,7 @@ const Navbar = ({ onOpenWaitlist }) => {
         <div className="flex items-center gap-3 z-20 relative">
           <a href="#" className="flex items-center gap-3 group">
             <img 
-              src="https://raw.githubusercontent.com/ora-syn/orasynV1.0/main/logo-final.png.png" 
+              src="https://raw.githubusercontent.com/ora-syn/orasynV1.0/main/logo-final.png" 
               alt="ORASYN Logo" 
               className="h-[220px] w-auto object-contain" 
             />
@@ -703,13 +687,6 @@ const legalContent = {
         <p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework“ (DPF). Der DPF ist ein Übereinkommen zwischen der Europäischen Union und den USA, der die Einhaltung europäischer Datenschutzstandards bei Datenverarbeitungen in den USA gewährleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/4425" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">DPF Participant</a>.</p>
         <p><strong>Auftragsverarbeitung:</strong> Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
 
-        <h3 className="font-bold text-lg text-gray-900 mt-6">Make.com</h3>
-        <p>Diese Website nutzt Make.com, eine cloudbasierte Automatisierungsplattform der Celonis SE, Theresienstraße 6, 80333 München (im Folgenden „Make.com“).</p>
-        <p>Make.com dient dazu, automatisierte Workflows („Szenarien“) zwischen verschiedenen Online-Diensten zu erstellen und auszuführen. Im Rahmen der Nutzung von Make.com können personenbezogene Daten verarbeitet werden. Dazu zählen beispielsweise Namen, E-Mail-Adressen, IP-Adressen, Telefonnummern, Adressdaten, Inhalte aus E-Mails oder Formularen, API-Aufrufe sowie Zugriffs- und Authentifizierungsdaten, die im Rahmen der Workflows verarbeitet werden.</p>
-        <p>Die Nutzung von Make.com erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse in der effizienten Automatisierung von Geschäftsprozessen. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.</p>
-        <p>Weitere Details entnehmen Sie der Datenschutzerklärung von Make.com: <a href="https://www.make.com/en/privacy-notice" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Make.com Privacy Notice</a> sowie <a href="https://www.make.com/en/privacy-and-gdpr" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Make.com GDPR</a>.</p>
-        <p><strong>Auftragsverarbeitung:</strong> Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
-
         <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">7. eCommerce und Zahlungsanbieter</h2>
 
         <h3 className="font-bold text-lg text-gray-900 mt-6">Verarbeiten von Kunden- und Vertragsdaten</h3>
@@ -831,7 +808,7 @@ const LegalModal = ({ page, onClose }) => {
 
 // --- Main App Component ---
 
-const App = () => {
+export default function App() {
   const [activeLegalPage, setActiveLegalPage] = useState(null);
   const [activeFormModal, setActiveFormModal] = useState(null);
 
@@ -1286,5 +1263,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;
