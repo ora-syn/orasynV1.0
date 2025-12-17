@@ -59,7 +59,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 h-[80px] flex items-center border-b ${isScrolled ? 'bg-white/80 border-gray-200 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60' : 'bg-white/0 border-transparent'}`}>
       <div className="max-w-[1400px] mx-auto px-6 w-full h-full flex items-center justify-between relative">
-
+        
         {/* Left: Logo Group */}
         <div className="flex items-center gap-3 z-20 relative">
           <a href="#" className="flex items-center gap-3 group">
@@ -274,7 +274,7 @@ const CalendarMockup = () => {
 
            {/* Grid Body */}
            <div className="flex-1 relative pt-10">
-
+              
               {/* Horizontal Lines */}
               {hours.map((h, i) => (
                 <div 
@@ -293,7 +293,7 @@ const CalendarMockup = () => {
 
               {/* EVENTS LAYER */}
               <div className="absolute inset-0 grid grid-cols-5 h-full">
-
+                 
                  {/* 1. MONDAY EVENT */}
                  <div className="relative h-full w-full">
                     <div 
@@ -486,12 +486,12 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <h1 className="text-2xl font-bold text-gray-900 mb-6">Datenschutzerklärung</h1>
 
         <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">1. Datenschutz auf einen Blick</h2>
-
+        
         <h3 className="font-bold text-lg text-gray-900 mt-6">Allgemeine Hinweise</h3>
         <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
 
         <h3 className="font-bold text-lg text-gray-900 mt-6">Datenerfassung auf dieser Website</h3>
-
+        
         <h4 className="font-bold text-gray-800 mt-4">Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h4>
         <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.</p>
 
@@ -519,7 +519,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <p>Weitere Informationen entnehmen Sie der Datenschutzerklärung von AWS: <a href="https://aws.amazon.com/de/privacy/?nc1=f_pr" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">AWS Privacy</a>.</p>
         <p>Die Verwendung von AWS erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.</p>
         <p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework“ (DPF). Der DPF ist ein Übereinkommen zwischen der Europäischen Union und den USA, der die Einhaltung europäischer Datenschutzstandards bei Datenverarbeitungen in den USA gewährleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/5776" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">DPF Participant</a>.</p>
-
+        
         <h4 className="font-bold text-gray-800 mt-4">Auftragsverarbeitung</h4>
         <p>Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
 
@@ -532,7 +532,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework“ (DPF). Der DPF ist ein Übereinkommen zwischen der Europäischen Union und den USA, der die Einhaltung europäischer Datenschutzstandards bei Datenverarbeitungen in den USA gewährleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/5780" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">DPF Participant</a>.</p>
 
         <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">3. Allgemeine Hinweise und Pflichtinformationen</h2>
-
+        
         <h3 className="font-bold text-lg text-gray-900 mt-6">Datenschutz</h3>
         <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
         <p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.</p>
@@ -600,7 +600,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-E-Mails, vor.</p>
 
         <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">4. Datenerfassung auf dieser Website</h2>
-
+        
         <h3 className="font-bold text-lg text-gray-900 mt-6">Cookies</h3>
         <p>Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine Datenpakete und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert. Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese selbst löschen oder eine automatische Löschung durch Ihren Webbrowser erfolgt.</p>
         <p>Cookies können von uns (First-Party-Cookies) oder von Drittunternehmen stammen (sog. Third-Party-Cookies). Third-Party-Cookies ermöglichen die Einbindung bestimmter Dienstleistungen von Drittunternehmen innerhalb von Webseiten (z. B. Cookies zur Abwicklung von Zahlungsdienstleistungen).</p>
@@ -639,7 +639,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <p>Wir setzen KI-gestützte Software zur Bearbeitung und Beantwortung von Kundenanfragen ein. Dabei analysiert die von uns eingesetzte KI den Inhalt Ihrer Nachricht, um autonom oder teilweise autonom eine passende Antwort bzw. einen Antwortvorschlag zu generieren. In diesem Zusammenhang verarbeitet unsere KI sämtliche Inhalte Ihrer Nachricht, inklusive Namen, E-Mail-Adressen, Kommunikationsinhalte oder technische Informationen (z. B. IP-Adressen, Geräteinformationen).</p>
         <p>Die Verwendung der eingesetzten KI-Software erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst effizienten Kundenkommunikation unter Einsatz moderner technischer Lösungen.</p>
         <p>Wir setzen folgende KI-Anwendungen ein:</p>
-
+        
         <h4 className="font-bold text-gray-800 mt-4">Google Gemini (oder Google Cloud AI)</h4>
         <p>Wir nutzen Google Gemini (oder Google Cloud AI) für unsere Kundenkommunikation. Anbieter ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Wenn Sie also Kontakt zu uns aufnehmen, können Ihre Anfragen inklusive Metadaten an die Server dieses Anbieters übertragen und dort verarbeitet werden, um eine passende Antwort zu generieren.</p>
         <p><strong>Auftragsverarbeitung:</strong> Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
@@ -680,7 +680,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework“ (DPF). Der DPF ist ein Übereinkommen zwischen der Europäischen Union und den USA, der die Einhaltung europäischer Datenschutzstandards bei Datenverarbeitungen in den USA gewährleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/5780" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">DPF Participant</a>.</p>
 
         <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">5. Newsletter</h2>
-
+        
         <h3 className="font-bold text-lg text-gray-900 mt-6">Newsletterdaten</h3>
         <p>Wenn Sie den auf der Website angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse sowie Informationen, welche uns die Überprüfung gestatten, dass Sie der Inhaber der angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind. Weitere Daten werden nicht bzw. nur auf freiwilliger Basis erhoben. Diese Daten verwenden wir ausschließlich für den Versand der angeforderten Informationen und geben diese nicht an Dritte weiter.</p>
         <p>Die Verarbeitung der in das Newsletteranmeldeformular eingegebenen Daten erfolgt ausschließlich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Die erteilte Einwilligung zur Speicherung der Daten, der E-Mail-Adresse sowie deren Nutzung zum Versand des Newsletters können Sie jederzeit widerrufen, etwa über den „Austragen“-Link im Newsletter. Die Rechtmäßigkeit der bereits erfolgten Datenverarbeitungsvorgänge bleibt vom Widerruf unberührt.</p>
@@ -689,7 +689,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <p>Nach Ihrer Austragung aus der Newsletterverteilerliste wird Ihre E-Mail-Adresse bei uns bzw. dem Newsletterdiensteanbieter ggf. in einer Blacklist gespeichert, sofern dies zur Verhinderung künftiger Mailings erforderlich ist. Die Daten aus der Blacklist werden nur für diesen Zweck verwendet und nicht mit anderen Daten zusammengeführt. Dies dient sowohl Ihrem Interesse als auch unserem Interesse an der Einhaltung der gesetzlichen Vorgaben beim Versand von Newslettern (berechtigtes Interesse im Sinne des Art. 6 Abs. 1 lit. f DSGVO). Die Speicherung in der Blacklist ist zeitlich nicht befristet. <strong>Sie können der Speicherung widersprechen, sofern Ihre Interessen unser berechtigtes Interesse überwiegen.</strong></p>
 
         <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">6. Plugins und Tools</h2>
-
+        
         <h3 className="font-bold text-lg text-gray-900 mt-6">Google Fonts</h3>
         <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts, die von Google bereitgestellt werden. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Fonts in ihren Browsercache, um Texte und Schriftarten korrekt anzuzeigen.</p>
         <p>Zu diesem Zweck muss der von Ihnen verwendete Browser Verbindung zu den Servern von Google aufnehmen. Hierdurch erlangt Google Kenntnis darüber, dass über Ihre IP-Adresse diese Website aufgerufen wurde. Die Nutzung von Google Fonts erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der einheitlichen Darstellung des Schriftbildes auf seiner Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.</p>
@@ -713,7 +713,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <p><strong>Auftragsverarbeitung:</strong> Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
 
         <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">7. eCommerce und Zahlungsanbieter</h2>
-
+        
         <h3 className="font-bold text-lg text-gray-900 mt-6">Verarbeiten von Kunden- und Vertragsdaten</h3>
         <p>Wir erheben, verarbeiten und nutzen personenbezogene Kunden- und Vertragsdaten zur Begründung, inhaltlichen Ausgestaltung und Änderung unserer Vertragsbeziehungen. Personenbezogene Daten über die Inanspruchnahme dieser Website (Nutzungsdaten) erheben, verarbeiten und nutzen wir nur, soweit dies erforderlich ist, um dem Nutzer die Inanspruchnahme des Dienstes zu ermöglichen oder abzurechnen. Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. b DSGVO.</p>
         <p>Die erhobenen Kundendaten werden nach Abschluss des Auftrags oder Beendigung der Geschäftsbeziehung und Ablauf der ggf. bestehenden gesetzlichen Aufbewahrungsfristen gelöscht. Gesetzliche Aufbewahrungsfristen bleiben unberührt.</p>
@@ -726,7 +726,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <h3 className="font-bold text-lg text-gray-900 mt-6">Zahlungsdienste</h3>
         <p>Wir binden Zahlungsdienste von Drittunternehmen auf unserer Website ein. Wenn Sie einen Kauf bei uns tätigen, werden Ihre Zahlungsdaten (z. B. Name, Zahlungssumme, Kontoverbindung, Kreditkartennummer) vom Zahlungsdienstleister zum Zwecke der Zahlungsabwicklung verarbeitet. Für diese Transaktionen gelten die jeweiligen Vertrags- und Datenschutzbestimmungen der jeweiligen Anbieter. Der Einsatz der Zahlungsdienstleister erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragsabwicklung) sowie im Interesse eines möglichst reibungslosen, komfortablen und sicheren Zahlungsvorgangs (Art. 6 Abs. 1 lit. f DSGVO). Soweit für bestimmte Handlungen Ihre Einwilligung abgefragt wird, ist Art. 6 Abs. 1 lit. a DSGVO Rechtsgrundlage der Datenverarbeitung; Einwilligungen sind jederzeit für die Zukunft widerrufbar.</p>
         <p>Folgende Zahlungsdienste / Zahlungsdienstleister setzen wir im Rahmen dieser Website ein:</p>
-
+        
         <h4 className="font-bold text-gray-800 mt-4">PayPal</h4>
         <p>Anbieter dieses Zahlungsdienstes ist PayPal (Europe) S.à.r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxembourg (im Folgenden „PayPal“).</p>
         <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://www.paypal.com/de/webapps/mpp/ua/pocpsa-full" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">PayPal Legal Agreements</a>.</p>
@@ -753,7 +753,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <p>Weitere Informationen entnehmen Sie der Datenschutzerklärung von VISA: <a href="https://www.visa.de/nutzungsbedingungen/visa-privacy-center.html" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">VISA Privacy Center</a>.</p>
 
         <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">8. Audio- und Videokonferenzen</h2>
-
+        
         <h3 className="font-bold text-lg text-gray-900 mt-6">Datenverarbeitung</h3>
         <p>Für die Kommunikation mit unseren Kunden setzen wir unter anderen Online-Konferenz-Tools ein. Die im Einzelnen von uns genutzten Tools sind unten aufgelistet. Wenn Sie mit uns per Video- oder Audiokonferenz via Internet kommunizieren, werden Ihre personenbezogenen Daten von uns und dem Anbieter des jeweiligen Konferenz-Tools erfasst und verarbeitet.</p>
         <p>Die Konferenz-Tools erfassen dabei alle Daten, die Sie zur Nutzung der Tools bereitstellen/einsetzen (E-Mail-Adresse und/oder Ihre Telefonnummer). Ferner verarbeiten die Konferenz-Tools die Dauer der Konferenz, Beginn und Ende (Zeit) der Teilnahme an der Konferenz, Anzahl der Teilnehmer und sonstige „Kontextinformationen“ im Zusammenhang mit dem Kommunikationsvorgang (Metadaten).</p>
@@ -770,7 +770,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
 
         <h3 className="font-bold text-lg text-gray-900 mt-6">Eingesetzte Konferenz-Tools</h3>
         <p>Wir setzen folgende Konferenz-Tools ein:</p>
-
+        
         <h4 className="font-bold text-gray-800 mt-4">Microsoft Teams</h4>
         <p>Wir nutzen Microsoft Teams. Anbieter ist die Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland. Details zur Datenverarbeitung entnehmen Sie der Datenschutzerklärung von Microsoft Teams: <a href="https://privacy.microsoft.com/de-de/privacystatement" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">Microsoft Privacy Statement</a>.</p>
         <p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework“ (DPF). Der DPF ist ein Übereinkommen zwischen der Europäischen Union und den USA, der die Einhaltung europäischer Datenschutzstandards bei Datenverarbeitungen in den USA gewährleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/6474" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">DPF Participant</a>.</p>
@@ -866,7 +866,7 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
  */
 const LegalModal = ({ page, onClose }: { page: string, onClose: () => void }) => {
   const content = legalContent[page];
-
+  
   if (!content) return null;
 
   return (
@@ -938,7 +938,7 @@ const App = () => {
         </div>
 
         <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-
+          
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -947,7 +947,6 @@ const App = () => {
           >
             <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
             <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">ORASYN 1.0 IST LIVE</span>
-            <span className="text-sm font-bold text-gray-700 uppercase tracking-widest">ORASYN 1.0 IST LIVE</span>
           </motion.div>
 
           <motion.h1 
@@ -979,7 +978,7 @@ const App = () => {
             <motion.button 
               onClick={() => setActiveFormModal('waitlist')}
               whileTap={{ scale: 0.95 }}
-              className="bg-violet-600 text-white text-xl font-semibold px-12 py-5 rounded-xl transition-all hover:bg-violet-500 shadow-[0_0_25px_rgba(124,58,237,0.4)] hover:shadow-[0_0_40px_rgba(124,58,237,0.6)] hover:translate-y-[-1px] flex items-center gap-2"
+              className="bg-violet-600 text-white text-[15px] font-semibold px-8 py-4 rounded-full transition-all hover:bg-violet-500 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] hover:translate-y-[-1px] flex items-center gap-2"
             >
               Jetzt Demo anfordern
               <ArrowRight size={16} />
@@ -1080,7 +1079,7 @@ const App = () => {
                 <span className="text-xs font-bold text-gray-700 tracking-wide uppercase">Precision over prediction.</span>
              </div>
           </motion.div>
-
+          
           <div className="grid md:grid-cols-3 gap-12">
             <MethodStep 
                step={1}
@@ -1242,7 +1241,7 @@ const App = () => {
           <LegalModal page={activeLegalPage} onClose={() => setActiveLegalPage(null)} />
         )}
       </AnimatePresence>
-
+      
       {/* Form Modal */}
       <AnimatePresence>
         {activeFormModal && (
