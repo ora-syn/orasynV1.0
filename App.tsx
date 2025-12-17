@@ -1012,7 +1012,7 @@ const App = () => {
           {/* RIGHT: The Solution (Focus) */}
           <div className="bg-gray-900/50 p-8 rounded-3xl border border-blue-500/30 shadow-[0_0_50px_rgba(59,130,246,0.15)] relative transform hover:scale-[1.02] transition-transform duration-300">
             <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl rounded-tr-3xl shadow-lg">
-              EFFICIENCY
+              EFFIZIENZ
             </div>
 
             <h3 className="text-2xl font-bold text-white border-b border-blue-500/30 pb-4 mb-8 flex items-center gap-2">
