@@ -6,15 +6,15 @@ import {
   LineChart, 
   Zap, 
   Menu, 
-  X, 
-  Layers, 
-  Lock, 
-  TrendingUp, 
-  Link as LinkIcon, 
-  Settings2, 
-  PlayCircle, 
-  Check, 
-  Clock, 
+  X,
+  Layers,
+  Lock,
+  TrendingUp,
+  Link as LinkIcon,
+  Settings2,
+  PlayCircle,
+  Check,
+  Clock,
   Users
 } from 'lucide-react';
 
@@ -33,8 +33,10 @@ const LogoIcon = () => (
 
 /**
  * Navigation Bar
+ * Sticky, exactly 80px height, premium backdrop blur.
+ * Layout: Logo Left, Links Center, Actions Right
  */
-const Navbar = ({ onOpenWaitlist }) => { // HIER WICHTIG: Kein ": { ... }" mehr (Typo-Fix)
+const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -46,6 +48,7 @@ const Navbar = ({ onOpenWaitlist }) => { // HIER WICHTIG: Kein ": { ... }" mehr 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Updated link logic to map German text to English IDs
   const navLinks = [
     { label: 'Funktionen', href: '#features' },
     { label: 'Methode', href: '#method' },
@@ -56,15 +59,17 @@ const Navbar = ({ onOpenWaitlist }) => { // HIER WICHTIG: Kein ": { ... }" mehr 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 h-[80px] flex items-center border-b ${isScrolled ? 'bg-white/80 border-gray-200 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60' : 'bg-white/0 border-transparent'}`}>
       <div className="max-w-[1400px] mx-auto px-6 w-full h-full flex items-center justify-between relative">
-        
+
         {/* Left: Logo Group */}
         <div className="flex items-center gap-3 z-20 relative">
           <a href="#" className="flex items-center gap-3 group">
             <img 
-              src="/logo-neu-cut.png.png"  // <--- HIER IST DEIN NEUES LOGO
-              alt="ORASYN Logo" 
-              className="h-[220px] w-auto object-contain" 
-            />
+    src="https://raw.githubusercontent.com/ora-syn/orasynV1.0/main/logo-final.png.png" 
+    alt="ORASYN Logo" 
+    // ÄNDERE HIER:
+    className="h-[220px] w-auto object-contain" 
+    // HINWEIS: WICHTIG IST W-AUTO, DAMIT DIE BREITE MITWACHST!
+/>
           </a>
         </div>
 
@@ -74,7 +79,7 @@ const Navbar = ({ onOpenWaitlist }) => { // HIER WICHTIG: Kein ": { ... }" mehr 
             <a 
               key={item.label} 
               href={item.href}
-              // HIER WAR DER FEHLER: Jetzt nur noch EIN className!
+              className="text-lg font-semibold text-gray-800 transition-colors hover:text-violet-600 px-4 py-2 rounded-full duration-200"
               className="text-lg font-semibold text-gray-500 transition-colors hover:text-black px-4 py-2 rounded-full duration-200"
             >
               {item.label}
@@ -144,7 +149,7 @@ const Navbar = ({ onOpenWaitlist }) => { // HIER WICHTIG: Kein ": { ... }" mehr 
 /**
  * Feature Card
  */
-const FeatureCard = ({ icon, title, description }) => (
+const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
   <motion.div 
     whileHover={{ y: -5 }}
     className="p-8 rounded-2xl bg-white border border-gray-200 shadow-sm hover:border-gray-300 hover:shadow-md transition-all duration-300"
@@ -160,7 +165,7 @@ const FeatureCard = ({ icon, title, description }) => (
 /**
  * Method Step Card
  */
-const MethodStep = ({ icon, title, description, step }) => (
+const MethodStep = ({ icon, title, description, step }: { icon: React.ReactNode, title: string, description: string, step: number }) => (
   <motion.div 
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -196,7 +201,7 @@ const CalendarMockup = () => {
   const hours = Array.from({ length: HOURS_COUNT }, (_, i) => START_HOUR + i);
 
   // Helper for absolute positioning with offset
-  const getEventStyle = (startHour, duration) => {
+  const getEventStyle = (startHour: number, duration: number) => {
     const top = (startHour - START_HOUR) * HOUR_HEIGHT + OFFSET_TOP;
     const height = duration * HOUR_HEIGHT;
     return { top: `${top}px`, height: `${height}px` };
@@ -270,7 +275,7 @@ const CalendarMockup = () => {
 
            {/* Grid Body */}
            <div className="flex-1 relative pt-10">
-              
+
               {/* Horizontal Lines */}
               {hours.map((h, i) => (
                 <div 
@@ -289,7 +294,7 @@ const CalendarMockup = () => {
 
               {/* EVENTS LAYER */}
               <div className="absolute inset-0 grid grid-cols-5 h-full">
-                 
+
                  {/* 1. MONDAY EVENT */}
                  <div className="relative h-full w-full">
                     <div 
@@ -373,12 +378,12 @@ const CalendarMockup = () => {
 
 // --- Form Modals ---
 
-const FormModal = ({ type, onClose }) => {
+const FormModal = ({ type, onClose }: { type: 'waitlist' | 'sales', onClose: () => void }) => {
   const isSales = type === 'sales';
   const title = isSales ? "Direkter Kontakt zum Enterprise-Team" : "Ihr Antrag auf Pilot-Zugang";
   const btnText = isSales ? "Senden & Validieren" : "Zugriff anfordern";
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Simulate sending with a slight delay for better UX
     setTimeout(() => {
@@ -458,7 +463,7 @@ const FormModal = ({ type, onClose }) => {
 
 // --- Legal Content Data ---
 
-const legalContent = {
+const legalContent: Record<string, { title: string; content: React.ReactNode }> = {
   kontakt: {
     title: "Kontakt",
     content: (
@@ -834,22 +839,25 @@ const legalContent = {
     title: "Impressum",
     content: (
       <div className="prose prose-sm max-w-none text-gray-600">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">Impressum</h1>
-        <p className="mb-4">
-            Samuele Francesco Franzé<br />
-            Orasyn<br />
-            Kurt-Schumacher-Stra&szlig;e 76<br />
-            c/o flexdienst - #12205<br />
-            67663 Kaiserslautern
-        </p>
-        <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Kontakt</h2>
-        <p className="mb-4">
-            Telefon: +49 (0) 176 42720313<br />
-            E-Mail: info@orasyn.de
-        </p>
-        <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h2>
-        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-      </div>
+    <h1 className="text-2xl font-bold text-gray-900 mb-4">Impressum</h1>
+
+    <p className="mb-4">
+        Samuele Francesco Franzé<br />
+        Orasyn<br />
+        Kurt-Schumacher-Stra&szlig;e 76<br />
+        c/o flexdienst - #12205<br />
+        67663 Kaiserslautern
+    </p>
+
+    <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Kontakt</h2>
+    <p className="mb-4">
+        Telefon: +49 (0) 176 42720313<br />
+        E-Mail: info@orasyn.de
+    </p>
+
+    <h2 className="text-lg font-bold text-gray-900 mt-6 mb-2">Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h2>
+    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+</div>
     )
   }
 };
@@ -857,7 +865,7 @@ const legalContent = {
 /**
  * Legal Overlay Modal
  */
-const LegalModal = ({ page, onClose }) => {
+const LegalModal = ({ page, onClose }: { page: string, onClose: () => void }) => {
   const content = legalContent[page];
 
   if (!content) return null;
@@ -903,8 +911,8 @@ const LegalModal = ({ page, onClose }) => {
 // --- Main App Component ---
 
 const App = () => {
-  const [activeLegalPage, setActiveLegalPage] = useState(null);
-  const [activeFormModal, setActiveFormModal] = useState(null);
+  const [activeLegalPage, setActiveLegalPage] = useState<string | null>(null);
+  const [activeFormModal, setActiveFormModal] = useState<'waitlist' | 'sales' | null>(null);
 
   // Prevent background scroll when modal is open
   useEffect(() => {
@@ -931,7 +939,7 @@ const App = () => {
         </div>
 
         <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-          
+
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -939,7 +947,7 @@ const App = () => {
             className="mb-8 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 bg-white/50 backdrop-blur-sm"
           >
             <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
-            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">ORASYN 1.0 IST LIVE</span>
+            <span className="text-sm font-bold text-gray-700 uppercase tracking-widest">ORASYN 1.0 IST LIVE</span>
           </motion.div>
 
           <motion.h1 
@@ -971,7 +979,7 @@ const App = () => {
             <motion.button 
               onClick={() => setActiveFormModal('waitlist')}
               whileTap={{ scale: 0.95 }}
-              className="bg-violet-600 text-white text-[15px] font-semibold px-8 py-4 rounded-full transition-all hover:bg-violet-500 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] hover:translate-y-[-1px] flex items-center gap-2"
+              className="bg-violet-600 text-white text-xl font-semibold px-12 py-5 rounded-xl transition-all hover:bg-violet-500 shadow-[0_0_25px_rgba(124,58,237,0.4)] hover:shadow-[0_0_40px_rgba(124,58,237,0.6)] hover:translate-y-[-1px] flex items-center gap-2"
             >
               Jetzt Demo anfordern
               <ArrowRight size={16} />
@@ -998,120 +1006,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- ROI / EFFICIENCY & FOCUS SECTION --- */}
-      <section id="roi" className="py-24 bg-black text-white relative border-t border-gray-900">
-        
-        {/* Headline */}
-        <div className="max-w-[1200px] mx-auto px-6 mb-16 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ihr Team wurde eingestellt um zu performen. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">Nicht um Kalender zu pflegen.</span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Wenn Experten administrative Aufgaben erledigen, verbrennt Ihr Unternehmen kein Geld – es verbrennt Potenzial.
-          </p>
-        </div>
-
-        <div className="max-w-[1000px] mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          
-          {/* LEFT: The Problem */}
-          <div className="space-y-8 opacity-70 hover:opacity-100 transition-opacity">
-            <h3 className="text-2xl font-semibold text-gray-400 border-b border-gray-800 pb-4">
-              ⚠️ Die Verwaltungs-Falle
-            </h3>
-            
-            {/* Graph 1 */}
-            <div>
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-400">Opportunitätskosten</span>
-                <span className="text-red-500 font-mono">Hoch (Teure Zeit verschwendet)</span>
-              </div>
-              <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-red-600 w-[90%] shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
-              </div>
-              <p className="text-[10px] text-gray-500 mt-1">Manager/Sales verbringen ~20% der Zeit mit Admin.</p>
-            </div>
-
-            {/* Graph 2 */}
-            <div>
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-400">Fokus-Verlust (Kontextwechsel)</span>
-                <span className="text-red-500 font-mono">Extrem</span>
-              </div>
-              <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-red-600 w-[100%]"></div>
-              </div>
-            </div>
-
-             {/* Graph 3 */}
-             <div>
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-400">Reaktionszeit auf Anfragen</span>
-                <span className="text-red-500 font-mono">Stunden bis Tage</span>
-              </div>
-              <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-red-600 w-[60%]"></div>
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT: The Solution */}
-          <div className="bg-gray-900/50 p-8 rounded-3xl border border-blue-500/30 shadow-[0_0_50px_rgba(59,130,246,0.15)] relative transform hover:scale-[1.02] transition-transform duration-300">
-            <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl rounded-tr-3xl shadow-lg">
-              EFFICIENCY
-            </div>
-
-            <h3 className="text-2xl font-bold text-white border-b border-blue-500/30 pb-4 mb-8 flex items-center gap-2">
-              ✅ Der Orasyn Standard
-            </h3>
-
-            {/* Graph 1 */}
-            <div className="mb-8">
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-300">Gewonnene Deep Work Zeit</span>
-                <span className="text-blue-400 font-mono font-bold text-lg">+ 15 Std. / Monat</span>
-              </div>
-              <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-blue-500 w-[95%] shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse"></div>
-              </div>
-              <p className="text-xs text-blue-400 mt-2 font-bold">Investieren Sie diese Zeit in Strategie & Umsatz.</p>
-            </div>
-
-            {/* Graph 2 */}
-            <div className="mb-8">
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-300">Termin-Koordination</span>
-                <span className="text-blue-400 font-mono font-bold">Autonom & Sofort</span>
-              </div>
-              <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-blue-500 w-[100%]"></div>
-              </div>
-            </div>
-
-            {/* Graph 3 */}
-            <div>
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-300">Kosten-Nutzen-Verhältnis</span>
-                <span className="text-blue-400 font-mono font-bold">149€ vs. 2000€ Wert</span>
-              </div>
-              <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-blue-500 w-[100%] shadow-[0_0_20px_rgba(59,130,246,0.4)]"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-16">
-          <button onClick={() => setActiveFormModal('waitlist')} className="group text-white font-semibold transition-colors bg-white/10 hover:bg-white/20 px-8 py-4 rounded-full border border-white/10">
-            <span className="mr-2">Fokus zurückgewinnen</span> 
-            <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
-          </button>
-          <p className="text-xs text-gray-500 mt-4">Machen Sie Ihr Team einfach effizienter.</p>
-        </div>
-      </section>
-
-      {/* --- Features Section --- */}
+      {/* --- Features Section (Updated ID to #features) --- */}
       <section id="features" className="py-32 relative">
          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white to-transparent pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -1169,7 +1064,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- Method Section --- */}
+      {/* --- Method Section (Updated ID to #method) --- */}
       <section id="method" className="py-32 bg-[#F9FAFB]/50 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
@@ -1185,7 +1080,7 @@ const App = () => {
                 <span className="text-xs font-bold text-gray-700 tracking-wide uppercase">Precision over prediction.</span>
              </div>
           </motion.div>
-          
+
           <div className="grid md:grid-cols-3 gap-12">
             <MethodStep 
                step={1}
@@ -1209,7 +1104,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- Pricing Section --- */}
+      {/* --- Pricing Section (Updated ID to #pricing) --- */}
       <section id="pricing" className="py-32 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
            <motion.div 
@@ -1286,7 +1181,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- Closer Section --- */}
+      {/* --- Closer Section (Inserted) --- */}
       <section id="closer" className="py-32 border-t border-gray-200 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
@@ -1319,7 +1214,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- Footer --- */}
+      {/* --- Footer (Updated) --- */}
       <footer className="py-12 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
@@ -1347,7 +1242,7 @@ const App = () => {
           <LegalModal page={activeLegalPage} onClose={() => setActiveLegalPage(null)} />
         )}
       </AnimatePresence>
-      
+
       {/* Form Modal */}
       <AnimatePresence>
         {activeFormModal && (
