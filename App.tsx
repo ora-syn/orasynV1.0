@@ -829,6 +829,16 @@ const legalContent: Record<string, { title: string; content: React.ReactNode }> 
         <p>8.3 Der Auftraggeber wird den Auftragnehmer bei der Erbringung seiner vertragsgemäßen Leistungen durch angemessene Mitwirkungshandlungen, soweit erforderlich, fördern. Der Auftraggeber wird insbesondere dem Auftragnehmer die zur Erfüllung des Auftrags erforderlichen Informationen und Daten zur Verfügung stellen.</p>
         <p>8.4 Sofern der Auftraggeber Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist oder keinen allgemeinen Gerichtsstand in Deutschland hat, vereinbaren die Parteien den Sitz des Auftragnehmers als Gerichtsstand für sämtliche Streitigkeiten aus diesem Vertragsverhältnis; ausschließliche Gerichtsstände bleiben hiervon unberührt.</p>
         <p>8.5 Der Auftragnehmer ist berechtigt, diese AGB aus sachlich gerechtfertigten Gründen (z. B. Änderungen in der Rechtsprechung, Gesetzeslage, Marktgegebenheiten oder der Geschäfts- oder Unternehmensstrategie) und unter Einhaltung einer angemessenen Frist zu ändern. Bestandskunden werden hierüber spätestens zwei Wochen vor Inkrafttreten der Änderung per E-Mail benachrichtigt. Sofern der Bestandskunde nicht innerhalb der in der Änderungsmitteilung gesetzten Frist widerspricht, gilt seine Zustimmung zur Änderung als erteilt. Widerspricht er, treten die Änderungen nicht in Kraft; Auftragnehmer ist in diesem Fall berechtigt, den Vertrag zum Zeitpunkt des Inkrafttretens der Änderung außerordentlich zu kündigen. Die Benachrichtigung über die beabsichtigte Änderung dieser AGB wird auf die Frist und die Folgen des Widerspruchs oder seines Ausbleibens hinweisen.</p>
+      
+        <hr className="my-8 border-gray-300" />
+
+        <h2 className="text-xl font-bold text-gray-800 mt-8 mb-4">Zusatzvereinbarung: Freiwillige Zufriedenheitsgarantie</h2>
+        <p>
+          Unabhängig von den oben genannten Allgemeinen Geschäftsbedingungen gewährt der Auftragnehmer für den Tarif "Professional" folgende freiwillige Zusatzleistung:
+        </p>
+        <p>
+          Sollte der Auftraggeber innerhalb der ersten 30 Tage nach Vertragsabschluss mit den Leistungen nicht zufrieden sein, kann er den Vertrag formlos (per E-Mail an info@orasyn.de) kündigen und erhält die volle Höhe der bereits gezahlten ersten Monatsgebühr erstattet. Mit der Erstattung endet das Nutzungsrecht an der Software sofort. Diese Garantie gilt einmalig pro Neukunde.
+        </p>
       </div>
     )
   },
