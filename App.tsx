@@ -925,7 +925,7 @@ const App = () => {
             <motion.button 
               onClick={() => setActiveFormModal('waitlist')}
               whileTap={{ scale: 0.95 }}
-              className="bg-violet-600 text-white text-[15px] font-semibold px-8 py-4 rounded-full transition-all hover:bg-violet-500 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] hover:translate-y-[-1px] flex items-center gap-2"
+              className="bg-violet-600 text-white text-[15px] font-semibold px-10 py-5 rounded-full transition-all hover:bg-violet-500 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] hover:translate-y-[-1px] flex items-center gap-2"
             >
               Jetzt Demo anfordern
               <ArrowRight size={16} />
