@@ -962,7 +962,7 @@ const App = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">Nicht um Kalender zu pflegen.</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Wenn Experten administrative Aufgaben erledigen, verbrennt Ihr Unternehmen kein Geld – es verbrennt Potenzial.
+            Jede Minute im administrativen Chaos ist eine Minute, die Ihrem Team für Innovation und Wachstum fehlt.
           </p>
         </div>
 
@@ -978,18 +978,18 @@ const App = () => {
             <div>
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-400">Opportunitätskosten</span>
-                <span className="text-red-500 font-mono">Hoch (Teure Zeit verschwendet)</span>
+                <span className="text-red-500 font-mono">Massiv (Umsatz fehlt)</span>
               </div>
               <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
                 <div className="h-full bg-red-600 w-[90%] shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
               </div>
-              <p className="text-[10px] text-gray-500 mt-1">Manager/Sales verbringen ~20% der Zeit mit Admin.</p>
+              <p className="text-[10px] text-gray-500 mt-1">Sales & Management verlieren ~20% Kapazität</p>
             </div>
 
             {/* Graph 2: Context Switching */}
             <div>
               <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-400">Fokus-Verlust (Kontextwechsel)</span>
+                <span className="text-gray-400">Fokus-Killer (Kontextwechsel)</span>
                 <span className="text-red-500 font-mono">Extrem</span>
               </div>
               <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
@@ -1023,7 +1023,7 @@ const App = () => {
             <div className="mb-8">
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-300">Gewonnene Deep Work Zeit</span>
-                <span className="text-blue-400 font-mono font-bold text-lg">+ 15 Std. / Monat</span>
+                <span className="text-blue-400 font-mono font-bold text-lg">Ø 15 Std. / Monat</span>
               </div>
               <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
                 <div className="h-full bg-blue-500 w-[95%] shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse"></div>
@@ -1045,7 +1045,7 @@ const App = () => {
             {/* Graph 3: Cost Ratio */}
             <div>
               <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-300">Kosten-Nutzen-Verhältnis</span>
+                <span className="text-gray-300">Return on Invest (ROI)</span>
                 <span className="text-blue-400 font-mono font-bold">149€ vs. 2000€ Wert</span>
               </div>
               <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
