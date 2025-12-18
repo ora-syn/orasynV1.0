@@ -890,10 +890,16 @@ const App = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-8 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 bg-white/50 backdrop-blur-sm"
+            // HIER GEÄNDERT: Mehr Platz (px-5 py-2) und größerer Abstand (gap-3)
+            className="mb-8 inline-flex items-center gap-3 px-5 py-2 rounded-full border border-gray-200 bg-white/50 backdrop-blur-sm"
           >
-            <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
-            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">ORASYN 1.0 IST LIVE</span>
+            {/* HIER GEÄNDERT: Punkt etwas größer (h-3 w-3) */}
+            <span className="flex h-3 w-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.4)]"></span>
+            
+            {/* HIER GEÄNDERT: Textgröße auf 'text-sm' (14px) statt 11px und Farbe etwas dunkler für Lesbarkeit */}
+            <span className="text-sm font-bold text-gray-600 uppercase tracking-widest">
+              ORASYN 1.0 IST LIVE
+            </span>
           </motion.div>
 
           <motion.h1 
