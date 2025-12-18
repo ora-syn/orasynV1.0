@@ -983,7 +983,7 @@ const App = () => {
               <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
                 <div className="h-full bg-red-600 w-[90%] shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
               </div>
-              <p className="text-[10px] text-gray-500 mt-1">Sales & Management verlieren ~20% Kapazität</p>
+              <p className="text-[10px] text-gray-500 mt-2 font-bold">Sales & Management verlieren ~20% Kapazität</p>
             </div>
 
             {/* Graph 2: Context Switching */}
