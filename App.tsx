@@ -89,7 +89,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
           <motion.button 
             onClick={onOpenWaitlist}
             whileTap={{ scale: 0.95 }}
-            className="bg-black text-white text-lg font-semibold px-6 py-2 rounded-xl hover:bg-gray-800 transition-all hover:shadow-lg shadow-purple-500/10"
+            className="bg-black text-white text-lg font-semibold px-8 py-3 rounded-xl hover:bg-gray-800 transition-all hover:shadow-lg shadow-purple-500/10"
           >
             Starten
           </motion.button>
