@@ -1294,6 +1294,21 @@ const App = () => {
                 </button>
              </motion.div>
           </div>
+
+          {/* --- HIER FÜGST DU DEN NEUEN GARANTIE-BLOCK EIN --- */}
+          <div className="mt-16 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 border border-green-200 rounded-full text-green-800 text-sm font-bold mb-4">
+              <Check size={16} strokeWidth={3} />
+              100% Risikofrei
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              Unsere "Zero-Risk" Garantie
+            </h3>
+            <p className="text-gray-500 max-w-xl mx-auto leading-relaxed">
+              Testen Sie Orasyn im Pilot-Programm. Wenn Sie in den ersten 30 Tagen nicht spürbar mehr Zeit für Deep Work gewinnen, erstatten wir Ihnen 100% des Preises. Keine Fragen, keine Diskussion.
+            </p>
+          </div>
+          {/* --- ENDE GARANTIE BLOCK --- */}
         </div>
       </section>
 
