@@ -52,7 +52,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   const navLinks = [
     { label: 'Funktionen', href: '#features' },
     { label: 'Profit', href: '#roi' },
-    { label: 'Lösungen', href: '#solutions' },
+    { label: 'Lösungen', href: '#method' },
     { label: 'Preise', href: '#pricing' }
   ];
 
