@@ -1262,6 +1262,11 @@ const App = () => {
                 >
                    Warteliste beitreten
                 </button>
+
+               {/* HIER DER MICRO-TEXT */}
+                <p className="text-xs text-center text-gray-400 mt-3 font-medium">
+                  Inkl. 30 Tage Geld-zurück-Garantie
+                </p>
              </motion.div>
 
              {/* Enterprise Card */}
