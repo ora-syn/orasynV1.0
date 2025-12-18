@@ -373,19 +373,56 @@ const CalendarMockup = () => {
   );
 }
 
-// --- Form Modals ---
+// --- Form Modals (Connected to Make.com) ---
 
 const FormModal = ({ type, onClose }: { type: 'waitlist' | 'sales', onClose: () => void }) => {
   const isSales = type === 'sales';
   const title = isSales ? "Direkter Kontakt zum Enterprise-Team" : "Ihr Antrag auf Pilot-Zugang";
   const btnText = isSales ? "Senden & Validieren" : "Zugriff anfordern";
+  
+  // Status für Lade-Animation und Erfolgsmeldung
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // DEINE LIVE URL:
+  const WEBHOOK_URL = "https://hook.eu1.make.com/3a0jva1xmrvdvi91dtcpgravp39acap2"; 
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Simulate sending with a slight delay for better UX
-    setTimeout(() => {
-      onClose();
-    }, 800);
+    setStatus('submitting');
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    // Das Datenpaket für Make
+    const payload = {
+      ...data,
+      source: isSales ? 'Enterprise Sales' : 'Waitlist',
+      timestamp: new Date().toISOString(),
+      page: window.location.href
+    };
+
+    try {
+      // Senden an Make
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        // Schließen nach 3 Sekunden
+        setTimeout(() => {
+          onClose();
+          setStatus('idle');
+        }, 3000);
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+    }
   };
 
   return (
@@ -411,48 +448,76 @@ const FormModal = ({ type, onClose }: { type: 'waitlist' | 'sales', onClose: () 
           <X size={20} />
         </button>
 
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 pr-8 tracking-tight">{title}</h2>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1">Name</label>
-            <input 
-              type="text" 
-              required
-              placeholder={isSales ? "Max Mustermann" : "Ihr vollständiger Name"}
-              className="w-full bg-gray-50/50 border border-gray-100 focus:border-gray-300 rounded-lg px-4 py-3 text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:bg-white focus:shadow-sm"
-            />
-          </div>
-
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1">E-Mail</label>
-            <input 
-              type="email" 
-              required
-              placeholder="max@firma.de"
-              className="w-full bg-gray-50/50 border border-gray-100 focus:border-gray-300 rounded-lg px-4 py-3 text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:bg-white focus:shadow-sm"
-            />
-          </div>
-
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1">Firma</label>
-            <input 
-              type="text" 
-              required
-              placeholder="Unternehmen GmbH"
-              className="w-full bg-gray-50/50 border border-gray-100 focus:border-gray-300 rounded-lg px-4 py-3 text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:bg-white focus:shadow-sm"
-            />
-          </div>
-
-          <div className="pt-4">
-            <button 
-              type="submit"
-              className="w-full bg-black text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl active:scale-[0.98]"
+        {status === 'success' ? (
+          <div className="text-center py-10">
+            <motion.div 
+              initial={{ scale: 0 }} 
+              animate={{ scale: 1 }}
+              className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4"
             >
-              {btnText}
-            </button>
+              <Check size={32} strokeWidth={3} />
+            </motion.div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Daten empfangen!</h3>
+            <p className="text-gray-500">Wir haben Ihre Anfrage erfolgreich gespeichert.</p>
           </div>
-        </form>
+        ) : (
+          <>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 pr-8 tracking-tight">{title}</h2>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1">Name</label>
+                <input 
+                  name="name" 
+                  type="text" 
+                  required
+                  placeholder={isSales ? "Max Mustermann" : "Ihr vollständiger Name"}
+                  className="w-full bg-gray-50/50 border border-gray-100 focus:border-gray-300 rounded-lg px-4 py-3 text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:bg-white focus:shadow-sm"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1">E-Mail</label>
+                <input 
+                  name="email" 
+                  type="email" 
+                  required
+                  placeholder="max@firma.de"
+                  className="w-full bg-gray-50/50 border border-gray-100 focus:border-gray-300 rounded-lg px-4 py-3 text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:bg-white focus:shadow-sm"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1">Firma</label>
+                <input 
+                  name="company" 
+                  type="text" 
+                  required
+                  placeholder="Unternehmen GmbH"
+                  className="w-full bg-gray-50/50 border border-gray-100 focus:border-gray-300 rounded-lg px-4 py-3 text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:bg-white focus:shadow-sm"
+                />
+              </div>
+
+              <div className="pt-4">
+                <button 
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="w-full bg-black text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {status === 'submitting' ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      Connecting to Orasyn...
+                    </>
+                  ) : btnText}
+                </button>
+                {status === 'error' && (
+                  <p className="text-red-500 text-xs text-center mt-3">Verbindungsfehler. Bitte versuchen Sie es später.</p>
+                )}
+              </div>
+            </form>
+          </>
+        )}
       </motion.div>
     </motion.div>
   );
