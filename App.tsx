@@ -47,7 +47,7 @@ const LiveBar = () => {
       </span>
 
       <span>
-        🚀 Die Zukunft deines Kalenders beginnt jetzt
+        🚀 Die Zukunft deines Kalenders beginnt jetzt!
       </span>
 
       <span style={{ letterSpacing: '0.12em', textTransform: 'uppercase' }}>
@@ -60,7 +60,7 @@ const LiveBar = () => {
     <div
       style={{
         backgroundColor: '#111827',
-        height: '80px',
+        height: '44px',
         overflow: 'hidden',
         width: '100%',
         display: 'flex',
@@ -94,7 +94,7 @@ const LiveBar = () => {
         {`
           @keyframes livebar-scroll {
             from {
-              transform: translateX(-50%);
+              transform: translateX(-40%);
             }
             to {
               transform: translateX(0%);
