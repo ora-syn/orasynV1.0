@@ -25,36 +25,38 @@ import {
  */
 const LiveBar = () => {
   return (
-    <div className="w-full overflow-hidden bg-[#0F1115] text-gray-300 text-sm font-medium">
-      <div className="relative flex whitespace-nowrap">
+    <div className="w-full overflow-hidden bg-[#0F1115] border-b border-white/5">
+      <div className="relative h-[56px] flex items-center">
         <motion.div
-          className="flex"
-          animate={{ x: ["0%", "-50%"] }}
+          className="absolute left-0 top-0 flex h-full items-center whitespace-nowrap"
+          animate={{ x: ["-50%", "0%"] }}   // 👉 NACH RECHTS
           transition={{
             ease: "linear",
-            duration: 30,
+            duration: 40,
             repeat: Infinity,
           }}
         >
-          {/* DUPLIKAT-TRACK */}
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex">
-              <span className="mx-14 flex items-center gap-2">
-                <span className="text-emerald-400">●</span>
-                <span className="font-semibold tracking-tight">
+          {/* TRACK – EXAKT DOPPELT */}
+          <div className="flex">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center">
+                
+                <span className="mx-16 flex items-center gap-3 text-sm font-medium text-gray-300">
+                  <span className="text-emerald-400 text-base">●</span>
                   ORASYN 1.0 IST LIVE
                 </span>
-              </span>
 
-              <span className="mx-14 tracking-tight text-gray-400">
-                Die Zukunft deines Kalenders beginnt jetzt
-              </span>
+                <span className="mx-16 text-sm font-medium text-gray-300">
+                  Die Zukunft deines Kalenders beginnt jetzt!
+                </span>
 
-              <span className="mx-14 uppercase tracking-widest text-gray-500">
-                🇩🇪 Designed in Germany
-              </span>
-            </div>
-          ))}
+                <span className="mx-16 flex items-center gap-2 text-sm font-medium text-gray-300 uppercase tracking-wide">
+                  🇩🇪 DESIGNED IN GERMANY
+                </span>
+
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </div>
