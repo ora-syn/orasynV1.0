@@ -28,7 +28,7 @@ const LiveBar = () => {
     <div
       style={{
         backgroundColor: '#111827',
-        height: '64px',
+        height: '50px',
         overflow: 'hidden',
         width: '100%',
         borderBottom: '1px solid rgba(255,255,255,0.05)',
@@ -60,11 +60,11 @@ const LiveBar = () => {
             </span>
 
             <span style={{ marginRight: '64px' }}>
-              Die Zukunft deines Kalenders beginnt jetzt 🚀
+              🚀Die Zukunft deines Kalenders beginnt jetzt!
             </span>
 
             <span style={{ letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              🇩🇪 DESIGNED IN GERMANY
+              🇩🇪 Designed in Germany.
             </span>
           </div>
         ))}
