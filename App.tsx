@@ -25,38 +25,38 @@ import {
  */
 const LiveBar = () => {
   return (
-    <div className="w-full overflow-hidden bg-gray-900 text-white text-sm font-medium">
-      <motion.div
-        className="flex w-max"
-        animate={{ x: ["0%", "50%"] }}
-        transition={{
-          repeat: Infinity,
-          ease: "linear",
-          duration: 35,
-        }}
-      >
-        {[...Array(2)].map((_, loopIndex) => (
-          <div key={loopIndex} className="flex">
-            {/* ITEM 1 */}
-            <span className="mx-12 py-2 flex items-center gap-2 whitespace-nowrap">
-              <span className="text-emerald-400">●</span>
-              <span className="font-semibold tracking-tight">
-                ORASYN 1.0 IST LIVE
+    <div className="w-full overflow-hidden bg-[#0F1115] text-gray-300 text-sm font-medium">
+      <div className="relative flex whitespace-nowrap">
+        <motion.div
+          className="flex"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            ease: "linear",
+            duration: 30,
+            repeat: Infinity,
+          }}
+        >
+          {/* DUPLIKAT-TRACK */}
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex">
+              <span className="mx-14 flex items-center gap-2">
+                <span className="text-emerald-400">●</span>
+                <span className="font-semibold tracking-tight">
+                  ORASYN 1.0 IST LIVE
+                </span>
               </span>
-            </span>
 
-            {/* ITEM 2 */}
-            <span className="mx-12 py-2 whitespace-nowrap text-gray-300 tracking-tight">
-              Die Zukunft deines Kalenders beginnt jetzt!
-            </span>
+              <span className="mx-14 tracking-tight text-gray-400">
+                Die Zukunft deines Kalenders beginnt jetzt
+              </span>
 
-            {/* ITEM 3 */}
-            <span className="mx-12 py-2 whitespace-nowrap text-gray-400 tracking-widest uppercase">
-              🇩🇪 Designed in Germany
-            </span>
-          </div>
-        ))}
-      </motion.div>
+              <span className="mx-14 uppercase tracking-widest text-gray-500">
+                🇩🇪 Designed in Germany
+              </span>
+            </div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 };
