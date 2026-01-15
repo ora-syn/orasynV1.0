@@ -28,9 +28,11 @@ const LiveBar = () => {
     <div
       style={{
         backgroundColor: '#111827',
-        height: '50px',
+        height: '44px',
         overflow: 'hidden',
         width: '100%',
+        display: 'flex',
+        alignItems: 'center',
         borderBottom: '1px solid rgba(255,255,255,0.05)',
       }}
     >
@@ -51,6 +53,8 @@ const LiveBar = () => {
               paddingRight: '120px',
               fontSize: '14px',
               fontWeight: 500,
+              letterSpacing: '0.02em',
+              lineHeight: 1,
               color: '#D1D5DB',
             }}
           >
