@@ -50,47 +50,29 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
 
   // Updated link logic to map German text to English IDs
   const navLinks = [
-  { label: 'Funktionen', href: '#features' },
-  { label: 'Lösungen', href: '#method' },
-  { label: 'Mission', href: '#mission' },
-  { label: 'Preise', href: '#pricing' }
-];
+    { label: 'Funktionen', href: '#features' },
+    { label: 'Profit', href: '#roi' },
+    { label: 'Lösungen', href: '#method' },
+    { label: 'Preise', href: '#pricing' }
+  ];
 
   return (
-  <>
-    {/* --- LIVE BAR --- */}
-    <div className="fixed top-[40px] w-full z-[60] bg-black text-white text-sm font-bold overflow-hidden">
-      <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: '-100%' }}
-        transition={{ repeat: Infinity, duration: 18, ease: 'linear' }}
-        className="whitespace-nowrap py-2 flex items-center gap-6"
-      >
-        <span className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-green-500"></span>
-          ORASYN 1.0 IST LIVE
-        </span>
-        <span>• Autonomer Kalender-Agent für Deep Work</span>
-        <span>• Schützt Fokuszeiten. Skaliert Produktivität.</span>
-      </motion.div>
-    </div>
-    
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 h-[80px] flex items-center border-b ${isScrolled ? 'bg-white/80 border-gray-200 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60' : 'bg-white/0 border-transparent'}`}>
       <div className="max-w-[1400px] mx-auto px-6 w-full h-full flex items-center justify-between relative">
         
-        {/* Center: Logo */}
-<div className="absolute left-1/2 top-4 transform -translate-x-1/2 z-20">
-  <a href="#" className="flex flex-col items-center gap-2">
-    <img
-      src="https://github.com/ora-syn/orasynV1.0/blob/main/logo-neu-cut.png.png?raw=true"
-      alt="ORASYN Logo"
-      className="h-[56px] w-auto object-contain"
-    />
-  </a>
-</div>
+        {/* Left: Logo Group */}
+        <div className="flex items-center gap-3 z-20 relative">
+          <a href="#" className="flex items-center gap-3 group">
+            <img 
+              src="https://github.com/ora-syn/orasynV1.0/blob/main/logo-neu-cut.png.png?raw=true" 
+              alt="ORASYN Logo" 
+              className="h-[60px] w-auto object-contain" 
+            />
+          </a>
+        </div>
 
-        {/* Navigation under Logo */}
-<div className="hidden md:flex absolute left-1/2 top-[88px] transform -translate-x-1/2 items-center gap-6">
+        {/* Center: Links (Absolutely Centered) */}
+        <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 items-center gap-1">
           {navLinks.map((item) => (
             <a 
               key={item.label} 
