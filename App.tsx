@@ -78,8 +78,6 @@ const LiveBar = () => {
   );
 };
 
-export default LiveBar;
-
 /**
  * Logo Component for Footer/Icons where the image isn't used
  */
