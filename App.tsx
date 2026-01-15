@@ -25,7 +25,8 @@ import {
  */
 const LiveBar = () => {
   return (
-    <div className="w-full overflow-hidden bg-[#0F1115] border-b border-white/5">
+    <div className="w-full overflow-hidden bg-gradient-to-r from-[#0F1115] via-[#171A21] to-[#0F1115]
+ border-b border-white/5">
       <div className="relative h-[30px] flex items-center">
         <motion.div
           className="absolute left-0 top-0 flex h-full items-center whitespace-nowrap"
