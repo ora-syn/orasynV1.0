@@ -24,28 +24,37 @@ import {
  * LIVEBAR UPDATE 1
  */
 const LiveBar = () => {
-  const messages = [
-    "ORASYN 1.0 IST LIVE",
-    "Die Zukunft deines Kalenders beginnt jetzt",
-    "🇩🇪 DESIGNED IN GERMANY",
-  ];
-
   return (
-    <div className="w-full overflow-hidden bg-gray-950 text-white text-sm font-medium">
+    <div className="w-full overflow-hidden bg-gray-900 text-white text-sm font-medium">
       <motion.div
-        className="flex whitespace-nowrap"
-        animate={{ x: ["0%", "-50%"] }}
+        className="flex w-max"
+        animate={{ x: ["0%", "50%"] }}
         transition={{
           repeat: Infinity,
           ease: "linear",
-          duration: 28,
+          duration: 35,
         }}
       >
-        {[...messages, ...messages].map((msg, i) => (
-          <span key={i} className="mx-6 py-2 block">
-            <span className="text-emerald-400">●</span>{" "}
-            <span className="italic tracking-tight">{msg}</span>
-          </span>
+        {[...Array(2)].map((_, loopIndex) => (
+          <div key={loopIndex} className="flex">
+            {/* ITEM 1 */}
+            <span className="mx-12 py-2 flex items-center gap-2 whitespace-nowrap">
+              <span className="text-emerald-400">●</span>
+              <span className="font-semibold tracking-tight">
+                ORASYN 1.0 IST LIVE
+              </span>
+            </span>
+
+            {/* ITEM 2 */}
+            <span className="mx-12 py-2 whitespace-nowrap text-gray-300 tracking-tight">
+              Die Zukunft deines Kalenders beginnt jetzt!
+            </span>
+
+            {/* ITEM 3 */}
+            <span className="mx-12 py-2 whitespace-nowrap text-gray-400 tracking-widest uppercase">
+              🇩🇪 Designed in Germany
+            </span>
+          </div>
         ))}
       </motion.div>
     </div>
