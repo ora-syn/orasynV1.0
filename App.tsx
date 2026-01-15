@@ -23,46 +23,62 @@ import {
 /**
  * LIVEBAR UPDATE 1
  */
+import { motion } from "framer-motion";
+
 const LiveBar = () => {
+  const items = [
+    <>
+      <span className="flex items-center gap-3">
+        <span className="text-emerald-400 text-base">●</span>
+        ORASYN 1.0 IST LIVE
+      </span>
+    </>,
+    <>
+      <span className="flex items-center gap-3">
+        Die Zukunft deines Kalenders beginnt jetzt
+        <span>🚀</span>
+      </span>
+    </>,
+    <>
+      <span className="flex items-center gap-2 uppercase tracking-wide">
+        🇩🇪 DESIGNED IN GERMANY
+      </span>
+    </>,
+  ];
+
   return (
-    <div className="w-full overflow-hidden bg-gradient-to-r from-[#0F1115] via-[#171A21] to-[#0F1115]
- border-b border-white/5">
-      <div className="relative h-[30px] flex items-center">
+    <div className="w-full overflow-hidden bg-[#111827] border-b border-white/5">
+      <div className="h-[64px] flex items-center">
         <motion.div
-          className="absolute left-0 top-0 flex h-full items-center whitespace-nowrap"
-          animate={{ x: ["-50%", "0%"] }}   // 👉 NACH RECHTS
+          className="flex whitespace-nowrap"
+          animate={{ x: [0, 2000] }} // 👉 NACH RECHTS, feste Strecke
           transition={{
-            ease: "linear",
-            duration: 80,
             repeat: Infinity,
+            repeatType: "loop",
+            duration: 40,
+            ease: "linear",
           }}
         >
-          {/* TRACK – EXAKT DOPPELT */}
-          <div className="flex">
-            {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex items-center">
-                
-                <span className="mx-16 flex items-center gap-3 text-sm font-medium text-gray-300">
-                  <span className="text-emerald-400 text-base">●</span>
-                  ORASYN 1.0 IST LIVE
+          {/* Track x4 = niemals leer */}
+          {[...Array(4)].map((_, loopIndex) => (
+            <div key={loopIndex} className="flex">
+              {items.map((item, i) => (
+                <span
+                  key={`${loopIndex}-${i}`}
+                  className="mx-20 text-sm font-medium text-gray-300 flex items-center"
+                >
+                  {item}
                 </span>
-
-                <span className="mx-16 text-sm font-medium text-gray-300">
-                  Die Zukunft deines Kalenders beginnt jetzt!
-                </span>
-
-                <span className="mx-16 flex items-center gap-2 text-sm font-medium text-gray-300 uppercase tracking-wide">
-                  🇩🇪 DESIGNED IN GERMANY
-                </span>
-
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ))}
         </motion.div>
       </div>
     </div>
   );
 };
+
+export default LiveBar;
 
 /**
  * Logo Component for Footer/Icons where the image isn't used
