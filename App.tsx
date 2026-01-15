@@ -94,7 +94,7 @@ const LiveBar = () => {
         {`
           @keyframes livebar-scroll {
             from {
-              transform: translateX(-40%);
+              transform: translateX(-35%);
             }
             to {
               transform: translateX(0%);
