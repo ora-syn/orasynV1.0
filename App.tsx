@@ -21,6 +21,38 @@ import {
 // --- Components --- Test!
 
 /**
+ * LIVEBAR UPDATE 1
+ */
+const LiveBar = () => {
+  const messages = [
+    "ORASYN 1.0 IST LIVE",
+    "Die Zukunft deines Kalenders beginnt jetzt",
+    "🇩🇪 DESIGNED IN GERMANY",
+  ];
+
+  return (
+    <div className="w-full overflow-hidden bg-gray-950 text-white text-sm font-medium">
+      <motion.div
+        className="flex whitespace-nowrap"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{
+          repeat: Infinity,
+          ease: "linear",
+          duration: 28,
+        }}
+      >
+        {[...messages, ...messages].map((msg, i) => (
+          <span key={i} className="mx-6 py-2 block">
+            <span className="text-emerald-400">●</span>{" "}
+            <span className="italic tracking-tight">{msg}</span>
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
+/**
  * Logo Component for Footer/Icons where the image isn't used
  */
 const LogoIcon = () => (
@@ -1000,6 +1032,7 @@ const App = () => {
     <div 
       className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"
     >
+      <LiveBar />
       <Navbar onOpenWaitlist={() => setActiveFormModal('waitlist')} />
 
       {/* --- Hero Section --- */}
