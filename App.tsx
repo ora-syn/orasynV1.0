@@ -23,57 +23,66 @@ import {
 /**
  * LIVEBAR UPDATE 1
  */
-import { motion } from "framer-motion";
-
 const LiveBar = () => {
-  const items = [
-    <>
-      <span className="flex items-center gap-3">
-        <span className="text-emerald-400 text-base">●</span>
-        ORASYN 1.0 IST LIVE
-      </span>
-    </>,
-    <>
-      <span className="flex items-center gap-3">
-        Die Zukunft deines Kalenders beginnt jetzt
-        <span>🚀</span>
-      </span>
-    </>,
-    <>
-      <span className="flex items-center gap-2 uppercase tracking-wide">
-        🇩🇪 DESIGNED IN GERMANY
-      </span>
-    </>,
-  ];
-
   return (
-    <div className="w-full overflow-hidden bg-[#111827] border-b border-white/5">
-      <div className="h-[64px] flex items-center">
-        <motion.div
-          className="flex whitespace-nowrap"
-          animate={{ x: [0, 2000] }} // 👉 NACH RECHTS, feste Strecke
-          transition={{
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 40,
-            ease: "linear",
-          }}
-        >
-          {/* Track x4 = niemals leer */}
-          {[...Array(4)].map((_, loopIndex) => (
-            <div key={loopIndex} className="flex">
-              {items.map((item, i) => (
-                <span
-                  key={`${loopIndex}-${i}`}
-                  className="mx-20 text-sm font-medium text-gray-300 flex items-center"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          ))}
-        </motion.div>
+    <div
+      style={{
+        backgroundColor: '#111827',
+        height: '64px',
+        overflow: 'hidden',
+        width: '100%',
+        borderBottom: '1px solid rgba(255,255,255,0.05)',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          width: 'max-content',
+          animation: 'livebar-move 35s linear infinite',
+        }}
+      >
+        {[1, 2, 3].map((_, i) => (
+          <div
+            key={i}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              whiteSpace: 'nowrap',
+              paddingRight: '120px',
+              fontSize: '14px',
+              fontWeight: 500,
+              color: '#D1D5DB',
+            }}
+          >
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px', marginRight: '64px' }}>
+              <span style={{ color: '#34D399' }}>●</span>
+              ORASYN 1.0 IST LIVE
+            </span>
+
+            <span style={{ marginRight: '64px' }}>
+              Die Zukunft deines Kalenders beginnt jetzt 🚀
+            </span>
+
+            <span style={{ letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              🇩🇪 DESIGNED IN GERMANY
+            </span>
+          </div>
+        ))}
       </div>
+
+      {/* Inline Keyframes – NUR für diese Komponente */}
+      <style>
+        {`
+          @keyframes livebar-move {
+            from {
+              transform: translateX(-33%);
+            }
+            to {
+              transform: translateX(0%);
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
