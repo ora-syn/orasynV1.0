@@ -127,12 +127,23 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  let lastScrollY = window.scrollY;
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY < lastScrollY) {
+      setIsScrolled(true);   // Hochscrollen → zeigen
+    } else {
+      setIsScrolled(false);  // Runterscrollen → ausblenden
+    }
+
+    lastScrollY = currentScrollY;
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
 
   // Updated link logic to map German text to English IDs
   const navLinks = [
@@ -149,12 +160,14 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
     ? 'bg-white/90 backdrop-blur-xl border-gray-200'
     : 'bg-white border-transparent'}
   `}
-  style={{ top: '48px' }}   // 👈 DAS ist der Key
->
+  style={{
+  top: isScrolled ? '48px' : '-120px',
+}}
+
       <div className="max-w-[1400px] mx-auto px-6 w-full h-full flex items-center justify-between relative">
         
         {/* Center: Logo */}
-<div className="absolute left-1/2 top-[14px] transform -translate-x-1/2 z-20">
+<div className="hidden md:flex absolute left-1/2 bottom-[12px] transform -translate-x-1/2 items-center gap-6">
   <a href="#" className="flex justify-center">
     <img 
       src="https://github.com/ora-syn/orasynV1.0/blob/main/logo-neu-cut.png.png?raw=true" 
