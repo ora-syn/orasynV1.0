@@ -165,31 +165,33 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
     }}
   >
 
-      <div className="max-w-[1400px] mx-auto px-6 w-full h-full flex items-center justify-between relative">
+      <div className="max-w-[1400px] mx-auto px-6 w-full h-full grid grid-cols-3 items-center">
         
         {/* Center: Logo */}
-<div className="hidden md:flex absolute left-1/2 bottom-[12px] transform -translate-x-1/2 items-center gap-6">
+<div className="flex flex-col items-center justify-center gap-2">
+  {/* Logo */}
   <a href="#" className="flex justify-center">
-    <img 
-      src="https://github.com/ora-syn/orasynV1.0/blob/main/logo-neu-cut.png.png?raw=true" 
-      alt="ORASYN Logo" 
-      className="h-[56px] w-auto object-contain"
+    <img
+      src="https://github.com/ora-syn/orasynV1.0/blob/main/logo-neu-cut.png.png?raw=true"
+      alt="ORASYN Logo"
+      className="h-[52px] w-auto object-contain"
     />
   </a>
+
+  {/* Links */}
+  <div className="flex items-center gap-6">
+    {navLinks.map((item) => (
+      <a
+        key={item.label}
+        href={item.href}
+        className="text-base font-semibold text-gray-500 hover:text-black transition-colors"
+      >
+        {item.label}
+      </a>
+    ))}
+  </div>
 </div>
-        
-        {/* Center: Links under Logo */}
-        <div className="hidden md:flex absolute left-1/2 top-[70px] transform -translate-x-1/2 items-center gap-2">
-          {navLinks.map((item) => (
-            <a 
-              key={item.label} 
-              href={item.href}
-              className="text-lg font-semibold text-gray-500 transition-colors hover:text-black px-4 py-2 rounded-full duration-200"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
+
 
         {/* Right: Actions */}
         <div className="hidden md:flex items-center gap-3 z-20 relative">
