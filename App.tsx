@@ -143,7 +143,14 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
 ];
   
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 h-[80px] flex items-center border-b ${isScrolled ? 'bg-white/80 border-gray-200 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60' : 'bg-white/0 border-transparent'}`}>
+    <nav
+  className={`fixed w-full z-40 transition-all duration-300 h-[96px] flex items-center border-b
+  ${isScrolled
+    ? 'bg-white/90 backdrop-blur-xl border-gray-200'
+    : 'bg-white border-transparent'}
+  `}
+  style={{ top: '48px' }}   // 👈 DAS ist der Key
+>
       <div className="max-w-[1400px] mx-auto px-6 w-full h-full flex items-center justify-between relative">
         
         {/* Center: Logo */}
