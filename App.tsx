@@ -136,29 +136,29 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
 
   // Updated link logic to map German text to English IDs
   const navLinks = [
-    { label: 'Funktionen', href: '#features' },
-    { label: 'Profit', href: '#roi' },
-    { label: 'Lösungen', href: '#method' },
-    { label: 'Preise', href: '#pricing' }
-  ];
-
+  { label: 'Funktionen', href: '#features' },
+  { label: 'Mission', href: '#mission' },
+  { label: 'Lösungen', href: '#method' },
+  { label: 'Preise', href: '#pricing' }
+];
+  
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 h-[80px] flex items-center border-b ${isScrolled ? 'bg-white/80 border-gray-200 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60' : 'bg-white/0 border-transparent'}`}>
       <div className="max-w-[1400px] mx-auto px-6 w-full h-full flex items-center justify-between relative">
         
-        {/* Left: Logo Group */}
-        <div className="flex items-center gap-3 z-20 relative">
-          <a href="#" className="flex items-center gap-3 group">
-            <img 
-              src="https://github.com/ora-syn/orasynV1.0/blob/main/logo-neu-cut.png.png?raw=true" 
-              alt="ORASYN Logo" 
-              className="h-[60px] w-auto object-contain" 
-            />
-          </a>
-        </div>
-
-        {/* Center: Links (Absolutely Centered) */}
-        <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 items-center gap-1">
+        {/* Center: Logo */}
+<div className="absolute left-1/2 top-[14px] transform -translate-x-1/2 z-20">
+  <a href="#" className="flex justify-center">
+    <img 
+      src="https://github.com/ora-syn/orasynV1.0/blob/main/logo-neu-cut.png.png?raw=true" 
+      alt="ORASYN Logo" 
+      className="h-[56px] w-auto object-contain"
+    />
+  </a>
+</div>
+        
+        {/* Center: Links under Logo */}
+        <div className="hidden md:flex absolute left-1/2 top-[70px] transform -translate-x-1/2 items-center gap-2">
           {navLinks.map((item) => (
             <a 
               key={item.label} 
