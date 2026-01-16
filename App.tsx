@@ -168,7 +168,7 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
       <div className="max-w-[1400px] mx-auto px-6 w-full h-full grid grid-cols-3 items-center">
         
         {/* Center: Logo */}
-<div className="flex flex-col items-center justify-center gap-2">
+<div className="col-start-2 flex flex-col items-center justify-center gap-2">
   {/* Logo */}
   <a href="#" className="flex justify-center">
     <img
@@ -193,16 +193,18 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
 </div>
 
 
+
         {/* Right: Actions */}
-        <div className="hidden md:flex items-center gap-3 z-20 relative">
-          <motion.button 
-            onClick={onOpenWaitlist}
-            whileTap={{ scale: 0.95 }}
-            className="bg-black text-white text-lg font-semibold px-8 py-3 rounded-xl hover:bg-gray-800 transition-all hover:shadow-lg shadow-purple-500/10"
-          >
-            Starten
-          </motion.button>
-        </div>
+        <div className="col-start-3 hidden md:flex justify-end items-center pr-4">
+  <motion.button
+    onClick={onOpenWaitlist}
+    whileTap={{ scale: 0.95 }}
+    className="bg-black text-white text-base font-semibold px-7 py-3 rounded-xl hover:bg-gray-800 transition-all"
+  >
+    Starten
+  </motion.button>
+</div>
+
 
         {/* Mobile Menu Toggle */}
         <button 
