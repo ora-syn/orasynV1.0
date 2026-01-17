@@ -147,7 +147,7 @@ useEffect(() => {
 
   window.addEventListener('scroll', handleScroll);
   return () => window.removeEventListener('scroll', handleScroll);
-}, []);
+}, [];
 
   // Updated link logic to map German text to English IDs
   const navLinks = [
