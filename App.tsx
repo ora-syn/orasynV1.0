@@ -73,8 +73,7 @@ const LiveBar = () => {
         style={{
           display: 'flex',
           width: 'max-content',
-          animation: 'livebar-scroll 45s linear infinite',
-          willChange: 'transform',
+          animation: 'livebar-scroll 40s linear infinite',
         }}
       >
         {/* Track 1 */}
@@ -95,13 +94,13 @@ const LiveBar = () => {
       <style>
         {`
           @keyframes livebar-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
+            from {
+              transform: translateX(-17%);
+            }
+            to {
+              transform: translateX(0%);
+            }
+          }
         `}
       </style>
     </div>
@@ -125,58 +124,77 @@ const LogoIcon = () => (
  * Layout: Logo Left, Links Center, Actions Right
  */
 const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
-  const [visible, setVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
+  let lastScrollY = window.scrollY;
 
-    const onScroll = () => {
-      const current = window.scrollY;
-      setVisible(current < lastScrollY || current < 80);
-      lastScrollY = current;
-    };
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
 
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    if (currentScrollY < lastScrollY) {
+      setIsScrolled(true);   // Hochscrollen → zeigen
+    } else {
+      setIsScrolled(false);  // Runterscrollen → ausblenden
+    }
 
+    lastScrollY = currentScrollY;
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
+  // Updated link logic to map German text to English IDs
   const navLinks = [
-    { label: 'Funktionen', href: '#features' },
-    { label: 'Profit', href: '#roi' },
-    { label: 'Lösungen', href: '#method' },
-    { label: 'Preise', href: '#pricing' },
-  ];
-
+  { label: 'Funktionen', href: '#features' },
+  { label: 'Mission', href: '#mission' },
+  { label: 'Lösungen', href: '#method' },
+  { label: 'Preise', href: '#pricing' }
+];
+  
   return (
-    <nav
-      className="fixed left-0 right-0 z-40 transition-transform duration-300 bg-white/90 backdrop-blur-xl border-b border-gray-200"
-      style={{ top: '44px', transform: visible ? 'translateY(0)' : 'translateY(-120%)' }}
-    >
-      <div className="max-w-[1400px] mx-auto px-6 h-[96px] flex flex-col items-center justify-center">
+  <nav
+    className={`fixed w-full z-40 transition-all duration-300 h-[96px] flex items-center border-b ${
+      isScrolled
+        ? 'bg-white/90 backdrop-blur-xl border-gray-200'
+        : 'bg-white border-transparent'
+    }`}
+    style={{
+      top: isScrolled ? '48px' : '-120px',
+    }}
+  >
 
-        {/* Logo */}
-        <img
-          src="https://github.com/ora-syn/orasynV1.0/blob/main/logo-neu-cut.png.png?raw=true"
-          alt="ORASYN Logo"
-          className="h-[52px] mb-2"
-        />
+      <div className="max-w-[1400px] mx-auto px-6 w-full h-full grid grid-cols-3 items-center">
+        
+        {/* Center: Logo */}
+<div className="col-start-2 flex flex-col items-center justify-center gap-2">
+  {/* Logo */}
+  <a href="#" className="flex justify-center">
+    <img
+  src={logo}
+  alt="ORASYN Logo"
+  className="h-[52px] w-auto object-contain"
+/>
 
-        {/* Links */}
-        <div className="hidden md:flex gap-6">
-          {navLinks.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-sm font-semibold text-gray-600 hover:text-black transition"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
-    </nav>
-  );
-};
+  </a>
+
+  {/* Links */}
+  <div className="flex items-center gap-6">
+    {navLinks.map((item) => (
+      <a
+        key={item.label}
+        href={item.href}
+        className="text-base font-semibold text-gray-500 hover:text-black transition-colors"
+      >
+        {item.label}
+      </a>
+    ))}
+  </div>
+</div>
+
+
 
         {/* Right: Actions */}
         <div className="col-start-3 hidden md:flex justify-end items-center pr-4">
