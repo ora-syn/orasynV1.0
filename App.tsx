@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from './logo-neu-cut.png.png';
 import { 
   ArrowRight, 
   Cpu, 
@@ -172,10 +173,11 @@ const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   {/* Logo */}
   <a href="#" className="flex justify-center">
     <img
-      src="https://github.com/ora-syn/orasynV1.0/blob/main/logo-neu-cut.png.png?raw=true"
-      alt="ORASYN Logo"
-      className="h-[52px] w-auto object-contain"
-    />
+  src={logo}
+  alt="ORASYN Logo"
+  className="h-[52px] w-auto object-contain"
+/>
+
   </a>
 
   {/* Links */}
