@@ -330,7 +330,7 @@ const CalendarMockup = () => {
         {/* --- HEADER --- */}
         <div className="h-16 border-b border-gray-100 flex items-center justify-between px-6 bg-white rounded-t-xl z-20 relative min-w-[800px]">
           <div className="flex items-center gap-4">
-             <span className="font-bold text-lg text-gray-900">Dezember 2025</span>
+             <span className="font-bold text-lg text-gray-900">Februar 2026</span>
              <div className="flex bg-gray-50 p-1 rounded-md gap-1">
                 <button className="p-1 hover:bg-gray-200 rounded text-gray-500"><ArrowRight size={14} className="rotate-180"/></button>
                 <button className="p-1 hover:bg-gray-200 rounded text-gray-500"><ArrowRight size={14} /></button>
@@ -357,7 +357,7 @@ const CalendarMockup = () => {
         <div className="h-10 border-b border-gray-100 bg-gray-50/50 flex min-w-[800px]">
            <div className="w-16 border-r border-gray-100 flex-shrink-0"></div>
            <div className="flex-1 grid grid-cols-5">
-              {['Mo 08', 'Di 09', 'Mi 10', 'Do 11', 'Fr 12'].map(d => (
+              {['Mo 02', 'Di 03', 'Mi 04', 'Do 05', 'Fr 06'].map(d => (
                 <div key={d} className="flex items-center justify-center text-xs font-semibold text-gray-500 uppercase tracking-wide">
                   {d}
                 </div>
@@ -440,7 +440,7 @@ const CalendarMockup = () => {
                        style={getEventStyle(10, 1)} // 10:00 - 11:00
                     >
                        <p className="text-xs font-bold text-gray-800 leading-tight">
-                         Meeting Marketingaktivitäten Q1 2026
+                         Meeting Marketingaktivitäten Q2 2026
                        </p>
                        <p className="text-[10px] text-red-400 mt-1">10:00 - 11:00</p>
 
@@ -466,7 +466,7 @@ const CalendarMockup = () => {
                              </span>
                           </div>
                           <p className="text-xs text-gray-800 leading-relaxed">
-                             <span className="font-bold">Konflikt erkannt:</span> Der Termin <span className="italic">Meeting Marketingaktivitäten Q1 2026</span> wird bei Bestätigung auf 14:00 Uhr verschoben, um Ihre Fokuszeit 9-11 Uhr zu schützen.
+                             <span className="font-bold">Konflikt erkannt:</span> Der Termin <span className="italic">Meeting Marketingaktivitäten Q2 2026</span> wird bei Bestätigung auf 14:00 Uhr verschoben, um Ihre Fokuszeit 9-11 Uhr zu schützen.
                           </p>
                        </motion.div>
                     </div>
