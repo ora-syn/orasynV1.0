@@ -126,21 +126,24 @@ const LogoIcon = () => (
 const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
 
-  useEffect(() => {
+useEffect(() => {
   let lastScrollY = window.scrollY;
 
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-
-    if (currentScrollY < lastScrollY) {
-      setIsScrolled(true);   // Hochscrollen → zeigen
+  const onScroll = () => {
+    const current = window.scrollY;
+    if (current < lastScrollY) {
+      setShowHeader(true);   // Hochscrollen
     } else {
-      setIsScrolled(false);  // Runterscrollen → ausblenden
+      setShowHeader(false);  // Runterscrollen
     }
-
-    lastScrollY = currentScrollY;
+    lastScrollY = current;
   };
+
+  window.addEventListener('scroll', onScroll);
+  return () => window.removeEventListener('scroll', onScroll);
+}, []);
 
   window.addEventListener('scroll', handleScroll);
   return () => window.removeEventListener('scroll', handleScroll);
