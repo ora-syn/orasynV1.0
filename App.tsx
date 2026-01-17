@@ -160,11 +160,11 @@ useEffect(() => {
   
   return (
   <nav
-    className={`fixed w-full z-40 transition-all duration-300 h-[96px] flex items-center border-b ${
-      isScrolled
-        ? 'bg-white/90 backdrop-blur-xl border-gray-200'
-        : 'bg-white border-transparent'
-    }`}
+    className={`fixed w-full z-40 transition-all duration-300 h-[96px] flex items-center border-b
+    ${isScrolled
+      ? 'bg-white/90 backdrop-blur-xl border-gray-200'
+      : 'bg-white border-transparent'}
+    `}
     style={{
       top: isScrolled ? '48px' : '-120px',
     }}
