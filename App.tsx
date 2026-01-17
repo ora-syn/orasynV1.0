@@ -125,80 +125,58 @@ const LogoIcon = () => (
  * Layout: Logo Left, Links Center, Actions Right
  */
 const Navbar = ({ onOpenWaitlist }: { onOpenWaitlist: () => void }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
+  const [visible, setVisible] = useState(true);
 
-useEffect(() => {
-  let lastScrollY = window.scrollY;
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
 
-  const onScroll = () => {
-    const current = window.scrollY;
-    if (current < lastScrollY) {
-      setShowHeader(true);   // Hochscrollen
-    } else {
-      setShowHeader(false);  // Runterscrollen
-    }
-    lastScrollY = current;
-  };
+    const onScroll = () => {
+      const current = window.scrollY;
+      setVisible(current < lastScrollY || current < 80);
+      lastScrollY = current;
+    };
 
-  window.addEventListener('scroll', onScroll);
-  return () => window.removeEventListener('scroll', onScroll);
-}, []);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-  window.addEventListener('scroll', handleScroll);
-  return () => window.removeEventListener('scroll', handleScroll);
-}, [];
-
-  // Updated link logic to map German text to English IDs
   const navLinks = [
-  { label: 'Funktionen', href: '#features' },
-  { label: 'Mission', href: '#mission' },
-  { label: 'Lösungen', href: '#method' },
-  { label: 'Preise', href: '#pricing' }
-];
-  
+    { label: 'Funktionen', href: '#features' },
+    { label: 'Profit', href: '#roi' },
+    { label: 'Lösungen', href: '#method' },
+    { label: 'Preise', href: '#pricing' },
+  ];
+
   return (
-  <nav
-    className={`fixed w-full z-40 transition-all duration-300 h-[96px] flex items-center border-b
-    ${isScrolled
-      ? 'bg-white/90 backdrop-blur-xl border-gray-200'
-      : 'bg-white border-transparent'}
-    `}
-    style={{
-      top: isScrolled ? '48px' : '-120px',
-    }}
-  >
+    <nav
+      className="fixed left-0 right-0 z-40 transition-transform duration-300 bg-white/90 backdrop-blur-xl border-b border-gray-200"
+      style={{ top: '44px', transform: visible ? 'translateY(0)' : 'translateY(-120%)' }}
+    >
+      <div className="max-w-[1400px] mx-auto px-6 h-[96px] flex flex-col items-center justify-center">
 
-      <div className="max-w-[1400px] mx-auto px-6 w-full h-full grid grid-cols-3 items-center">
-        
-        {/* Center: Logo */}
-<div className="col-start-2 flex flex-col items-center justify-center gap-2">
-  {/* Logo */}
-  <a href="#" className="flex justify-center">
-    <img
-  src={logo}
-  alt="ORASYN Logo"
-  className="h-[52px] w-auto object-contain"
-/>
+        {/* Logo */}
+        <img
+          src="https://github.com/ora-syn/orasynV1.0/blob/main/logo-neu-cut.png.png?raw=true"
+          alt="ORASYN Logo"
+          className="h-[52px] mb-2"
+        />
 
-  </a>
-
-  {/* Links */}
-  <div className="flex items-center gap-6">
-    {navLinks.map((item) => (
-      <a
-        key={item.label}
-        href={item.href}
-        className="text-base font-semibold text-gray-500 hover:text-black transition-colors"
-      >
-        {item.label}
-      </a>
-    ))}
-  </div>
-</div>
-
-
+        {/* Links */}
+        <div className="hidden md:flex gap-6">
+          {navLinks.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="text-sm font-semibold text-gray-600 hover:text-black transition"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+  );
+};
 
         {/* Right: Actions */}
         <div className="col-start-3 hidden md:flex justify-end items-center pr-4">
