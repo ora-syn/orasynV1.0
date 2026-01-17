@@ -73,7 +73,8 @@ const LiveBar = () => {
         style={{
           display: 'flex',
           width: 'max-content',
-          animation: 'livebar-scroll 40s linear infinite',
+          animation: 'livebar-scroll 45s linear infinite',
+          willChange: 'transform',
         }}
       >
         {/* Track 1 */}
@@ -94,13 +95,13 @@ const LiveBar = () => {
       <style>
         {`
           @keyframes livebar-scroll {
-            from {
-              transform: translateX(-17%);
-            }
-            to {
-              transform: translateX(0%);
-            }
-          }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
         `}
       </style>
     </div>
