@@ -1149,7 +1149,7 @@ const App = () => {
             className="text-6xl md:text-8xl font-black text-black tracking-tighter leading-[0.95] mb-8 max-w-5xl"
           >
             Kein Kalender.<br />
-            <span className="text-#0cb951-400">Ein autonomer Agent.</span>
+            <span className="text-[#0cb951]-400">Ein autonomer Agent.</span>
           </motion.h1>
 
           <motion.p 
