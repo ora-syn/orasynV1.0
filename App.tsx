@@ -1148,8 +1148,8 @@ const App = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-6xl md:text-8xl font-black text-black tracking-tighter leading-[0.95] mb-8 max-w-5xl"
           >
-            Automate Work.<br />
-            <span className="text-gray-400">Elevate Growth.</span>
+            Kein Kalender.<br />
+            <span className="text-#0cb951-400">Ein autonomer Agent.</span>
           </motion.h1>
 
           <motion.p 
