@@ -1136,7 +1136,12 @@ const App = () => {
             {/* HIER GEÄNDERT: Punkt etwas größer (h-3 w-3) */}
             <span className="flex h-3 w-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.4)]"></span>
             
-           
+            {/* HIER GEÄNDERT: Textgröße auf 'text-sm' (14px) statt 11px und Farbe etwas dunkler für Lesbarkeit */}
+            <span className="text-sm font-bold text-gray-600 uppercase tracking-widest">
+              ORASYN 1.0 IST LIVE
+            </span>
+          </motion.div>
+
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
